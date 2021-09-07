@@ -16449,7 +16449,7 @@ var VALIDATION_RULES = {
     errorMessage: "This field value doesn't as same as :sameAs"
   },
   ageVerificationValidation: {
-    desc: "Validates if user confirms age",
+    desc: "Validates if user confirms age (don't use this validator without 'Age module verification' active or equal module that works with this validator)",
     needValue: false,
     errorMessage: "Please validate your age"
   },
