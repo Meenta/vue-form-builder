@@ -28058,12 +28058,12 @@ function isRegexPassed(fieldValue, regexRule) {
 // CONCATENATED MODULE: ./src/libraries/validations/ageValidation.js
 /**
  * Check if the user checked the age
- * @param {boolean} ageValidation
+ * @param {obj} { date: string, verifyAge: boolean }
  * @return {boolean}
  */
-function ageValidation_isRegexPassed(ageValidation) {
-  console.log('ageValidations: ', ageValidation);
-  return ageValidation;
+function ageValidation_isRegexPassed(fieldValue) {
+  console.log('ageValidations: ', fieldValue);
+  return fieldValue.verifyAge;
 }
 // CONCATENATED MODULE: ./src/libraries/validation.js
 
