@@ -57,10 +57,7 @@ const VALIDATION_RULES = {
 
     ageVerificationValidation: {
         desc: "Validates if user confirms age",
-
-        needValue: true,
-        valueInfo: "User validates age",
-
+        needValue: false,
         errorMessage: "Please validate your age",
     },
 
