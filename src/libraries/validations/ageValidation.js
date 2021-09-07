@@ -1,9 +1,9 @@
 /**
  * Check if the user checked the age
- * @param {boolean} ageValidation
+ * @param {obj} { date: string, verifyAge: boolean }
  * @return {boolean}
  */
- export default function isRegexPassed(ageValidation) {
-	 console.log('ageValidations: ', ageValidation);
-    return ageValidation;
+ export default function isRegexPassed(fieldValue) {
+	 console.log('ageValidations: ', fieldValue);
+    return fieldValue.verifyAge;
 }
