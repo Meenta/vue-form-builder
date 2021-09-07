@@ -27905,7 +27905,8 @@ var validation_result_class_ValidationResult = /*#__PURE__*/function () {
  * @return {boolean}
  */
 function requiredRule(fieldValue) {
-  // for checkboxes / multiple dropdown
+  console.log('required: ', fieldValue); // for checkboxes / multiple dropdown
+
   if (Array.isArray(fieldValue)) {
     return fieldValue.length > 0;
   } // for text/number/any...
@@ -28052,6 +28053,7 @@ function isRegexPassed(fieldValue, regexRule) {
  * @return {boolean}
  */
 function ageValidation_isRegexPassed(fieldValue) {
+  console.log(fieldValue);
   return fieldValue.verifyAge;
 }
 // CONCATENATED MODULE: ./src/libraries/validation.js
