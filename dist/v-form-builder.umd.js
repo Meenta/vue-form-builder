@@ -16450,8 +16450,7 @@ var VALIDATION_RULES = {
   },
   ageVerificationValidation: {
     desc: "Validates if user confirms age",
-    needValue: true,
-    valueInfo: "User validates age",
+    needValue: false,
     errorMessage: "Please validate your age"
   },
   customClosure: {
@@ -28057,12 +28056,11 @@ function isRegexPassed(fieldValue, regexRule) {
 }
 // CONCATENATED MODULE: ./src/libraries/validations/ageValidation.js
 /**
- * Check if the user checked the age
+ * Check if the user checked the age, the value of the field must be an object with verifyAge option as boolean.
  * @param {obj} { date: string, verifyAge: boolean }
  * @return {boolean}
  */
 function ageValidation_isRegexPassed(fieldValue) {
-  console.log('ageValidations: ', fieldValue);
   return fieldValue.verifyAge;
 }
 // CONCATENATED MODULE: ./src/libraries/validation.js
