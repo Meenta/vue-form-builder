@@ -42,13 +42,15 @@
                     if (this.section.shouldHide.conditionType === 'age' && this.valueContainer[this.section.shouldHide.fieldName]) {
                         if (this.section.shouldHide.ageValidatorControl) {
                             if (!this.valueContainer[this.section.shouldHide.ageValidatorControlName]) {
-                                return true;
+                                // If there is an Age Validator and it's false, then we hide the section
+                                return false;
                             }
                         }
 
                         let selectedDate = moment(this.valueContainer[this.section.shouldHide.fieldName], "MM-DD-YYYY");
                         if (!selectedDate.isValid()) {
-                            return true;
+                            // If the date is invalid, then we hide the section
+                            return false;
                         }
                         
                         const currentDate = new Date();
