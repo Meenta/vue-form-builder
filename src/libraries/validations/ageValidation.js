@@ -4,6 +4,5 @@
  * @return {boolean}
  */
  export default function isRegexPassed(fieldValue) {
-	 console.log(fieldValue);
     return fieldValue.verifyAge;
 }
