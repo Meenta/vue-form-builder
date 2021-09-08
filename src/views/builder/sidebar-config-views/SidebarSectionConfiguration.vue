@@ -66,7 +66,7 @@
         <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide && sectionConfiguration.shouldHide.conditionType === 'age'">
             <label style="display: block;">
                 Should I look for Age Validator Control?
-                <input type="checkbox" class="form-control" v-model="sectionConfiguration.shouldHide.ageValidatorControl">
+                <input type="checkbox" v-model="sectionConfiguration.shouldHide.ageValidatorControl">
             </label>
             <label style="display: block;" v-if="sectionConfiguration.shouldHide.ageValidatorControl">
                 Control name for Age Validator

@@ -36,6 +36,7 @@
         }),
         methods: {
             checkVisibility() {
+                console.log('checkVisibility: ', this);
                 let shouldHide = this.section.shouldHide.hide;
                 if (shouldHide) {
                     if (this.section.shouldHide.conditionType === 'age' && this.valueContainer[section.shouldHide.fieldName]) {
