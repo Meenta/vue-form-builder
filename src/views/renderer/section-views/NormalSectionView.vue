@@ -39,14 +39,14 @@
                 console.log('checkVisibility: ', this);
                 let shouldHide = this.section.shouldHide.hide;
                 if (shouldHide) {
-                    if (this.section.shouldHide.conditionType === 'age' && this.valueContainer[section.shouldHide.fieldName]) {
+                    if (this.section.shouldHide.conditionType === 'age' && this.valueContainer[this.section.shouldHide.fieldName]) {
                         if (this.section.shouldHide.ageValidatorControl) {
                             if (!this.valueContainer[this.section.shouldHide.ageValidatorControlName]) {
                                 return true;
                             }
                         }
 
-                        let selectedDate = moment(this.valueContainer[section.shouldHide.fieldName], "MM-DD-YYYY");
+                        let selectedDate = moment(this.valueContainer[this.section.shouldHide.fieldName], "MM-DD-YYYY");
                         if (!selectedDate.isValid()) {
                             return true;
                         }
