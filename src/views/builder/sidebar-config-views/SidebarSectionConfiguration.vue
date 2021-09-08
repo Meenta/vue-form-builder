@@ -37,6 +37,20 @@
             </label>
         </div>
 
+        <div :class="styles.FORM.FORM_GROUP">
+            <label>
+                Hide?
+                <input type="checkbox" v-model="sectionConfiguration.shouldHide.hide">
+            </label>
+        </div>
+
+        <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide">
+            <label>
+                Which control name should I evaluate to hide?
+                <input type="text" class="form-control" v-model="sectionConfiguration.shouldHide.fieldName">
+            </label>
+        </div>
+
         <div class="buttons">
             <button :class="styles.BUTTON.PRIMARY" @click="save(false)">
                 Save

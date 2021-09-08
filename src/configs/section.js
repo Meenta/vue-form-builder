@@ -82,6 +82,10 @@ const SECTION_DEFAULT_DATA = {
 
     isShowHeadline: true,
 
+    shouldHide: {
+        hide: false,
+        fieldName: ''
+    },
     sortOrder: 0,
     type: '',
     rows: [], // array of rowId
