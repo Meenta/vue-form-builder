@@ -1,6 +1,6 @@
 <template>
-    <div class="normal-section">
-    <!-- <div class="normal-section" v-if="!section.shouldHide.hide || (section.shouldHide.hide && valueContainer[section.shouldHide.fieldName])"> -->
+    <!-- <div class="normal-section"> -->
+    <div class="normal-section" v-if="!section.shouldHide.hide || (section.shouldHide.hide && valueContainer[section.shouldHide.fieldName].verifyAge)">
         <div class="headline-block" v-show="section.isShowHeadline">
             <h2 :class="section.headlineAdditionalClass" v-text="section.headline"></h2>
             <p :class="section.subHeadlineAdditionalClass" v-text="section.subHeadline"></p>
@@ -32,7 +32,6 @@
         name: "NormalSectionView",
         mixins: [RENDERER_SECTION_VIEW_MIXIN],
         data: () => ({
-
         }),
         mounted() {
             console.log('aqui: ', this);
