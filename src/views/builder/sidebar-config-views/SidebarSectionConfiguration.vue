@@ -64,8 +64,8 @@
         </div>
 
         <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide && sectionConfiguration.shouldHide.conditionType === 'age'">
-            <label>Age should be</label>
-            <label class="radio">
+            <label style="display: block;">Age should be</label>
+            <label class="radio" style="display: block;">
                 <input
                     type="radio"
                     v-model="sectionConfiguration.shouldHide.ageConditionEvaluation"
@@ -73,7 +73,7 @@
                 />
                 Higher than
             </label>
-            <label class="radio">
+            <label class="radio" style="display: block;">
                 <input
                     type="radio"
                     v-model="sectionConfiguration.shouldHide.ageConditionEvaluation"
@@ -81,7 +81,7 @@
                 />
                 Lower than
             </label>
-            <label class="radio">
+            <label class="radio" style="display: block;">
                 <input
                     type="radio"
                     v-model="sectionConfiguration.shouldHide.ageConditionEvaluation"
@@ -89,7 +89,7 @@
                 />
                 Equal to
             </label>
-            <label>
+            <label style="display: block;">
                 Age
                 <input type="text" class="form-control" v-model="sectionConfiguration.shouldHide.age">
             </label>
