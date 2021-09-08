@@ -1761,7 +1761,7 @@ var FormIcon = {
 // EXTERNAL MODULE: ./src/components/FormBuilder.vue + 50 modules
 var FormBuilder = __webpack_require__("6a29");
 
-// EXTERNAL MODULE: ./src/components/FormRenderer.vue + 24 modules
+// EXTERNAL MODULE: ./src/components/FormRenderer.vue + 23 modules
 var FormRenderer = __webpack_require__("fbdb");
 
 // EXTERNAL MODULE: ./src/configs/controls.js + 108 modules
@@ -16462,11 +16462,6 @@ var VALIDATION_RULES = {
     valueInfo: "The field name you want to check with",
     errorMessage: "This field value doesn't as same as :sameAs"
   },
-  ageVerificationValidation: {
-    desc: "Validates if user confirms age (don't use this validator without 'Age module verification' active or equal module that works with this validator)",
-    needValue: false,
-    errorMessage: "Please validate your age"
-  },
   customClosure: {
     desc: "Invoke your own method to check your field",
     needValue: true,
@@ -28076,15 +28071,6 @@ function isRegexPassed(fieldValue, regexRule) {
   var regExp = new RegExp(strRegexRule, strRegexFlag);
   return regExp.test(fieldValue);
 }
-// CONCATENATED MODULE: ./src/libraries/validations/ageValidation.js
-/**
- * Check if the user checked the age, the value of the field must be an object with verifyAge option as boolean.
- * @param {obj} { date: string, verifyAge: boolean }
- * @return {boolean}
- */
-function ageValidation_isRegexPassed(fieldValue) {
-  return fieldValue.verifyAge;
-}
 // CONCATENATED MODULE: ./src/libraries/validation.js
 
 
@@ -28105,7 +28091,6 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symb
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 
@@ -28270,9 +28255,6 @@ var validation_Validation = /*#__PURE__*/function () {
 
         case "regex":
           return isRegexPassed(fieldValue, validationRule.additionalValue);
-
-        case "ageVerificationValidation":
-          return ageValidation_isRegexPassed(fieldValue);
 
         default:
           throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
