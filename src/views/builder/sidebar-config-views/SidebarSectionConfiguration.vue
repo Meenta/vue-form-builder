@@ -52,7 +52,7 @@
         </div>
 
         <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide">
-            <label>Condition type</label>
+            <label style="display: block;">Condition type</label>
             <label class="radio">
                 <input
                     type="radio"
@@ -64,6 +64,14 @@
         </div>
 
         <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide && sectionConfiguration.shouldHide.conditionType === 'age'">
+            <label style="display: block;">
+                Should I look for Age Validator Control?
+                <input type="checkbox" class="form-control" v-model="sectionConfiguration.shouldHide.ageValidatorControl">
+            </label>
+            <label style="display: block;" v-if="sectionConfiguration.shouldHide.ageValidatorControl">
+                Control name for Age Validator
+                <input type="text" class="form-control" v-model="sectionConfiguration.shouldHide.ageValidatorControlName">
+            </label>
             <label style="display: block;">Age should be</label>
             <label class="radio" style="display: block;">
                 <input
