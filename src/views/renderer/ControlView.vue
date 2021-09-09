@@ -22,7 +22,7 @@
       />
 
       <!-- validation error -->
-      <template v-if="hasValidationError">
+      <template v-if="hasValidationError && ageControlVerificationShow">
         <div
           v-for="(mess, i) in validationErrorMessages"
           :key="i"
@@ -141,6 +141,13 @@ export default {
           return false;
         }
       }
+    },
+
+    ageControlVerificationShow() {
+      if (this.control.type === 'ageVerification') {
+        return !!this.valueContainer[this.control.datePickerField];
+      }
+      return true;
     }
   },
   mounted() {
