@@ -4,7 +4,6 @@
  * @return {boolean}
  */
 export default function requiredRule(fieldValue) {
-    console.log('required: ', fieldValue);
     if (typeof fieldValue === 'boolean') {
         return fieldValue;
     }

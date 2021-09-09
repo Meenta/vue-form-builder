@@ -42944,12 +42944,12 @@ var AddControlControl_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var AddControlControl = (AddControlControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d7f7b22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=02aa9a22&
-var ControlViewvue_type_template_id_02aa9a22_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",attrs:{"control":_vm.control}})],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
-var ControlViewvue_type_template_id_02aa9a22_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d7f7b22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=71f59c99&
+var ControlViewvue_type_template_id_71f59c99_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[_vm._v(" aquiiiiii "),_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",attrs:{"control":_vm.control}})],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
+var ControlViewvue_type_template_id_71f59c99_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=02aa9a22&
+// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=71f59c99&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d7f7b22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlLabel.vue?vue&type=template&id=2902eb23&scoped=true&
 var ControlLabelvue_type_template_id_2902eb23_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"control-label-container",class:{ required: _vm.isRequired }},[_c('label',{class:_vm.control.additionalLabelClass,attrs:{"for":_vm.control.uniqueId},domProps:{"textContent":_vm._s(_vm.control.label)}}),(_vm.control.subLabel)?_c('br'):_vm._e(),(_vm.control.subLabel)?_c('small',{domProps:{"textContent":_vm._s(_vm.control.subLabel)}}):_vm._e()])}
@@ -43887,8 +43887,8 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
 
 var ControlView_component = Object(componentNormalizer["a" /* default */])(
   builder_ControlViewvue_type_script_lang_js_,
-  ControlViewvue_type_template_id_02aa9a22_render,
-  ControlViewvue_type_template_id_02aa9a22_staticRenderFns,
+  ControlViewvue_type_template_id_71f59c99_render,
+  ControlViewvue_type_template_id_71f59c99_staticRenderFns,
   false,
   null,
   null,
@@ -48954,8 +48954,6 @@ var validation_result_class_ValidationResult = /*#__PURE__*/function () {
  * @return {boolean}
  */
 function requiredRule(fieldValue) {
-  console.log('required: ', fieldValue);
-
   if (typeof fieldValue === 'boolean') {
     return fieldValue;
   } // for checkboxes / multiple dropdown
@@ -49161,7 +49159,6 @@ var validation_Validation = /*#__PURE__*/function () {
 
     Object(defineProperty["a" /* default */])(this, "validationResult", null);
 
-    console.log('sections: ', sections);
     this.valueContainer = valueContainer;
     this.sections = sections;
     this.validationClosures = definedClosures;
@@ -49212,7 +49209,6 @@ var validation_Validation = /*#__PURE__*/function () {
     value: function run() {
       this.validationResult = new validation_result_class_ValidationResult();
       var controlKeys = Object.keys(this.rules);
-      console.log('validation run this: ', this);
 
       for (var _i = 0, _controlKeys = controlKeys; _i < _controlKeys.length; _i++) {
         var key = _controlKeys[_i];
@@ -49256,16 +49252,12 @@ var validation_Validation = /*#__PURE__*/function () {
         } finally {
           _iterator.f();
         }
-      }
+      } // If a section is hidden, then we remove the validation in that section's controllers
+
 
       if (Object.keys(this.validationResult.errorBuckets).length > 0) {
         for (var sectionId in this.sections) {
-          console.log('sectionId: ', sectionId);
-          console.log('the section: ', this.sections[sectionId]);
-
           if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide && this.sections[sectionId].shouldHide.hidden) {
-            console.log('errorBuckets: ', this.validationResult.errorBuckets);
-
             var _iterator2 = _createForOfIteratorHelper(this.sections[sectionId].controls),
                 _step2;
 
@@ -49286,8 +49278,6 @@ var validation_Validation = /*#__PURE__*/function () {
         }
       }
 
-      console.log('sections: ', this.sections);
-      console.log('validationResult: ', this.validationResult);
       return this.validationResult;
     }
     /**

@@ -28,7 +28,6 @@ export default class Validation {
    * @param {Object} sections
    */
   constructor(valueContainer, controls, definedClosures = {}, sections) {
-    console.log('sections: ', sections);
     this.valueContainer = valueContainer;
     this.sections = sections;
     this.validationClosures = definedClosures;
@@ -74,7 +73,6 @@ export default class Validation {
     this.validationResult = new ValidationResult();
     const controlKeys = Object.keys(this.rules);
 
-    console.log('validation run this: ', this);
     for (const key of controlKeys) {
       // pickup basic data
       const controlValue = this.valueContainer[key];
@@ -105,17 +103,15 @@ export default class Validation {
       }
     }
 
+    // If a section is hidden, then we remove the validation in that section's controllers
     if (Object.keys(this.validationResult.errorBuckets).length > 0) {
       for (const sectionId in this.sections) {
-        console.log('sectionId: ', sectionId);
-        console.log('the section: ', this.sections[sectionId]);
         if (
           this.sections[sectionId] &&
           this.sections[sectionId].shouldHide &&
           this.sections[sectionId].shouldHide.hide &&
           this.sections[sectionId].shouldHide.hidden
           ) {
-            console.log('errorBuckets: ', this.validationResult.errorBuckets);
             for (const controlId of this.sections[sectionId].controls) {
               if (this.validationResult.errorBuckets[controlId]) {
                 this.validationResult.removeError(controlId);
@@ -124,8 +120,7 @@ export default class Validation {
         }
       }
     }
-    console.log('sections: ', this.sections);
-    console.log('validationResult: ', this.validationResult);
+
     return this.validationResult;
   }
 
