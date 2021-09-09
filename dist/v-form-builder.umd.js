@@ -49188,6 +49188,7 @@ var validation_Validation = /*#__PURE__*/function () {
     value: function run() {
       this.validationResult = new validation_result_class_ValidationResult();
       var controlKeys = Object.keys(this.rules);
+      console.log('validation run this: ', this);
 
       for (var _i = 0, _controlKeys = controlKeys; _i < _controlKeys.length; _i++) {
         var key = _controlKeys[_i];
