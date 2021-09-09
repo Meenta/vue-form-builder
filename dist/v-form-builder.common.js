@@ -49251,6 +49251,9 @@ var validation_Validation = /*#__PURE__*/function () {
 
       if (Object.keys(this.validationResult.errorBuckets).length > 0) {
         for (var sectionId in this.sections) {
+          console.log('sectionId: ', sectionId);
+          console.log('the section: ', this.sections[sectionId]);
+
           if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide && this.sections[sectionId].shouldHide.hidden) {
             var _iterator2 = _createForOfIteratorHelper(this.section[sectionId].controls),
                 _step2;

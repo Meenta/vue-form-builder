@@ -107,6 +107,8 @@ export default class Validation {
 
     if (Object.keys(this.validationResult.errorBuckets).length > 0) {
       for (const sectionId in this.sections) {
+        console.log('sectionId: ', sectionId);
+        console.log('the section: ', this.sections[sectionId]);
         if (
           this.sections[sectionId] &&
           this.sections[sectionId].shouldHide &&
