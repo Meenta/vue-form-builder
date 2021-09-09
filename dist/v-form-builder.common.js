@@ -49114,9 +49114,11 @@ var validation_Validation = /*#__PURE__*/function () {
    * @param {Object} valueContainer
    * @param {Object} controls
    * @param {Object} definedClosures
+   * @param {Object} sections
    */
   function Validation(valueContainer, controls) {
     var definedClosures = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var sections = arguments.length > 3 ? arguments[3] : undefined;
 
     Object(classCallCheck["a" /* default */])(this, Validation);
 
@@ -49128,10 +49130,13 @@ var validation_Validation = /*#__PURE__*/function () {
 
     Object(defineProperty["a" /* default */])(this, "controls", null);
 
+    Object(defineProperty["a" /* default */])(this, "sections", null);
+
     Object(defineProperty["a" /* default */])(this, "validationResult", null);
 
-    console.log('valueContainer: ', valueContainer);
+    console.log('sections: ', sections);
     this.valueContainer = valueContainer;
+    this.sections = sections;
     this.validationClosures = definedClosures;
     this.setRules(controls);
     this.controls = controls;
@@ -49226,6 +49231,7 @@ var validation_Validation = /*#__PURE__*/function () {
         }
       }
 
+      console.log('validationResult: ', this.validationResult);
       return this.validationResult;
     }
     /**
@@ -49317,7 +49323,7 @@ var VALIDATION_MIXIN = {
    */
   created: function created() {
     // create validation instance
-    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}); // listen to validation invoke
+    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections); // listen to validation invoke
 
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].RENDERER.RUN_VALIDATION, this.runValidation);
   }

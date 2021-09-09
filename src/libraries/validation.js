@@ -12,6 +12,7 @@ export default class Validation {
   valueContainer = null;
   customClosures = {};
   controls = null;
+  sections = null;
 
   /**
    * Validation Result. Always create a new instance every time the validation is run
@@ -24,10 +25,12 @@ export default class Validation {
    * @param {Object} valueContainer
    * @param {Object} controls
    * @param {Object} definedClosures
+   * @param {Object} sections
    */
-  constructor(valueContainer, controls, definedClosures = {}) {
-    console.log('valueContainer: ', valueContainer);
+  constructor(valueContainer, controls, definedClosures = {}, sections) {
+    console.log('sections: ', sections);
     this.valueContainer = valueContainer;
+    this.sections = sections;
     this.validationClosures = definedClosures;
     this.setRules(controls);
 
@@ -102,6 +105,7 @@ export default class Validation {
       }
     }
 
+    console.log('validationResult: ', this.validationResult);
     return this.validationResult;
   }
 
