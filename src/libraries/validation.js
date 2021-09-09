@@ -105,11 +105,22 @@ export default class Validation {
       }
     }
 
-    // for (const sectionId in this.sections) {
-    //   if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide) {
-
-    //   }
-    // }
+    if (Object.keys(this.validationResult.errorBuckets).length > 0) {
+      for (const sectionId in this.sections) {
+        if (
+          this.sections[sectionId] &&
+          this.sections[sectionId].shouldHide &&
+          this.sections[sectionId].shouldHide.hide &&
+          this.sections[sectionId].shouldHide.hidden
+          ) {
+            for (const controlId of this.section[sectionId].controls) {
+              if (this.validationResult.errorBuckets[controlId]) {
+                this.validationResult.removeError(controlId);
+              }
+            }
+        }
+      }
+    }
     console.log('sections: ', this.sections);
     console.log('validationResult: ', this.validationResult);
     return this.validationResult;

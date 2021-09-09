@@ -49256,11 +49256,30 @@ var validation_Validation = /*#__PURE__*/function () {
         } finally {
           _iterator.f();
         }
-      } // for (const sectionId in this.sections) {
-      //   if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide) {
-      //   }
-      // }
+      }
 
+      if (Object.keys(this.validationResult.errorBuckets).length > 0) {
+        for (var sectionId in this.sections) {
+          if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide && this.sections[sectionId].shouldHide.hidden) {
+            var _iterator2 = _createForOfIteratorHelper(this.section[sectionId].controls),
+                _step2;
+
+            try {
+              for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                var controlId = _step2.value;
+
+                if (this.validationResult.errorBuckets[controlId]) {
+                  this.validationResult.removeError(controlId);
+                }
+              }
+            } catch (err) {
+              _iterator2.e(err);
+            } finally {
+              _iterator2.f();
+            }
+          }
+        }
+      }
 
       console.log('sections: ', this.sections);
       console.log('validationResult: ', this.validationResult);
