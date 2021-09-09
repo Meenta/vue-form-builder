@@ -81,6 +81,7 @@
                     }
                 }
 
+                this.section.shouldHide.hidden = shouldHide;
                 // The values of the shouldHide must be reverse, shouldHide = true, then we need to return false for the
                 // v-if to not render it
                 return !shouldHide;
