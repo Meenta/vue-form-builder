@@ -36,6 +36,10 @@
         }),
         methods: {
             checkVisibility() {
+                /**
+                 * This can be refactor to a system similar to validation, we should abstract this logic and make it more robust
+                 * with more options, if you are adding a new functionality other than age, consider refactoring this.
+                 */
                 let shouldHide = this.section.shouldHide.hide;
                 if (shouldHide) {
                     if (this.section.shouldHide.conditionType === 'age' && this.valueContainer[this.section.shouldHide.fieldName]) {

@@ -4,6 +4,11 @@
  * @return {boolean}
  */
 export default function requiredRule(fieldValue) {
+    console.log('required: ', fieldValue);
+    if (typeof fieldValue === 'boolean') {
+        return fieldValue;
+    }
+
     // for checkboxes / multiple dropdown
     if (Array.isArray(fieldValue)) {
         return fieldValue.length > 0

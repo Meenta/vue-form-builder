@@ -44780,12 +44780,12 @@ var TabSectionPreButtons_component = Object(componentNormalizer["a" /* default *
 )
 
 /* harmony default export */ var TabSectionPreButtons = (TabSectionPreButtons_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d7f7b22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=7d80ebb9&
-var NormalSectionViewvue_type_template_id_7d80ebb9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.checkVisibility())?_c('div',{staticClass:"normal-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('div',{class:_vm.containerClasses},_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors}})}),1)]):_vm._e()}
-var NormalSectionViewvue_type_template_id_7d80ebb9_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d7f7b22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=1a064590&
+var NormalSectionViewvue_type_template_id_1a064590_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.checkVisibility())?_c('div',{staticClass:"normal-section"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.section.isShowHeadline),expression:"section.isShowHeadline"}],staticClass:"headline-block"},[_c('h2',{class:_vm.section.headlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.headline)}}),_c('p',{class:_vm.section.subHeadlineAdditionalClass,domProps:{"textContent":_vm._s(_vm.section.subHeadline)}})]),_c('div',{class:_vm.containerClasses},_vm._l((_vm.section.controls),function(controlId){return _c('ControlView',{key:controlId,attrs:{"control":_vm.controls[controlId],"parent-id":_vm.section.uniqueId,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors}})}),1)]):_vm._e()}
+var NormalSectionViewvue_type_template_id_1a064590_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=7d80ebb9&
+// CONCATENATED MODULE: ./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=1a064590&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d7f7b22-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=template&id=7a0d79a6&
 var ControlViewvue_type_template_id_7a0d79a6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.conditionalMetVisible)?_c('div',{class:[
@@ -45040,6 +45040,10 @@ var moment_default = /*#__PURE__*/__webpack_require__.n(moment);
   },
   methods: {
     checkVisibility: function checkVisibility() {
+      /**
+       * This can be refactor to a system similar to validation, we should abstract this logic and make it more robust
+       * with more options, if you are adding a new functionality other than age, consider refactoring this.
+       */
       var shouldHide = this.section.shouldHide.hide;
 
       if (shouldHide) {
@@ -45106,8 +45110,8 @@ var moment_default = /*#__PURE__*/__webpack_require__.n(moment);
 
 var section_views_NormalSectionView_component = Object(componentNormalizer["a" /* default */])(
   views_renderer_section_views_NormalSectionViewvue_type_script_lang_js_,
-  NormalSectionViewvue_type_template_id_7d80ebb9_render,
-  NormalSectionViewvue_type_template_id_7d80ebb9_staticRenderFns,
+  NormalSectionViewvue_type_template_id_1a064590_render,
+  NormalSectionViewvue_type_template_id_1a064590_staticRenderFns,
   false,
   null,
   null,
@@ -48932,7 +48936,13 @@ var validation_result_class_ValidationResult = /*#__PURE__*/function () {
  * @return {boolean}
  */
 function requiredRule(fieldValue) {
-  // for checkboxes / multiple dropdown
+  console.log('required: ', fieldValue);
+
+  if (typeof fieldValue === 'boolean') {
+    return fieldValue;
+  } // for checkboxes / multiple dropdown
+
+
   if (Array.isArray(fieldValue)) {
     return fieldValue.length > 0;
   } // for text/number/any...
