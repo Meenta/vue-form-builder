@@ -115,7 +115,16 @@ export default class Validation {
           this.sections[sectionId].shouldHide.hidden
           ) {
             console.log()
-            for (const controlId of this.sections[sectionId].controls) {
+            // First check if the controls of this section have unique names, make an array with
+            // unique names or id if there is no unique name
+            const controlsNames = [];
+            for (const sectionControlId of this.sections[sectionId].controls) {
+              if (this.controls[sectionControlId]) {
+                controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
+              }
+            }
+
+            for (const controlId of controlsNames) {
               if (this.validationResult.errorBuckets[controlId]) {
                 this.validationResult.removeError(controlId);
               }

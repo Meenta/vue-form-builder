@@ -49269,23 +49269,34 @@ var validation_Validation = /*#__PURE__*/function () {
 
         for (var sectionId in this.sections) {
           if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide && this.sections[sectionId].shouldHide.hidden) {
-            console.log();
+            console.log(); // First check if the controls of this section have unique names, make an array with
+            // unique names or id if there is no unique name
+
+            var controlsNames = [];
 
             var _iterator2 = _createForOfIteratorHelper(this.sections[sectionId].controls),
                 _step2;
 
             try {
               for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                var controlId = _step2.value;
+                var sectionControlId = _step2.value;
 
-                if (this.validationResult.errorBuckets[controlId]) {
-                  this.validationResult.removeError(controlId);
+                if (this.controls[sectionControlId]) {
+                  controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
                 }
               }
             } catch (err) {
               _iterator2.e(err);
             } finally {
               _iterator2.f();
+            }
+
+            for (var _i2 = 0, _controlsNames = controlsNames; _i2 < _controlsNames.length; _i2++) {
+              var controlId = _controlsNames[_i2];
+
+              if (this.validationResult.errorBuckets[controlId]) {
+                this.validationResult.removeError(controlId);
+              }
             }
           }
         }
