@@ -1,5 +1,6 @@
 <template>
   <div class="control-label-container" :class="{ required: isRequired }">
+    aquiiii required
     <label
       v-text="control.label"
       :for="control.uniqueId"
@@ -26,6 +27,9 @@ export default {
         (element) => element.ruleType === "required"
       );
     }
+  },
+  mounted() {
+    console.log('mounted controllabel: ', this);
   }
 };
 </script>
