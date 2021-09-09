@@ -49130,6 +49130,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
     Object(defineProperty["a" /* default */])(this, "validationResult", null);
 
+    console.log('valueContainer: ', valueContainer);
     this.valueContainer = valueContainer;
     this.validationClosures = definedClosures;
     this.setRules(controls);
