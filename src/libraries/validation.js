@@ -115,7 +115,8 @@ export default class Validation {
           this.sections[sectionId].shouldHide.hide &&
           this.sections[sectionId].shouldHide.hidden
           ) {
-            for (const controlId of this.section[sectionId].controls) {
+            console.log('errorBuckets: ', this.validationResult.errorBuckets);
+            for (const controlId of this.sections[sectionId].controls) {
               if (this.validationResult.errorBuckets[controlId]) {
                 this.validationResult.removeError(controlId);
               }
