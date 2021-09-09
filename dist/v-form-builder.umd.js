@@ -48877,6 +48877,8 @@ var validation = __webpack_require__("a786");
 
 
 
+
+
 var validation_result_class_ValidationResult = /*#__PURE__*/function () {
   function ValidationResult() {
     Object(classCallCheck["a" /* default */])(this, ValidationResult);
@@ -48922,6 +48924,21 @@ var validation_result_class_ValidationResult = /*#__PURE__*/function () {
 
 
       this.errorBuckets[fieldName].push(errorMessage);
+    }
+    /**
+     * Remove Error, can be used for hidden values that have validations
+     * @param {String} fieldName
+     */
+
+  }, {
+    key: "removeError",
+    value: function removeError(fieldName) {
+      this.hasError = true;
+      delete this.errorBuckets[fieldName];
+
+      if (Object.keys(this.errorBuckets).length === 0) {
+        this.hasError = false;
+      }
     }
   }]);
 
@@ -49238,8 +49255,13 @@ var validation_Validation = /*#__PURE__*/function () {
         } finally {
           _iterator.f();
         }
-      }
+      } // for (const sectionId in this.sections) {
+      //   if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide) {
+      //   }
+      // }
 
+
+      console.log('sections: ', this.sections);
       console.log('validationResult: ', this.validationResult);
       return this.validationResult;
     }

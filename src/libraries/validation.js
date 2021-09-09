@@ -105,6 +105,12 @@ export default class Validation {
       }
     }
 
+    // for (const sectionId in this.sections) {
+    //   if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide) {
+
+    //   }
+    // }
+    console.log('sections: ', this.sections);
     console.log('validationResult: ', this.validationResult);
     return this.validationResult;
   }
