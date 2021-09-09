@@ -105,6 +105,7 @@ export default class Validation {
 
     // If a section is hidden, then we remove the validation in that section's controllers
     if (Object.keys(this.validationResult.errorBuckets).length > 0) {
+      console.log('debug sections validation: ', this.sections);
       for (const sectionId in this.sections) {
         if (
           this.sections[sectionId] &&
