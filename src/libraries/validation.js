@@ -105,8 +105,6 @@ export default class Validation {
 
     // If a section is hidden, then we remove the validation in that section's controllers
     if (Object.keys(this.validationResult.errorBuckets).length > 0) {
-      console.log('debug sections validation: ', this.sections);
-      console.log('debug sections controls: ', this.controls);
       for (const sectionId in this.sections) {
         if (
           this.sections[sectionId] &&
@@ -114,7 +112,6 @@ export default class Validation {
           this.sections[sectionId].shouldHide.hide &&
           this.sections[sectionId].shouldHide.hidden
           ) {
-            console.log()
             // First check if the controls of this section have unique names, make an array with
             // unique names or id if there is no unique name
             const controlsNames = [];

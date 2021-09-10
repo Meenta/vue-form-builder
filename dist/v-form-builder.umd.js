@@ -49264,14 +49264,10 @@ var validation_Validation = /*#__PURE__*/function () {
 
 
       if (Object.keys(this.validationResult.errorBuckets).length > 0) {
-        console.log('debug sections validation: ', this.sections);
-        console.log('debug sections controls: ', this.controls);
-
         for (var sectionId in this.sections) {
           if (this.sections[sectionId] && this.sections[sectionId].shouldHide && this.sections[sectionId].shouldHide.hide && this.sections[sectionId].shouldHide.hidden) {
-            console.log(); // First check if the controls of this section have unique names, make an array with
+            // First check if the controls of this section have unique names, make an array with
             // unique names or id if there is no unique name
-
             var controlsNames = [];
 
             var _iterator2 = _createForOfIteratorHelper(this.sections[sectionId].controls),
