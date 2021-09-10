@@ -44,6 +44,7 @@ const VALIDATION_MIXIN = {
             this.valueContainer,
             this.formData.controls,
             this.$form.validationClosures || {},
+            this.formData.sections
         )
 
         // listen to validation invoke

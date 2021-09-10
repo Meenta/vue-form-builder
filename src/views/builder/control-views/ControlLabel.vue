@@ -1,5 +1,5 @@
 <template>
-  <div class="control-label-container" :class="{ required: isRequired }">
+  <div class="control-label-container" :class="{ required: isRequired && control.type !== 'ageVerification' }">
     <label
       v-text="control.label"
       :for="control.uniqueId"

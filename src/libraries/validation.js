@@ -6,13 +6,13 @@ import isEmailRule from "@/libraries/validations/is-email";
 import sameAsRule from "@/libraries/validations/same-as";
 import customClosureRule from "@/libraries/validations/custom-closure";
 import isRegexPassed from "@/libraries/validations/regex";
-import ageValidation from "@/libraries/validations/ageValidation"
 
 export default class Validation {
   rules = null;
   valueContainer = null;
   customClosures = {};
   controls = null;
+  sections = null;
 
   /**
    * Validation Result. Always create a new instance every time the validation is run
@@ -25,9 +25,11 @@ export default class Validation {
    * @param {Object} valueContainer
    * @param {Object} controls
    * @param {Object} definedClosures
+   * @param {Object} sections
    */
-  constructor(valueContainer, controls, definedClosures = {}) {
+  constructor(valueContainer, controls, definedClosures = {}, sections) {
     this.valueContainer = valueContainer;
+    this.sections = sections;
     this.validationClosures = definedClosures;
     this.setRules(controls);
 
@@ -101,6 +103,33 @@ export default class Validation {
       }
     }
 
+    // If a section is hidden, then we remove the validation in that section's controllers
+    if (Object.keys(this.validationResult.errorBuckets).length > 0) {
+      for (const sectionId in this.sections) {
+        if (
+          this.sections[sectionId] &&
+          this.sections[sectionId].shouldHide &&
+          this.sections[sectionId].shouldHide.hide &&
+          this.sections[sectionId].shouldHide.hidden
+          ) {
+            // First check if the controls of this section have unique names, make an array with
+            // unique names or id if there is no unique name
+            const controlsNames = [];
+            for (const sectionControlId of this.sections[sectionId].controls) {
+              if (this.controls[sectionControlId]) {
+                controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
+              }
+            }
+
+            for (const controlId of controlsNames) {
+              if (this.validationResult.errorBuckets[controlId]) {
+                this.validationResult.removeError(controlId);
+              }
+            }
+        }
+      }
+    }
+
     return this.validationResult;
   }
 
@@ -141,9 +170,6 @@ export default class Validation {
 
       case "regex":
         return isRegexPassed(fieldValue, validationRule.additionalValue);
-
-      case "ageVerificationValidation":
-        return ageValidation(fieldValue);
 
       default:
         throw new TypeError(

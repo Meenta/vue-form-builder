@@ -36,4 +36,18 @@ export default class ValidationResult {
         // add the error message
         this.errorBuckets[fieldName].push(errorMessage)
     }
+
+    /**
+     * Remove Error, can be used for hidden values that have validations
+     * @param {String} fieldName
+     */
+     removeError(fieldName) {
+        this.hasError = true
+
+        delete this.errorBuckets[fieldName];
+
+        if (Object.keys(this.errorBuckets).length === 0) {
+            this.hasError = false;
+        }
+    }
 }
