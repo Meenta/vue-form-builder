@@ -1,36 +1,33 @@
 <template>
-    <div class="control-label-container">
-        <label
-            v-text="control.label"
-            :for="control.uniqueId"
-            :class="[control.additionalLabelClass, readOnly ? 'bold' : '']"
-        />
-        <br v-if="control.subLabel" />
-        <small
-            v-if="control.subLabel"
-            v-text="control.subLabel"
-        />
-    </div>
+  <div class="control-label-container" :class="{ required: isRequired && control.type !== 'ageVerification' }">
+    <label
+      v-text="control.label"
+      :for="control.uniqueId"
+      :class="control.additionalLabelClass"
+    >
+    </label>
+    <br v-if="control.subLabel" />
+    <small v-if="control.subLabel" v-text="control.subLabel"> </small>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "ControlLabel",
-        props: {
-            control: {
-                type: Object,
-                required: true
-            },
-            readOnly: {
-                type: Boolean,
-                default: false,
-            }
-        }
+export default {
+  name: "ControlLabel",
+  props: {
+    control: {
+      type: Object,
+      required: true
     }
+  },
+  computed: {
+    isRequired() {
+      return !!this.control.validations.find(
+        (element) => element.ruleType === "required"
+      );
+    }
+  }
+};
 </script>
 
-<style scoped>
-label.bold {
-  font-weight: 600;
-}
-</style>
+<style scoped></style>

@@ -37,6 +37,72 @@
             </label>
         </div>
 
+        <div :class="styles.FORM.FORM_GROUP">
+            <label>
+                Hide?
+                <input type="checkbox" v-model="sectionConfiguration.shouldHide.hide">
+            </label>
+        </div>
+
+        <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide">
+            <label>
+                Which control name should I evaluate to hide?
+                <input type="text" class="form-control" v-model="sectionConfiguration.shouldHide.fieldName">
+            </label>
+        </div>
+
+        <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide">
+            <label style="display: block;">Condition type</label>
+            <label class="radio">
+                <input
+                    type="radio"
+                    v-model="sectionConfiguration.shouldHide.conditionType"
+                    value="age"
+                />
+                Age Condition
+            </label>
+        </div>
+
+        <div :class="styles.FORM.FORM_GROUP" v-if="sectionConfiguration.shouldHide.hide && sectionConfiguration.shouldHide.conditionType === 'age'">
+            <label style="display: block;">
+                Should I look for Age Validator Control?
+                <input type="checkbox" v-model="sectionConfiguration.shouldHide.ageValidatorControl">
+            </label>
+            <label style="display: block;" v-if="sectionConfiguration.shouldHide.ageValidatorControl">
+                Control name for Age Validator
+                <input type="text" class="form-control" v-model="sectionConfiguration.shouldHide.ageValidatorControlName">
+            </label>
+            <label style="display: block;">Age should be</label>
+            <label class="radio" style="display: block;">
+                <input
+                    type="radio"
+                    v-model="sectionConfiguration.shouldHide.ageConditionEvaluation"
+                    value="higher"
+                />
+                Higher than
+            </label>
+            <label class="radio" style="display: block;">
+                <input
+                    type="radio"
+                    v-model="sectionConfiguration.shouldHide.ageConditionEvaluation"
+                    value="lower"
+                />
+                Lower than
+            </label>
+            <label class="radio" style="display: block;">
+                <input
+                    type="radio"
+                    v-model="sectionConfiguration.shouldHide.ageConditionEvaluation"
+                    value="equal"
+                />
+                Equal to
+            </label>
+            <label style="display: block;">
+                Age
+                <input type="text" class="form-control" v-model="sectionConfiguration.shouldHide.age">
+            </label>
+        </div>
+
         <div class="buttons">
             <button :class="styles.BUTTON.PRIMARY" @click="save(false)">
                 Save
