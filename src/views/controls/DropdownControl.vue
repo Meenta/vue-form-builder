@@ -83,7 +83,6 @@ export default {
                 this.listOptions = this.control.items.map((item)=>{
                   return item.value = (item.value || '').toLowerCase();
                 });
-                this.listOptions = this.control.items;
                 return;
             }
             // our code goes down here? => REST-API

@@ -23759,12 +23759,12 @@ var NumberControl_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var NumberControl = (NumberControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DropdownControl.vue?vue&type=template&id=c0f8538c&scoped=true&
-var DropdownControlvue_type_template_id_c0f8538c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('select',{class:_vm.controlFieldClass,attrs:{"id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"multiple":this.control.multiple},on:{"input":function($event){return _vm.updateValue($event.target.value)}}},[(_vm.control.placeholderText)?_c('option',{attrs:{"disabled":"","value":"^_mt_slct_plchlr"},domProps:{"selected":_vm.value === _vm.defaultValue,"textContent":_vm._s(_vm.control.placeholderText)}}):_vm._e(),_c('option',{attrs:{"value":"GRRRRR"},domProps:{"textContent":_vm._s('BLAASSSS')}}),_vm._l((_vm.listOptions),function(optionObj){return _c('option',{key:optionObj.value,domProps:{"value":optionObj.value,"selected":_vm.defaultValue === optionObj.value,"textContent":_vm._s(optionObj.text)}})})],2)}
-var DropdownControlvue_type_template_id_c0f8538c_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DropdownControl.vue?vue&type=template&id=71f61147&scoped=true&
+var DropdownControlvue_type_template_id_71f61147_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('select',{class:_vm.controlFieldClass,attrs:{"id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"multiple":this.control.multiple},on:{"input":function($event){return _vm.updateValue($event.target.value)}}},[(_vm.control.placeholderText)?_c('option',{attrs:{"disabled":"","value":"^_mt_slct_plchlr"},domProps:{"selected":_vm.value === _vm.defaultValue,"textContent":_vm._s(_vm.control.placeholderText)}}):_vm._e(),_c('option',{attrs:{"value":"GRRRRR"},domProps:{"textContent":_vm._s('BLAASSSS')}}),_vm._l((_vm.listOptions),function(optionObj){return _c('option',{key:optionObj.value,domProps:{"value":optionObj.value,"selected":_vm.defaultValue === optionObj.value,"textContent":_vm._s(optionObj.text)}})})],2)}
+var DropdownControlvue_type_template_id_71f61147_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/DropdownControl.vue?vue&type=template&id=c0f8538c&scoped=true&
+// CONCATENATED MODULE: ./src/views/controls/DropdownControl.vue?vue&type=template&id=71f61147&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__("d225");
@@ -23868,7 +23868,6 @@ var list_item_class_ListItem = function ListItem(value, text) {
         this.listOptions = this.control.items.map(function (item) {
           return item.value = (item.value || '').toLowerCase();
         });
-        this.listOptions = this.control.items;
         return;
       } // our code goes down here? => REST-API
 
@@ -23959,11 +23958,11 @@ var list_item_class_ListItem = function ListItem(value, text) {
 
 var DropdownControl_component = Object(componentNormalizer["a" /* default */])(
   controls_DropdownControlvue_type_script_lang_js_,
-  DropdownControlvue_type_template_id_c0f8538c_scoped_true_render,
-  DropdownControlvue_type_template_id_c0f8538c_scoped_true_staticRenderFns,
+  DropdownControlvue_type_template_id_71f61147_scoped_true_render,
+  DropdownControlvue_type_template_id_71f61147_scoped_true_staticRenderFns,
   false,
   null,
-  "c0f8538c",
+  "71f61147",
   null
   
 )
