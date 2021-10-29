@@ -149,9 +149,6 @@ export default {
       }
       return true;
     }
-  },
-  mounted() {
-    console.log('controlView: ', this);
   }
 };
 </script>
