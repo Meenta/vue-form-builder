@@ -5,7 +5,6 @@
         :name="control.name || control.uniqueId"
         @input="updateValue($event.target.value)"
         :multiple="this.control.multiple"
-        v-model="defaultValue"
     >
         <!-- placeholder -->
         <option
@@ -13,6 +12,12 @@
             value="^_mt_slct_plchlr"
             v-text="control.placeholderText"
             v-if="control.placeholderText"
+            :selected="value === defaultValue"
+        ></option>
+
+        <option
+            value="GRRRRR"
+            v-text="'BLAASSSS'"
         ></option>
         
         <!-- list rendering -->
@@ -21,7 +26,7 @@
             :key="optionObj.value"
             :value="optionObj.value"
             v-text="optionObj.text"
-            :selected="value === optionObj.value"
+            :selected="defaultValue === optionObj.value"
         ></option>
     </select>
 </template>
