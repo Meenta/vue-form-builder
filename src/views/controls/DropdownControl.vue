@@ -19,9 +19,9 @@
         <option
             v-for="optionObj in listOptions"
             :key="optionObj.value"
-            :value="optionObj.value.toLowerCase()"
+            :value="optionObj.value"
             v-text="optionObj.text"
-            :selected="value === optionObj.value.toLowerCase()"
+            :selected="value === optionObj.value"
         ></option>
     </select>
 </template>
@@ -74,10 +74,13 @@ export default {
 
             // pick up option data
             if (this.control.dataMode === DROPDOWN_DATA_MODES.list.val) {
+                //options to lowercase
+                this.listOptions = this.control.items.map((item)=>{
+                  return item.value = (item.value || '').toLowerCase();
+                });
                 this.listOptions = this.control.items;
                 return;
             }
-
             // our code goes down here? => REST-API
             if (!this.control.apiURL) {
                 throw new TypeError(
