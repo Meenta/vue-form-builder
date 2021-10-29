@@ -14,12 +14,12 @@
             v-text="control.placeholderText"
             v-if="control.placeholderText"
         ></option>
-
+        
         <!-- list rendering -->
         <option
             v-for="optionObj in listOptions"
             :key="optionObj.value"
-            :value="optionObj.value"
+            :value="optionObj.value.toLowerCase()"
             v-text="optionObj.text"
             :selected="value === optionObj.value"
         ></option>
