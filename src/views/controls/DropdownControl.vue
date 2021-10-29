@@ -5,6 +5,7 @@
         :name="control.name || control.uniqueId"
         @input="updateValue($event.target.value)"
         :multiple="this.control.multiple"
+        v-model="defaultValue"
     >
         <!-- placeholder -->
         <option
@@ -12,12 +13,6 @@
             value="^_mt_slct_plchlr"
             v-text="control.placeholderText"
             v-if="control.placeholderText"
-            :selected="value === defaultValue"
-        ></option>
-
-        <option
-            value="GRRRRR"
-            v-text="'BLAASSSS'"
         ></option>
         
         <!-- list rendering -->
@@ -26,7 +21,6 @@
             :key="optionObj.value"
             :value="optionObj.value"
             v-text="optionObj.text"
-            :selected="defaultValue === optionObj.value"
         ></option>
     </select>
 </template>
@@ -81,7 +75,8 @@ export default {
             if (this.control.dataMode === DROPDOWN_DATA_MODES.list.val) {
                 //options to lowercase
                 this.listOptions = this.control.items.map((item)=>{
-                  return item.value = (item.value || '').toLowerCase();
+                  item.value = (item.value || '').toLowerCase();
+                  return item;
                 });
                 return;
             }
