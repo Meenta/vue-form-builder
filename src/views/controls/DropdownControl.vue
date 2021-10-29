@@ -21,7 +21,7 @@
             :key="optionObj.value"
             :value="optionObj.value.toLowerCase()"
             v-text="optionObj.text"
-            :selected="value === optionObj.value"
+            :selected="value === optionObj.value.toLowerCase()"
         ></option>
     </select>
 </template>
