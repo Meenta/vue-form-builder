@@ -331,8 +331,8 @@ function createControlData(controlKey) {
     const newData = Object.assign({}, CONTROL_DEFAULT_DATA, CONTROLS[controlKey].configData || {})
 
     // set default data
-    newData.label = CONTROLS[controlKey].name
-    newData.type = controlKey
+    newData.label = CONTROLS[controlKey].label || CONTROLS[controlKey].name;
+    newData.type = controlKey;
 
     // unique ID is a must - I used UUIDv4 => 99% Unique
     newData.uniqueId = "control-" + HELPER.getUUIDv4()
