@@ -196,11 +196,13 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param {Object} controlData
          */
         controlUpdated(controlId, controlData) {
+            console.log('controlUpdated', controlId, controlData);
+            console.log('controlUpdated this', this);
             // validate input
             if (!this.formData.controls.hasOwnProperty(controlId)) {
                 return
             }
-
+            console.log('controlUpdated this controlId', this.formData.controls[controlId]);
             // update by using the extend . best way
             this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData)
         }
