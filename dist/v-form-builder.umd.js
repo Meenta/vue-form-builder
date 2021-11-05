@@ -41844,6 +41844,7 @@ var SIDEBAR_BODY_MIXIN = {
     save: function save() {
       var close = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var data = this[this.dataKey];
+      console.log('data', this.dataKey);
 
       if (close) {
         this.$emit(this.emitSaveAndCloseKey, data);
