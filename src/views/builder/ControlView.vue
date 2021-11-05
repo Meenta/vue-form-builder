@@ -112,6 +112,7 @@
              * @param {Object} controlData - Control Object (After edited in the sidebar)
              */
             saveConfiguration(runnerId, controlData) {
+                console.log('Control View saveConfiguration', runnerId, controlData);
                 this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE, runnerId, controlData)
             }
         },

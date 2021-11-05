@@ -150,6 +150,7 @@
              * @param {Object} data
              */
             saveConfiguration(runnerId, data) {
+                console.log('Section Navigation Bar saveConfiguration', runnerId, data, this.section.uniqueId);
                 // does it out of scope? if it does, stop
                 if (runnerId !== this.section.uniqueId) {
                     return
