@@ -3,6 +3,10 @@
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
 import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
+import { createControlData } from "../configs/controls";
+import ControlView from "../views/builder/ControlView.vue";
+import DefaultPermission from "../configs/roles";
+import Vue from "vue";
 
 const EMIT_EVENT = "change";
 
@@ -52,7 +56,23 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
         updateValue(val) {
             this.$emit(EMIT_EVENT, val)
         },
-
+         /**
+         * Creates controls within controls
+         */
+        renderSubControls() {
+          if (this.control.controls) {
+            for (const ctrl of this.control.controls) {
+              const Control = Vue.extend(ControlView);
+              new Control({
+                propsData: {
+                  control: createControlData(ctrl.controlKey),
+                  parentId: ctrl.containerId,
+                  permissions: DefaultPermission
+                }
+              }).$mount(ctrl.containerId);
+            }
+          }
+        },
         /**
          * Need-To-Override Method - Set Value.
          * Set value from parent to the current field/control

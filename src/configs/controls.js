@@ -316,6 +316,8 @@ const CONTROL_DEFAULT_DATA = {
      * @var {ValidationRule[]} validations
      */
     'validations': [],
+    // internal components
+    'controls':[]
 
     // data of the others - coming up later
 };

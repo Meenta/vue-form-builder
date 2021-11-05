@@ -4469,7 +4469,7 @@ var FormIcon = {
   }
 };
 
-// EXTERNAL MODULE: ./src/components/FormBuilder.vue + 50 modules
+// EXTERNAL MODULE: ./src/components/FormBuilder.vue + 49 modules
 var FormBuilder = __webpack_require__("6a29");
 
 // EXTERNAL MODULE: ./src/components/FormRenderer.vue + 23 modules
@@ -4766,6 +4766,41 @@ exports.f = Object.getOwnPropertySymbols;
 
 })));
 
+
+/***/ }),
+
+/***/ "270a":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * Roles of Form Builder
+ * @author Phat Tran
+ */
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // global
+  canEditFormConfigurations: true,
+  // sections
+  canAddSection: true,
+  canEditSection: true,
+  canDeleteSection: true,
+  canReOrderingSection: true,
+  // rows/tab
+  canAddRow: true,
+  canEditRow: true,
+  canDeleteRow: true,
+  canReOrderingRow: true,
+  // controls
+  canAddControl: true,
+  canEditControl: true,
+  canDeleteControl: true,
+  canReOrderingControl: true,
+  // control-inner
+  canUpdateControlBasicDetail: true,
+  canUpdateControlStyling: true,
+  canUpdateControlValidation: true,
+  canUpdateControlSpecialConfiguration: true
+});
 
 /***/ }),
 
@@ -11856,6 +11891,927 @@ module.exports = function (exec, skipClosing) {
 
 /***/ }),
 
+/***/ "4f2e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=1ef6b994&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",attrs:{"control":_vm.control}})],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=1ef6b994&
+
+// EXTERNAL MODULE: ./src/mixins/style-injection-mixin.js
+var style_injection_mixin = __webpack_require__("28fe");
+
+// EXTERNAL MODULE: ./src/views/builder/control-views/ControlLabel.vue + 4 modules
+var ControlLabel = __webpack_require__("fcac");
+
+// EXTERNAL MODULE: ./src/configs/controls.js + 108 modules
+var controls = __webpack_require__("8dbe");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlOption.vue?vue&type=template&id=0c360d12&
+var ControlOptionvue_type_template_id_0c360d12_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"control-option-container"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.permissions.canReOrderingControl),expression:"permissions.canReOrderingControl"}],staticClass:"option-control drag-item",attrs:{"title":"Re-position / Drag"}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('navigationMore', '24px', '24px', '#f1c40f'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.permissions.canEditControl),expression:"permissions.canEditControl"}],staticClass:"option-control",attrs:{"title":"Control Configuration"},on:{"click":_vm.clickedConfiguration}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('cog', '24px', '24px', '#3498db'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.permissions.canDeleteControl),expression:"permissions.canDeleteControl"}],staticClass:"option-control",attrs:{"title":"Delete Control"},on:{"click":_vm.clickedDelete}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('trash', '24px', '24px', '#e74c3c'))}})])])}
+var ControlOptionvue_type_template_id_0c360d12_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/control-views/ControlOption.vue?vue&type=template&id=0c360d12&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlOption.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var ControlOptionvue_type_script_lang_js_ = ({
+  name: "ControlOption",
+  props: {
+    permissions: Object
+  },
+  methods: {
+    /**
+     * Emit to parent to delete this control...
+     */
+    clickedDelete: function clickedDelete() {
+      this.$emit('delete', true);
+    },
+
+    /**
+     * Emit to parent to open the configuration
+     */
+    clickedConfiguration: function clickedConfiguration() {
+      this.$emit('config', true);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/control-views/ControlOption.vue?vue&type=script&lang=js&
+ /* harmony default export */ var control_views_ControlOptionvue_type_script_lang_js_ = (ControlOptionvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__("2877");
+
+// CONCATENATED MODULE: ./src/views/builder/control-views/ControlOption.vue
+
+
+
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  control_views_ControlOptionvue_type_script_lang_js_,
+  ControlOptionvue_type_template_id_0c360d12_render,
+  ControlOptionvue_type_template_id_0c360d12_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ControlOption = (component.exports);
+// EXTERNAL MODULE: ./src/configs/events.js
+var events = __webpack_require__("fbe6");
+
+// EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
+var sidebar_renderer_class = __webpack_require__("1ec8");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=6e0787c7&
+var SidebarControlConfigurationvue_type_template_id_6e0787c7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Control Configuration")]),(_vm.permissions.canUpdateControlBasicDetail)?_c('ControlBasicInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.permissions.canUpdateControlStyling)?_c('ControlStylingInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.specificConfigurationView && _vm.permissions.canUpdateControlSpecialConfiguration)?_c('SidebarToggleableContainer',{attrs:{"headline":"Control Specific Configuration"}},[_c(_vm.specificConfigurationView,{tag:"component",attrs:{"formData":_vm.formData,"control":_vm.control}})],1):_vm._e(),(!_vm.isValidationDisabled && _vm.permissions.canUpdateControlValidation)?_c('ControlValidationInformation',{attrs:{"control":_vm.control}}):_vm._e(),_c('div',{staticClass:"buttons"},[_c('button',{class:_vm.styles.BUTTON.PRIMARY,on:{"click":function($event){return _vm.save(false)}}},[_vm._v(" Save ")]),_c('button',{class:_vm.styles.BUTTON.INFO,on:{"click":function($event){return _vm.save(true)}}},[_vm._v(" Save & Close ")])])],1)}
+var SidebarControlConfigurationvue_type_template_id_6e0787c7_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=6e0787c7&
+
+// EXTERNAL MODULE: ./src/mixins/sidebar-body-mixin.js
+var sidebar_body_mixin = __webpack_require__("cbce");
+
+// EXTERNAL MODULE: ./src/views/container-views/SidebarToggleableContainer.vue + 4 modules
+var SidebarToggleableContainer = __webpack_require__("9831");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=template&id=43b1189a&scoped=true&
+var ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Basic Detail"}},[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Unique ID")]),_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","readonly":""},domProps:{"value":_vm.control.uniqueId}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Name (Must be unique)")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.name),expression:"control.name"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","readonly":_vm.fieldMappingSet},domProps:{"value":(_vm.control.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "name", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Field Mapping")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selectedFieldMapping),expression:"selectedFieldMapping"}],staticClass:"form-control",on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selectedFieldMapping=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.handleFieldMappingSelection]}},[_c('option',{attrs:{"value":""}}),_vm._l((_vm.fieldMappings),function(group,index){return _c('optgroup',{key:index,attrs:{"label":group.groupName}},_vm._l((group.fields),function(field,fieldIndex){return _c('option',{key:fieldIndex,domProps:{"value":field}},[_vm._v(_vm._s(field.name))])}),0)})],2)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Label")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.label),expression:"control.label"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.label)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "label", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Sub-label")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.subLabel),expression:"control.subLabel"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.subLabel)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "subLabel", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Show Label? "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.control.isShowLabel)?_vm._i(_vm.control.isShowLabel,null)>-1:(_vm.control.isShowLabel)},on:{"change":function($event){var $$a=_vm.control.isShowLabel,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.control, "isShowLabel", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.control, "isShowLabel", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.control, "isShowLabel", $$c)}}}})])]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Field Placeholder (Optional)")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.placeholderText),expression:"control.placeholderText"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.placeholderText)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "placeholderText", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Default Value (Optional)")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.defaultValue),expression:"control.defaultValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.defaultValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "defaultValue", $event.target.value)}}})]),_c('div',[_c('label',{attrs:{"for":""}},[_vm._v("Conditional? "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.isConditional),expression:"control.isConditional"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.control.isConditional)?_vm._i(_vm.control.isConditional,null)>-1:(_vm.control.isConditional)},on:{"change":function($event){var $$a=_vm.control.isConditional,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.control, "isConditional", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.control, "isConditional", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.control, "isConditional", $$c)}}}})])]),(_vm.control.isConditional)?_c('div',[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Conditional Field")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldName),expression:"control.conditionalFieldName"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.conditionalFieldName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "conditionalFieldName", $event.target.value)}}})]),_c('div',{staticClass:"control"},[_c('label',{staticClass:"radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldEquality),expression:"control.conditionalFieldEquality"}],attrs:{"type":"radio","value":"equals"},domProps:{"checked":_vm._q(_vm.control.conditionalFieldEquality,"equals")},on:{"change":function($event){return _vm.$set(_vm.control, "conditionalFieldEquality", "equals")}}}),_vm._v(" Equals ")]),_c('label',{staticClass:"radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldEquality),expression:"control.conditionalFieldEquality"}],attrs:{"type":"radio","value":"notEqual"},domProps:{"checked":_vm._q(_vm.control.conditionalFieldEquality,"notEqual")},on:{"change":function($event){return _vm.$set(_vm.control, "conditionalFieldEquality", "notEqual")}}}),_vm._v(" Does Not Equal ")])]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Conditional Field Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldValue),expression:"control.conditionalFieldValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.conditionalFieldValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "conditionalFieldValue", $event.target.value)}}})]),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":""}},[_vm._v("When Condition Is Met Input Is")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalWhenMet),expression:"control.conditionalWhenMet"}],staticClass:"form-control",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "conditionalWhenMet", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},[_c('option',{attrs:{"value":"visible"}},[_vm._v("Visible")]),_c('option',{attrs:{"value":"enabled"}},[_vm._v("Enabled")])])])]):_vm._e()])}
+var ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=template&id=43b1189a&scoped=true&
+
+// EXTERNAL MODULE: ./node_modules/axios/index.js
+var axios = __webpack_require__("bc3a");
+var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ var ControlBasicInformationvue_type_script_lang_js_ = ({
+  name: "ControlBasicInformation",
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
+  components: {
+    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
+  },
+  props: {
+    control: Object
+  },
+  data: function data() {
+    return {
+      fieldMappings: [],
+      selectedFieldMapping: null,
+      fieldMappingSet: false
+    };
+  },
+  methods: {
+    handleFieldMappingSelection: function handleFieldMappingSelection() {
+      if (this.selectedFieldMapping) {
+        this.fieldMappingSet = true;
+        this.control.name = this.selectedFieldMapping.field;
+        this.control.label = this.selectedFieldMapping.header;
+        return;
+      }
+
+      this.fieldMappingSet = false;
+      this.control.name = "";
+      return;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var form = this.$form;
+
+    if (form.fieldMatchingApi) {
+      axios_default.a.get(form.fieldMatchingApi).then(function (response) {
+        if (response.status === 200 && response.data.length > 0) {
+          _this.fieldMappings = response.data;
+        }
+      });
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=script&lang=js&
+ /* harmony default export */ var control_configuration_views_ControlBasicInformationvue_type_script_lang_js_ = (ControlBasicInformationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue
+
+
+
+
+
+/* normalize component */
+
+var ControlBasicInformation_component = Object(componentNormalizer["a" /* default */])(
+  control_configuration_views_ControlBasicInformationvue_type_script_lang_js_,
+  ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_render,
+  ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_staticRenderFns,
+  false,
+  null,
+  "43b1189a",
+  null
+  
+)
+
+/* harmony default export */ var ControlBasicInformation = (ControlBasicInformation_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=template&id=7bfdae9a&scoped=true&
+var ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Styling/Classes"}},[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Container Size Class")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.containerClass),expression:"control.containerClass"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "containerClass", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.containerClasses),function(className,classID){return _c('option',{key:className,domProps:{"value":className}},[_vm._v(" "+_vm._s(classID)+" ("+_vm._s(className)+") ")])}),0)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Container Additional Classes")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.additionalContainerClass),expression:"control.additionalContainerClass"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.additionalContainerClass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "additionalContainerClass", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Control Field Additional Classes")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.additionalFieldClass),expression:"control.additionalFieldClass"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.additionalFieldClass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "additionalFieldClass", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Control-Label Additional Classes")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.additionalLabelClass),expression:"control.additionalLabelClass"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.additionalLabelClass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "additionalLabelClass", $event.target.value)}}})])])}
+var ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=template&id=7bfdae9a&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var ControlStylingInformationvue_type_script_lang_js_ = ({
+  name: "ControlStylingInformation",
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
+  components: {
+    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
+  },
+  props: {
+    control: Object
+  },
+  computed: {
+    containerClasses: function containerClasses() {
+      return this.styles.COLUMNS;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=script&lang=js&
+ /* harmony default export */ var control_configuration_views_ControlStylingInformationvue_type_script_lang_js_ = (ControlStylingInformationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue
+
+
+
+
+
+/* normalize component */
+
+var ControlStylingInformation_component = Object(componentNormalizer["a" /* default */])(
+  control_configuration_views_ControlStylingInformationvue_type_script_lang_js_,
+  ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_render,
+  ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_staticRenderFns,
+  false,
+  null,
+  "7bfdae9a",
+  null
+  
+)
+
+/* harmony default export */ var ControlStylingInformation = (ControlStylingInformation_component.exports);
+// EXTERNAL MODULE: ./src/libraries/helper.js
+var helper = __webpack_require__("43b3");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=e86148c8&
+var ControlValidationInformationvue_type_template_id_e86148c8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Validation"}},[_c('label',[_vm._v(" Validation Rules "),_c('span',{staticClass:"pointer",attrs:{"title":"Click this to add a new rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '16px', '16px', 'green'))},on:{"click":_vm.addNewRule}})]),_vm._l((_vm.control.validations),function(addedRule,ruleIndex){return _c('div',{key:addedRule.ruleType,staticClass:"list-selection"},[_c('div',{staticClass:"tool-block"},[_c('span',{staticClass:"pointer",attrs:{"title":"Click this to remove this rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '16px', '16px', 'red'))},on:{"click":function($event){return _vm.removeRule(ruleIndex)}}})]),_c('div',{class:[_vm.styles.FORM.FORM_GROUP]},[_c('label',[_vm._v("Validation Rule")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(addedRule.ruleType),expression:"addedRule.ruleType"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(addedRule, "ruleType", $event.target.multiple ? $$selectedVal : $$selectedVal[0])},function($event){return _vm.updateDefaultErrorMessage(addedRule)}]}},[_c('option',{attrs:{"selected":"","disabled":""}},[_vm._v("Choose a Rule")]),_vm._l((_vm.getRuleList(addedRule.ruleType)),function(ruleName,ruleIndex){return _c('option',{key:ruleIndex,domProps:{"value":ruleName,"textContent":_vm._s(ruleName)}})})],2),_c('small',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'desc')),expression:"getRuleInfo(addedRule.ruleType, 'desc')"}],domProps:{"textContent":_vm._s(_vm.getRuleInfo(addedRule.ruleType, 'desc'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'needValue')),expression:"getRuleInfo(addedRule.ruleType, 'needValue')"}],class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Rule Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.additionalValue),expression:"addedRule.additionalValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":_vm.getRuleInfo(addedRule.ruleType, 'valueInfo')},domProps:{"value":(addedRule.additionalValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "additionalValue", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Default Error Message")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.errorMessage),expression:"addedRule.errorMessage"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(addedRule.errorMessage)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "errorMessage", $event.target.value)}}})])])})],2)}
+var ControlValidationInformationvue_type_template_id_e86148c8_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=e86148c8&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
+var es7_array_includes = __webpack_require__("6762");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.includes.js
+var es6_string_includes = __webpack_require__("2fdb");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
+var web_dom_iterable = __webpack_require__("ac6a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
+var es6_object_keys = __webpack_require__("456d");
+
+// EXTERNAL MODULE: ./src/configs/validation.js
+var validation = __webpack_require__("a786");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=script&lang=js&
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ var ControlValidationInformationvue_type_script_lang_js_ = ({
+  name: "ControlValidationInformation",
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
+  components: {
+    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
+  },
+  props: {
+    control: Object
+  },
+  methods: {
+    /**
+     * Get the rule info based on the validation rule
+     * @param ruleName
+     * @param ruleKey
+     * @returns {boolean}
+     */
+    getRuleInfo: function getRuleInfo(ruleName, ruleKey) {
+      if (!ruleName) {
+        return false;
+      }
+
+      return validation["a" /* VALIDATION_RULES */][ruleName][ruleKey];
+    },
+
+    /**
+     * [ON-INPUT] Every-Time the rule-select is selected, we need to update the default error message.
+     */
+    updateDefaultErrorMessage: function updateDefaultErrorMessage(addedRule) {
+      addedRule.errorMessage = this.getRuleInfo(addedRule.ruleType, 'errorMessage');
+    },
+
+    /**
+     * [CLICK] Add a new rule into validation array
+     */
+    addNewRule: function addNewRule() {
+      this.control.validations.push(new validation["b" /* ValidationRule */]());
+    },
+
+    /**
+     * [CLICK] Remove a rule
+     */
+    removeRule: function removeRule(index) {
+      this.control.validations.splice(index, 1);
+    },
+
+    /**
+     * Get all the available rules without the current one
+     * @return {String[]}
+     */
+    getRuleList: function getRuleList(currentRule) {
+      var allUsedRules = this.control.validations.map(function (rule) {
+        return rule.ruleType;
+      }).filter(function (ruleName) {
+        return ruleName !== currentRule;
+      });
+      var allRules = Object.keys(validation["a" /* VALIDATION_RULES */]);
+      return allRules.filter(function (rule) {
+        return !allUsedRules.includes(rule);
+      });
+    }
+  },
+  computed: {
+    /**
+     * Get all Rule List
+     * @returns {string[]}
+     */
+    ruleList: function ruleList() {
+      return Object.keys(validation["a" /* VALIDATION_RULES */]);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=script&lang=js&
+ /* harmony default export */ var control_configuration_views_ControlValidationInformationvue_type_script_lang_js_ = (ControlValidationInformationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue
+
+
+
+
+
+/* normalize component */
+
+var ControlValidationInformation_component = Object(componentNormalizer["a" /* default */])(
+  control_configuration_views_ControlValidationInformationvue_type_script_lang_js_,
+  ControlValidationInformationvue_type_template_id_e86148c8_render,
+  ControlValidationInformationvue_type_template_id_e86148c8_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ControlValidationInformation = (ControlValidationInformation_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+/* harmony default export */ var SidebarControlConfigurationvue_type_script_lang_js_ = ({
+  name: "SidebarControlConfiguration",
+  components: {
+    ControlValidationInformation: ControlValidationInformation,
+    ControlStylingInformation: ControlStylingInformation,
+    ControlBasicInformation: ControlBasicInformation,
+    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
+  },
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */], sidebar_body_mixin["a" /* SIDEBAR_BODY_MIXIN */]],
+  props: {
+    permissions: Object
+  },
+  data: function data() {
+    return {
+      dataKey: "control",
+      control: null
+    };
+  },
+  created: function created() {
+    // clone to make sure, no references will interrupt the configuration...
+    this.control = helper["a" /* HELPER */].cloneDeep(this.dataPackage);
+  },
+  computed: {
+    /**
+     * Quick'n'Short access to the control type
+     */
+    controlType: function controlType() {
+      return this.control.type;
+    },
+
+    /**
+     * CHeck if the control doesn't need validation
+     */
+    isValidationDisabled: function isValidationDisabled() {
+      if (controls["a" /* CONTROLS */][this.controlType].disableValidation) {
+        return true;
+      }
+
+      return false;
+    },
+
+    /**
+     * Pick-up the specific configuration View for the Control
+     * Depend on the `configComponent` of CONTROLS in `src/configs/controls.js`
+     * If there's none => No Specific Configuration for the field
+     * @returns VueComponent
+     */
+    specificConfigurationView: function specificConfigurationView() {
+      if (!controls["a" /* CONTROLS */][this.controlType].hasOwnProperty('configComponent')) {
+        return null;
+      } // NOTE: this is a hash map access , not 2d array =))
+
+
+      return controls["a" /* CONTROLS */][this.controlType]['configComponent'];
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=script&lang=js&
+ /* harmony default export */ var sidebar_config_views_SidebarControlConfigurationvue_type_script_lang_js_ = (SidebarControlConfigurationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue
+
+
+
+
+
+/* normalize component */
+
+var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* default */])(
+  sidebar_config_views_SidebarControlConfigurationvue_type_script_lang_js_,
+  SidebarControlConfigurationvue_type_template_id_6e0787c7_render,
+  SidebarControlConfigurationvue_type_template_id_6e0787c7_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var SidebarControlConfiguration = (SidebarControlConfiguration_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ var ControlViewvue_type_script_lang_js_ = ({
+  name: "ControlView",
+  components: {
+    ControlOption: ControlOption,
+    ControlLabel: ControlLabel["a" /* default */]
+  },
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
+  props: {
+    control: {
+      type: Object,
+      required: true
+    },
+    parentId: {
+      type: String,
+      required: true
+    },
+    permissions: Object
+  },
+  data: function data() {
+    return {
+      isActive: false
+    };
+  },
+  methods: {
+    /**
+     * [Emit-from-children] ControlOption will emit this if user want to delete the current control
+     */
+    deleteControl: function deleteControl() {
+      // EMIT to FormBuilder to let it delete the control for us
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETE, this.parentId, this.control.uniqueId);
+    },
+
+    /**
+     * [Emit-from-children] ControlOption will emit this when user clicked "Cog" button
+     * We're opening the sidebar configuration....
+     */
+    openConfiguration: function openConfiguration() {
+      // If the current one active => no trigger...
+      if (this.isActive) {
+        return;
+      }
+
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.OPEN, this.control.uniqueId);
+    },
+
+    /**
+     * [Emit-from-GlobalSidebar]
+     */
+    openedConfiguration: function openedConfiguration(runnerId) {
+      if (runnerId !== this.control.uniqueId) {
+        return;
+      } // eligible to render sidebar
+
+
+      this.isActive = true;
+      this.renderSidebar();
+    },
+
+    /**
+     * Push an Event to GlobalSidebar to Render the Body :D
+     */
+    renderSidebar: function renderSidebar() {
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.INJECT, new sidebar_renderer_class["a" /* default */](this.control.uniqueId, SidebarControlConfiguration, this.control));
+    },
+
+    /**
+     * Received closed notification from sidebar
+     */
+    closedConfiguration: function closedConfiguration() {
+      this.isActive = false;
+    },
+
+    /**
+     * Save Control Configuration Data
+     * @param {String} runnerId - Control ID
+     * @param {Object} controlData - Control Object (After edited in the sidebar)
+     */
+    saveConfiguration: function saveConfiguration(runnerId, controlData) {
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE, runnerId, controlData);
+    }
+  },
+  computed: {
+    /**
+     * This accessor will get the component object to let us inject the right control
+     */
+    controlComponent: function controlComponent() {
+      // validate input
+      if (!controls["a" /* CONTROLS */][this.control.type] || !controls["a" /* CONTROLS */][this.control.type].fieldComponent) {
+        throw new TypeError("Control Type Mapping failed => Can't be rendered. Reason: Your control type ".concat(this.control.type, " doesn't have 'fieldComponent' property"));
+      }
+
+      return controls["a" /* CONTROLS */][this.control.type].fieldComponent;
+    }
+  },
+  created: function created() {
+    // listen to GlobalSidebar
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE, this.saveConfiguration);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE_AND_CLOSE, this.saveConfiguration);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.AFTER_CLOSED, this.closedConfiguration);
+    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.OPENED, this.openedConfiguration);
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=script&lang=js&
+ /* harmony default export */ var builder_ControlViewvue_type_script_lang_js_ = (ControlViewvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/views/builder/ControlView.vue
+
+
+
+
+
+/* normalize component */
+
+var ControlView_component = Object(componentNormalizer["a" /* default */])(
+  builder_ControlViewvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ControlView = __webpack_exports__["a"] = (ControlView_component.exports);
+
+/***/ }),
+
 /***/ "5038":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14376,19 +15332,52 @@ module.exports = $export;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CONTROL_FIELD_EXTEND_MIXIN; });
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7f7f");
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("28fe");
+/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ac6a");
+/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("ac4d");
+/* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("8a81");
+/* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("5df3");
+/* harmony import */ var core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("1c4c");
+/* harmony import */ var core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("6b54");
+/* harmony import */ var core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("7f7f");
+/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("28fe");
+/* harmony import */ var _configs_controls__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("8dbe");
+/* harmony import */ var _views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("4f2e");
+/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("270a");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("8bbf");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_11__);
 
+
+
+
+
+
+
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /**
  * Base Setup for any `controls` of Control in Vue-Form-Builder
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
 
+
+
+
+
 var EMIT_EVENT = "change";
 var CONTROL_FIELD_EXTEND_MIXIN = {
-  mixins: [_mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_1__[/* STYLE_INJECTION_MIXIN */ "a"]],
+  mixins: [_mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_7__[/* STYLE_INJECTION_MIXIN */ "a"]],
   props: {
     // control configuration
     control: {
@@ -14430,6 +15419,34 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
      */
     updateValue: function updateValue(val) {
       this.$emit(EMIT_EVENT, val);
+    },
+
+    /**
+    * Creates controls within controls
+    */
+    renderSubControls: function renderSubControls() {
+      if (this.control.controls) {
+        var _iterator = _createForOfIteratorHelper(this.control.controls),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var ctrl = _step.value;
+            var Control = vue__WEBPACK_IMPORTED_MODULE_11___default.a.extend(_views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);
+            new Control({
+              propsData: {
+                control: Object(_configs_controls__WEBPACK_IMPORTED_MODULE_8__[/* createControlData */ "c"])(ctrl.controlKey),
+                parentId: ctrl.containerId,
+                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
+              }
+            }).$mount(ctrl.containerId);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      }
     },
 
     /**
@@ -15239,7 +16256,7 @@ var AddSectionControlvue_type_template_id_02d85b7e_staticRenderFns = []
 // EXTERNAL MODULE: ./src/configs/styles.js
 var styles = __webpack_require__("d60e");
 
-// EXTERNAL MODULE: ./src/configs/section.js + 115 modules
+// EXTERNAL MODULE: ./src/configs/section.js + 80 modules
 var section = __webpack_require__("dd3c");
 
 // EXTERNAL MODULE: ./src/mixins/style-injection-mixin.js
@@ -16715,35 +17732,9 @@ var GlobalModal_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var GlobalModal = (GlobalModal_component.exports);
-// CONCATENATED MODULE: ./src/configs/roles.js
-/**
- * Roles of Form Builder
- * @author Phat Tran
- */
-/* harmony default export */ var roles = ({
-  // global
-  canEditFormConfigurations: true,
-  // sections
-  canAddSection: true,
-  canEditSection: true,
-  canDeleteSection: true,
-  canReOrderingSection: true,
-  // rows/tab
-  canAddRow: true,
-  canEditRow: true,
-  canDeleteRow: true,
-  canReOrderingRow: true,
-  // controls
-  canAddControl: true,
-  canEditControl: true,
-  canDeleteControl: true,
-  canReOrderingControl: true,
-  // control-inner
-  canUpdateControlBasicDetail: true,
-  canUpdateControlStyling: true,
-  canUpdateControlValidation: true,
-  canUpdateControlSpecialConfiguration: true
-});
+// EXTERNAL MODULE: ./src/configs/roles.js
+var roles = __webpack_require__("270a");
+
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FormBuilder.vue?vue&type=script&lang=js&
 
 //
@@ -16814,7 +17805,7 @@ var GlobalModal_component = Object(componentNormalizer["a" /* default */])(
     permissions: {
       type: Object,
       default: function _default() {
-        return roles;
+        return roles["a" /* default */];
       }
     }
   },
@@ -25513,7 +26504,9 @@ var CONTROL_DEFAULT_DATA = {
    * Validation that applied to the control
    * @var {ValidationRule[]} validations
    */
-  'validations': [] // data of the others - coming up later
+  'validations': [],
+  // internal components
+  'controls': [] // data of the others - coming up later
 
 };
 /**
@@ -33729,7 +34722,7 @@ var web_dom_iterable = __webpack_require__("ac6a");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
 var es6_object_keys = __webpack_require__("456d");
 
-// EXTERNAL MODULE: ./src/configs/section.js + 115 modules
+// EXTERNAL MODULE: ./src/configs/section.js + 80 modules
 var section = __webpack_require__("dd3c");
 
 // EXTERNAL MODULE: ./src/configs/controls.js + 108 modules
@@ -43023,958 +44016,9 @@ var AddControlControl_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var AddControlControl = (AddControlControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=1ef6b994&
-var ControlViewvue_type_template_id_1ef6b994_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",attrs:{"control":_vm.control}})],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
-var ControlViewvue_type_template_id_1ef6b994_staticRenderFns = []
+// EXTERNAL MODULE: ./src/views/builder/ControlView.vue + 29 modules
+var ControlView = __webpack_require__("4f2e");
 
-
-// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=1ef6b994&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlLabel.vue?vue&type=template&id=1f5e3e23&scoped=true&
-var ControlLabelvue_type_template_id_1f5e3e23_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"control-label-container",class:{ required: _vm.isRequired && _vm.control.type !== 'ageVerification' }},[_c('label',{class:_vm.control.additionalLabelClass,attrs:{"for":_vm.control.uniqueId},domProps:{"textContent":_vm._s(_vm.control.label)}}),(_vm.control.subLabel)?_c('br'):_vm._e(),(_vm.control.subLabel)?_c('small',{domProps:{"textContent":_vm._s(_vm.control.subLabel)}}):_vm._e()])}
-var ControlLabelvue_type_template_id_1f5e3e23_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/views/builder/control-views/ControlLabel.vue?vue&type=template&id=1f5e3e23&scoped=true&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
-var es6_array_find = __webpack_require__("7514");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlLabel.vue?vue&type=script&lang=js&
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ var ControlLabelvue_type_script_lang_js_ = ({
-  name: "ControlLabel",
-  props: {
-    control: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    isRequired: function isRequired() {
-      return !!this.control.validations.find(function (element) {
-        return element.ruleType === "required";
-      });
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/control-views/ControlLabel.vue?vue&type=script&lang=js&
- /* harmony default export */ var control_views_ControlLabelvue_type_script_lang_js_ = (ControlLabelvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/control-views/ControlLabel.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlLabel_component = Object(componentNormalizer["a" /* default */])(
-  control_views_ControlLabelvue_type_script_lang_js_,
-  ControlLabelvue_type_template_id_1f5e3e23_scoped_true_render,
-  ControlLabelvue_type_template_id_1f5e3e23_scoped_true_staticRenderFns,
-  false,
-  null,
-  "1f5e3e23",
-  null
-  
-)
-
-/* harmony default export */ var ControlLabel = (ControlLabel_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlOption.vue?vue&type=template&id=0c360d12&
-var ControlOptionvue_type_template_id_0c360d12_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"control-option-container"},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.permissions.canReOrderingControl),expression:"permissions.canReOrderingControl"}],staticClass:"option-control drag-item",attrs:{"title":"Re-position / Drag"}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('navigationMore', '24px', '24px', '#f1c40f'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.permissions.canEditControl),expression:"permissions.canEditControl"}],staticClass:"option-control",attrs:{"title":"Control Configuration"},on:{"click":_vm.clickedConfiguration}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('cog', '24px', '24px', '#3498db'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.permissions.canDeleteControl),expression:"permissions.canDeleteControl"}],staticClass:"option-control",attrs:{"title":"Delete Control"},on:{"click":_vm.clickedDelete}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('trash', '24px', '24px', '#e74c3c'))}})])])}
-var ControlOptionvue_type_template_id_0c360d12_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/views/builder/control-views/ControlOption.vue?vue&type=template&id=0c360d12&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlOption.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ var ControlOptionvue_type_script_lang_js_ = ({
-  name: "ControlOption",
-  props: {
-    permissions: Object
-  },
-  methods: {
-    /**
-     * Emit to parent to delete this control...
-     */
-    clickedDelete: function clickedDelete() {
-      this.$emit('delete', true);
-    },
-
-    /**
-     * Emit to parent to open the configuration
-     */
-    clickedConfiguration: function clickedConfiguration() {
-      this.$emit('config', true);
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/control-views/ControlOption.vue?vue&type=script&lang=js&
- /* harmony default export */ var control_views_ControlOptionvue_type_script_lang_js_ = (ControlOptionvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/control-views/ControlOption.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlOption_component = Object(componentNormalizer["a" /* default */])(
-  control_views_ControlOptionvue_type_script_lang_js_,
-  ControlOptionvue_type_template_id_0c360d12_render,
-  ControlOptionvue_type_template_id_0c360d12_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var ControlOption = (ControlOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=6e0787c7&
-var SidebarControlConfigurationvue_type_template_id_6e0787c7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Control Configuration")]),(_vm.permissions.canUpdateControlBasicDetail)?_c('ControlBasicInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.permissions.canUpdateControlStyling)?_c('ControlStylingInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.specificConfigurationView && _vm.permissions.canUpdateControlSpecialConfiguration)?_c('SidebarToggleableContainer',{attrs:{"headline":"Control Specific Configuration"}},[_c(_vm.specificConfigurationView,{tag:"component",attrs:{"formData":_vm.formData,"control":_vm.control}})],1):_vm._e(),(!_vm.isValidationDisabled && _vm.permissions.canUpdateControlValidation)?_c('ControlValidationInformation',{attrs:{"control":_vm.control}}):_vm._e(),_c('div',{staticClass:"buttons"},[_c('button',{class:_vm.styles.BUTTON.PRIMARY,on:{"click":function($event){return _vm.save(false)}}},[_vm._v(" Save ")]),_c('button',{class:_vm.styles.BUTTON.INFO,on:{"click":function($event){return _vm.save(true)}}},[_vm._v(" Save & Close ")])])],1)}
-var SidebarControlConfigurationvue_type_template_id_6e0787c7_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=6e0787c7&
-
-// EXTERNAL MODULE: ./src/views/container-views/SidebarToggleableContainer.vue + 4 modules
-var SidebarToggleableContainer = __webpack_require__("9831");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=template&id=43b1189a&scoped=true&
-var ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Basic Detail"}},[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Unique ID")]),_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","readonly":""},domProps:{"value":_vm.control.uniqueId}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Name (Must be unique)")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.name),expression:"control.name"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","readonly":_vm.fieldMappingSet},domProps:{"value":(_vm.control.name)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "name", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Field Mapping")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.selectedFieldMapping),expression:"selectedFieldMapping"}],staticClass:"form-control",on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.selectedFieldMapping=$event.target.multiple ? $$selectedVal : $$selectedVal[0]},_vm.handleFieldMappingSelection]}},[_c('option',{attrs:{"value":""}}),_vm._l((_vm.fieldMappings),function(group,index){return _c('optgroup',{key:index,attrs:{"label":group.groupName}},_vm._l((group.fields),function(field,fieldIndex){return _c('option',{key:fieldIndex,domProps:{"value":field}},[_vm._v(_vm._s(field.name))])}),0)})],2)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Label")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.label),expression:"control.label"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.label)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "label", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Sub-label")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.subLabel),expression:"control.subLabel"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.subLabel)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "subLabel", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v(" Show Label? "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.control.isShowLabel)?_vm._i(_vm.control.isShowLabel,null)>-1:(_vm.control.isShowLabel)},on:{"change":function($event){var $$a=_vm.control.isShowLabel,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.control, "isShowLabel", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.control, "isShowLabel", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.control, "isShowLabel", $$c)}}}})])]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Field Placeholder (Optional)")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.placeholderText),expression:"control.placeholderText"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.placeholderText)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "placeholderText", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Default Value (Optional)")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.defaultValue),expression:"control.defaultValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.defaultValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "defaultValue", $event.target.value)}}})]),_c('div',[_c('label',{attrs:{"for":""}},[_vm._v("Conditional? "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.isConditional),expression:"control.isConditional"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.control.isConditional)?_vm._i(_vm.control.isConditional,null)>-1:(_vm.control.isConditional)},on:{"change":function($event){var $$a=_vm.control.isConditional,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.control, "isConditional", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.control, "isConditional", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.control, "isConditional", $$c)}}}})])]),(_vm.control.isConditional)?_c('div',[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Conditional Field")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldName),expression:"control.conditionalFieldName"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.conditionalFieldName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "conditionalFieldName", $event.target.value)}}})]),_c('div',{staticClass:"control"},[_c('label',{staticClass:"radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldEquality),expression:"control.conditionalFieldEquality"}],attrs:{"type":"radio","value":"equals"},domProps:{"checked":_vm._q(_vm.control.conditionalFieldEquality,"equals")},on:{"change":function($event){return _vm.$set(_vm.control, "conditionalFieldEquality", "equals")}}}),_vm._v(" Equals ")]),_c('label',{staticClass:"radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldEquality),expression:"control.conditionalFieldEquality"}],attrs:{"type":"radio","value":"notEqual"},domProps:{"checked":_vm._q(_vm.control.conditionalFieldEquality,"notEqual")},on:{"change":function($event){return _vm.$set(_vm.control, "conditionalFieldEquality", "notEqual")}}}),_vm._v(" Does Not Equal ")])]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Conditional Field Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalFieldValue),expression:"control.conditionalFieldValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.conditionalFieldValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "conditionalFieldValue", $event.target.value)}}})]),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":""}},[_vm._v("When Condition Is Met Input Is")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.conditionalWhenMet),expression:"control.conditionalWhenMet"}],staticClass:"form-control",on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "conditionalWhenMet", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},[_c('option',{attrs:{"value":"visible"}},[_vm._v("Visible")]),_c('option',{attrs:{"value":"enabled"}},[_vm._v("Enabled")])])])]):_vm._e()])}
-var ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=template&id=43b1189a&scoped=true&
-
-// EXTERNAL MODULE: ./node_modules/axios/index.js
-var axios = __webpack_require__("bc3a");
-var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ var ControlBasicInformationvue_type_script_lang_js_ = ({
-  name: "ControlBasicInformation",
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
-  components: {
-    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
-  },
-  props: {
-    control: Object
-  },
-  data: function data() {
-    return {
-      fieldMappings: [],
-      selectedFieldMapping: null,
-      fieldMappingSet: false
-    };
-  },
-  methods: {
-    handleFieldMappingSelection: function handleFieldMappingSelection() {
-      if (this.selectedFieldMapping) {
-        this.fieldMappingSet = true;
-        this.control.name = this.selectedFieldMapping.field;
-        this.control.label = this.selectedFieldMapping.header;
-        return;
-      }
-
-      this.fieldMappingSet = false;
-      this.control.name = "";
-      return;
-    }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    var form = this.$form;
-
-    if (form.fieldMatchingApi) {
-      axios_default.a.get(form.fieldMatchingApi).then(function (response) {
-        if (response.status === 200 && response.data.length > 0) {
-          _this.fieldMappings = response.data;
-        }
-      });
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue?vue&type=script&lang=js&
- /* harmony default export */ var control_configuration_views_ControlBasicInformationvue_type_script_lang_js_ = (ControlBasicInformationvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlBasicInformation.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlBasicInformation_component = Object(componentNormalizer["a" /* default */])(
-  control_configuration_views_ControlBasicInformationvue_type_script_lang_js_,
-  ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_render,
-  ControlBasicInformationvue_type_template_id_43b1189a_scoped_true_staticRenderFns,
-  false,
-  null,
-  "43b1189a",
-  null
-  
-)
-
-/* harmony default export */ var ControlBasicInformation = (ControlBasicInformation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=template&id=7bfdae9a&scoped=true&
-var ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Styling/Classes"}},[_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Container Size Class")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.containerClass),expression:"control.containerClass"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.control, "containerClass", $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},_vm._l((_vm.containerClasses),function(className,classID){return _c('option',{key:className,domProps:{"value":className}},[_vm._v(" "+_vm._s(classID)+" ("+_vm._s(className)+") ")])}),0)]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Container Additional Classes")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.additionalContainerClass),expression:"control.additionalContainerClass"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.additionalContainerClass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "additionalContainerClass", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Control Field Additional Classes")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.additionalFieldClass),expression:"control.additionalFieldClass"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.additionalFieldClass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "additionalFieldClass", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Control-Label Additional Classes")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.control.additionalLabelClass),expression:"control.additionalLabelClass"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(_vm.control.additionalLabelClass)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.control, "additionalLabelClass", $event.target.value)}}})])])}
-var ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=template&id=7bfdae9a&scoped=true&
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ var ControlStylingInformationvue_type_script_lang_js_ = ({
-  name: "ControlStylingInformation",
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
-  components: {
-    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
-  },
-  props: {
-    control: Object
-  },
-  computed: {
-    containerClasses: function containerClasses() {
-      return this.styles.COLUMNS;
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue?vue&type=script&lang=js&
- /* harmony default export */ var control_configuration_views_ControlStylingInformationvue_type_script_lang_js_ = (ControlStylingInformationvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlStylingInformation.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlStylingInformation_component = Object(componentNormalizer["a" /* default */])(
-  control_configuration_views_ControlStylingInformationvue_type_script_lang_js_,
-  ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_render,
-  ControlStylingInformationvue_type_template_id_7bfdae9a_scoped_true_staticRenderFns,
-  false,
-  null,
-  "7bfdae9a",
-  null
-  
-)
-
-/* harmony default export */ var ControlStylingInformation = (ControlStylingInformation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=e86148c8&
-var ControlValidationInformationvue_type_template_id_e86148c8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Validation"}},[_c('label',[_vm._v(" Validation Rules "),_c('span',{staticClass:"pointer",attrs:{"title":"Click this to add a new rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '16px', '16px', 'green'))},on:{"click":_vm.addNewRule}})]),_vm._l((_vm.control.validations),function(addedRule,ruleIndex){return _c('div',{key:addedRule.ruleType,staticClass:"list-selection"},[_c('div',{staticClass:"tool-block"},[_c('span',{staticClass:"pointer",attrs:{"title":"Click this to remove this rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '16px', '16px', 'red'))},on:{"click":function($event){return _vm.removeRule(ruleIndex)}}})]),_c('div',{class:[_vm.styles.FORM.FORM_GROUP]},[_c('label',[_vm._v("Validation Rule")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(addedRule.ruleType),expression:"addedRule.ruleType"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(addedRule, "ruleType", $event.target.multiple ? $$selectedVal : $$selectedVal[0])},function($event){return _vm.updateDefaultErrorMessage(addedRule)}]}},[_c('option',{attrs:{"selected":"","disabled":""}},[_vm._v("Choose a Rule")]),_vm._l((_vm.getRuleList(addedRule.ruleType)),function(ruleName,ruleIndex){return _c('option',{key:ruleIndex,domProps:{"value":ruleName,"textContent":_vm._s(ruleName)}})})],2),_c('small',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'desc')),expression:"getRuleInfo(addedRule.ruleType, 'desc')"}],domProps:{"textContent":_vm._s(_vm.getRuleInfo(addedRule.ruleType, 'desc'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'needValue')),expression:"getRuleInfo(addedRule.ruleType, 'needValue')"}],class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Rule Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.additionalValue),expression:"addedRule.additionalValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":_vm.getRuleInfo(addedRule.ruleType, 'valueInfo')},domProps:{"value":(addedRule.additionalValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "additionalValue", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Default Error Message")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.errorMessage),expression:"addedRule.errorMessage"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(addedRule.errorMessage)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "errorMessage", $event.target.value)}}})])])})],2)}
-var ControlValidationInformationvue_type_template_id_e86148c8_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=e86148c8&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
-var es7_array_includes = __webpack_require__("6762");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.includes.js
-var es6_string_includes = __webpack_require__("2fdb");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
-var web_dom_iterable = __webpack_require__("ac6a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
-var es6_object_keys = __webpack_require__("456d");
-
-// EXTERNAL MODULE: ./src/configs/validation.js
-var validation = __webpack_require__("a786");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=script&lang=js&
-
-
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ var ControlValidationInformationvue_type_script_lang_js_ = ({
-  name: "ControlValidationInformation",
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
-  components: {
-    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
-  },
-  props: {
-    control: Object
-  },
-  methods: {
-    /**
-     * Get the rule info based on the validation rule
-     * @param ruleName
-     * @param ruleKey
-     * @returns {boolean}
-     */
-    getRuleInfo: function getRuleInfo(ruleName, ruleKey) {
-      if (!ruleName) {
-        return false;
-      }
-
-      return validation["a" /* VALIDATION_RULES */][ruleName][ruleKey];
-    },
-
-    /**
-     * [ON-INPUT] Every-Time the rule-select is selected, we need to update the default error message.
-     */
-    updateDefaultErrorMessage: function updateDefaultErrorMessage(addedRule) {
-      addedRule.errorMessage = this.getRuleInfo(addedRule.ruleType, 'errorMessage');
-    },
-
-    /**
-     * [CLICK] Add a new rule into validation array
-     */
-    addNewRule: function addNewRule() {
-      this.control.validations.push(new validation["b" /* ValidationRule */]());
-    },
-
-    /**
-     * [CLICK] Remove a rule
-     */
-    removeRule: function removeRule(index) {
-      this.control.validations.splice(index, 1);
-    },
-
-    /**
-     * Get all the available rules without the current one
-     * @return {String[]}
-     */
-    getRuleList: function getRuleList(currentRule) {
-      var allUsedRules = this.control.validations.map(function (rule) {
-        return rule.ruleType;
-      }).filter(function (ruleName) {
-        return ruleName !== currentRule;
-      });
-      var allRules = Object.keys(validation["a" /* VALIDATION_RULES */]);
-      return allRules.filter(function (rule) {
-        return !allUsedRules.includes(rule);
-      });
-    }
-  },
-  computed: {
-    /**
-     * Get all Rule List
-     * @returns {string[]}
-     */
-    ruleList: function ruleList() {
-      return Object.keys(validation["a" /* VALIDATION_RULES */]);
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=script&lang=js&
- /* harmony default export */ var control_configuration_views_ControlValidationInformationvue_type_script_lang_js_ = (ControlValidationInformationvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlValidationInformation_component = Object(componentNormalizer["a" /* default */])(
-  control_configuration_views_ControlValidationInformationvue_type_script_lang_js_,
-  ControlValidationInformationvue_type_template_id_e86148c8_render,
-  ControlValidationInformationvue_type_template_id_e86148c8_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var ControlValidationInformation = (ControlValidationInformation_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-/* harmony default export */ var SidebarControlConfigurationvue_type_script_lang_js_ = ({
-  name: "SidebarControlConfiguration",
-  components: {
-    ControlValidationInformation: ControlValidationInformation,
-    ControlStylingInformation: ControlStylingInformation,
-    ControlBasicInformation: ControlBasicInformation,
-    SidebarToggleableContainer: SidebarToggleableContainer["a" /* default */]
-  },
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */], sidebar_body_mixin["a" /* SIDEBAR_BODY_MIXIN */]],
-  props: {
-    permissions: Object
-  },
-  data: function data() {
-    return {
-      dataKey: "control",
-      control: null
-    };
-  },
-  created: function created() {
-    // clone to make sure, no references will interrupt the configuration...
-    this.control = helper["a" /* HELPER */].cloneDeep(this.dataPackage);
-  },
-  computed: {
-    /**
-     * Quick'n'Short access to the control type
-     */
-    controlType: function controlType() {
-      return this.control.type;
-    },
-
-    /**
-     * CHeck if the control doesn't need validation
-     */
-    isValidationDisabled: function isValidationDisabled() {
-      if (controls["a" /* CONTROLS */][this.controlType].disableValidation) {
-        return true;
-      }
-
-      return false;
-    },
-
-    /**
-     * Pick-up the specific configuration View for the Control
-     * Depend on the `configComponent` of CONTROLS in `src/configs/controls.js`
-     * If there's none => No Specific Configuration for the field
-     * @returns VueComponent
-     */
-    specificConfigurationView: function specificConfigurationView() {
-      if (!controls["a" /* CONTROLS */][this.controlType].hasOwnProperty('configComponent')) {
-        return null;
-      } // NOTE: this is a hash map access , not 2d array =))
-
-
-      return controls["a" /* CONTROLS */][this.controlType]['configComponent'];
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=script&lang=js&
- /* harmony default export */ var sidebar_config_views_SidebarControlConfigurationvue_type_script_lang_js_ = (SidebarControlConfigurationvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue
-
-
-
-
-
-/* normalize component */
-
-var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* default */])(
-  sidebar_config_views_SidebarControlConfigurationvue_type_script_lang_js_,
-  SidebarControlConfigurationvue_type_template_id_6e0787c7_render,
-  SidebarControlConfigurationvue_type_template_id_6e0787c7_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var SidebarControlConfiguration = (SidebarControlConfiguration_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-/* harmony default export */ var ControlViewvue_type_script_lang_js_ = ({
-  name: "ControlView",
-  components: {
-    ControlOption: ControlOption,
-    ControlLabel: ControlLabel
-  },
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
-  props: {
-    control: {
-      type: Object,
-      required: true
-    },
-    parentId: {
-      type: String,
-      required: true
-    },
-    permissions: Object
-  },
-  data: function data() {
-    return {
-      isActive: false
-    };
-  },
-  methods: {
-    /**
-     * [Emit-from-children] ControlOption will emit this if user want to delete the current control
-     */
-    deleteControl: function deleteControl() {
-      // EMIT to FormBuilder to let it delete the control for us
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.DELETE, this.parentId, this.control.uniqueId);
-    },
-
-    /**
-     * [Emit-from-children] ControlOption will emit this when user clicked "Cog" button
-     * We're opening the sidebar configuration....
-     */
-    openConfiguration: function openConfiguration() {
-      // If the current one active => no trigger...
-      if (this.isActive) {
-        return;
-      }
-
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.OPEN, this.control.uniqueId);
-    },
-
-    /**
-     * [Emit-from-GlobalSidebar]
-     */
-    openedConfiguration: function openedConfiguration(runnerId) {
-      if (runnerId !== this.control.uniqueId) {
-        return;
-      } // eligible to render sidebar
-
-
-      this.isActive = true;
-      this.renderSidebar();
-    },
-
-    /**
-     * Push an Event to GlobalSidebar to Render the Body :D
-     */
-    renderSidebar: function renderSidebar() {
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.INJECT, new sidebar_renderer_class["a" /* default */](this.control.uniqueId, SidebarControlConfiguration, this.control));
-    },
-
-    /**
-     * Received closed notification from sidebar
-     */
-    closedConfiguration: function closedConfiguration() {
-      this.isActive = false;
-    },
-
-    /**
-     * Save Control Configuration Data
-     * @param {String} runnerId - Control ID
-     * @param {Object} controlData - Control Object (After edited in the sidebar)
-     */
-    saveConfiguration: function saveConfiguration(runnerId, controlData) {
-      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE, runnerId, controlData);
-    }
-  },
-  computed: {
-    /**
-     * This accessor will get the component object to let us inject the right control
-     */
-    controlComponent: function controlComponent() {
-      // validate input
-      if (!controls["a" /* CONTROLS */][this.control.type] || !controls["a" /* CONTROLS */][this.control.type].fieldComponent) {
-        throw new TypeError("Control Type Mapping failed => Can't be rendered. Reason: Your control type ".concat(this.control.type, " doesn't have 'fieldComponent' property"));
-      }
-
-      return controls["a" /* CONTROLS */][this.control.type].fieldComponent;
-    }
-  },
-  created: function created() {
-    // listen to GlobalSidebar
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE, this.saveConfiguration);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE_AND_CLOSE, this.saveConfiguration);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.AFTER_CLOSED, this.closedConfiguration);
-    this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.OPENED, this.openedConfiguration);
-  }
-});
-// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=script&lang=js&
- /* harmony default export */ var builder_ControlViewvue_type_script_lang_js_ = (ControlViewvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/builder/ControlView.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlView_component = Object(componentNormalizer["a" /* default */])(
-  builder_ControlViewvue_type_script_lang_js_,
-  ControlViewvue_type_template_id_1ef6b994_render,
-  ControlViewvue_type_template_id_1ef6b994_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var ControlView = (ControlView_component.exports);
 // CONCATENATED MODULE: ./src/mixins/section-view-mixins.js
 
 
@@ -43992,7 +44036,7 @@ var SECTION_VIEW_MIXINS = {
     // For Sorting Row/Control
     AddControlControl: AddControlControl,
     // Add Control
-    ControlView: ControlView // Show Control
+    ControlView: ControlView["a" /* default */] // Show Control
 
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
@@ -44403,7 +44447,7 @@ var ROW_VIEW_MIXIN = {
   components: {
     draggable: vuedraggable_common_default.a,
     AddControlToRowControl: AddControlToRowControl,
-    ControlView: ControlView
+    ControlView: ControlView["a" /* default */]
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
   props: {
@@ -44879,6 +44923,9 @@ var ControlViewvue_type_template_id_1cc3e3ea_staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
+// EXTERNAL MODULE: ./src/views/builder/control-views/ControlLabel.vue + 4 modules
+var ControlLabel = __webpack_require__("fcac");
+
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
 
 //
@@ -44920,10 +44967,10 @@ var es6_function_name = __webpack_require__("7f7f");
 
 
 
-/* harmony default export */ var renderer_ControlViewvue_type_script_lang_js_ = ({
+/* harmony default export */ var ControlViewvue_type_script_lang_js_ = ({
   name: "ControlView",
   components: {
-    ControlLabel: ControlLabel
+    ControlLabel: ControlLabel["a" /* default */]
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
   props: {
@@ -45029,7 +45076,7 @@ var es6_function_name = __webpack_require__("7f7f");
   }
 });
 // CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
- /* harmony default export */ var views_renderer_ControlViewvue_type_script_lang_js_ = (renderer_ControlViewvue_type_script_lang_js_); 
+ /* harmony default export */ var renderer_ControlViewvue_type_script_lang_js_ = (ControlViewvue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./src/views/renderer/ControlView.vue
 
 
@@ -45038,8 +45085,8 @@ var es6_function_name = __webpack_require__("7f7f");
 
 /* normalize component */
 
-var renderer_ControlView_component = Object(componentNormalizer["a" /* default */])(
-  views_renderer_ControlViewvue_type_script_lang_js_,
+var ControlView_component = Object(componentNormalizer["a" /* default */])(
+  renderer_ControlViewvue_type_script_lang_js_,
   ControlViewvue_type_template_id_1cc3e3ea_render,
   ControlViewvue_type_template_id_1cc3e3ea_staticRenderFns,
   false,
@@ -45049,7 +45096,7 @@ var renderer_ControlView_component = Object(componentNormalizer["a" /* default *
   
 )
 
-/* harmony default export */ var renderer_ControlView = (renderer_ControlView_component.exports);
+/* harmony default export */ var renderer_ControlView = (ControlView_component.exports);
 // CONCATENATED MODULE: ./src/mixins/renderer-section-view-mixin.js
 
 
@@ -49501,7 +49548,7 @@ var SectionContainervue_type_template_id_f0fac5a2_scoped_true_staticRenderFns = 
 
 // CONCATENATED MODULE: ./src/views/renderer/SectionContainer.vue?vue&type=template&id=f0fac5a2&scoped=true&
 
-// EXTERNAL MODULE: ./src/configs/section.js + 115 modules
+// EXTERNAL MODULE: ./src/configs/section.js + 80 modules
 var section = __webpack_require__("dd3c");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/SectionContainer.vue?vue&type=script&lang=js&
@@ -49720,6 +49767,80 @@ var EVENT_CONSTANTS = {
   }
 };
 
+
+/***/ }),
+
+/***/ "fcac":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlLabel.vue?vue&type=template&id=1f5e3e23&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"control-label-container",class:{ required: _vm.isRequired && _vm.control.type !== 'ageVerification' }},[_c('label',{class:_vm.control.additionalLabelClass,attrs:{"for":_vm.control.uniqueId},domProps:{"textContent":_vm._s(_vm.control.label)}}),(_vm.control.subLabel)?_c('br'):_vm._e(),(_vm.control.subLabel)?_c('small',{domProps:{"textContent":_vm._s(_vm.control.subLabel)}}):_vm._e()])}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/builder/control-views/ControlLabel.vue?vue&type=template&id=1f5e3e23&scoped=true&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
+var es6_array_find = __webpack_require__("7514");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/control-views/ControlLabel.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var ControlLabelvue_type_script_lang_js_ = ({
+  name: "ControlLabel",
+  props: {
+    control: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    isRequired: function isRequired() {
+      return !!this.control.validations.find(function (element) {
+        return element.ruleType === "required";
+      });
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/builder/control-views/ControlLabel.vue?vue&type=script&lang=js&
+ /* harmony default export */ var control_views_ControlLabelvue_type_script_lang_js_ = (ControlLabelvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__("2877");
+
+// CONCATENATED MODULE: ./src/views/builder/control-views/ControlLabel.vue
+
+
+
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  control_views_ControlLabelvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  "1f5e3e23",
+  null
+  
+)
+
+/* harmony default export */ var ControlLabel = __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
 
