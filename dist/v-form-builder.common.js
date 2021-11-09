@@ -17068,7 +17068,8 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @param {Object} controlObj
      */
     controlNewAdded: function controlNewAdded(parentId, controlObj) {
-      // add into big list
+      console.log('controlNewAdded', controlObj, parentId); // add into big list
+
       this.$set(this.formData.controls, controlObj.uniqueId, controlObj); //if control has child controls they also need to be added to the list
 
       if (controlObj.childControls) {
@@ -34795,8 +34796,14 @@ var es7_object_entries = __webpack_require__("ffc1");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
 var web_dom_iterable = __webpack_require__("ac6a");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
+var es6_array_iterator = __webpack_require__("cadf");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
 var es6_object_keys = __webpack_require__("456d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
+var es6_object_assign = __webpack_require__("f751");
 
 // EXTERNAL MODULE: ./src/configs/section.js + 80 modules
 var section = __webpack_require__("dd3c");
@@ -34814,6 +34821,8 @@ var helper = __webpack_require__("43b3");
 var row = __webpack_require__("7d7e");
 
 // CONCATENATED MODULE: ./src/libraries/applier.js
+
+
 
 
 
@@ -34863,6 +34872,8 @@ var applier_dataApplier = function dataApplier(formConfigObject) {
   } // Control(s) Apply
 
 
+  console.log('dataApplier controls', formConfigObject.controls);
+
   for (var _i3 = 0, _Object$entries3 = Object.entries(formConfigObject.controls); _i3 < _Object$entries3.length; _i3++) {
     var _Object$entries3$_i = Object(slicedToArray["a" /* default */])(_Object$entries3[_i3], 2),
         controlId = _Object$entries3$_i[0],
@@ -34899,6 +34910,8 @@ function baseObjectExtend(baseObject, fromObject) {
 
 
 
+
+
 /**
  * [Note] Do not use this mixin for other purpose. This is where I move all the code of FormBuilder to keep easy to:
  *  - Structuring
@@ -34921,6 +34934,7 @@ var FORM_BUILDER_METHODS = {
      */
     mapping: function mapping(value) {
       this.formData = Object.assign({}, this.formData, applier_dataApplier(value));
+      console.log('mapping', this.formData);
       this.doSortSection();
     },
 
