@@ -202,6 +202,8 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param {Object} controlData
          */
         controlUpdated(controlId, controlData) {
+            console.log('controlUpdated', controlId, controlData);
+            console.log('controlUpdated formData', this.formData);
             // validate input
             if (!this.formData.controls.hasOwnProperty(controlId)) {
                 return

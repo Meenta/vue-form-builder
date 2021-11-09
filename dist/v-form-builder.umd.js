@@ -17139,7 +17139,9 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @param {Object} controlData
      */
     controlUpdated: function controlUpdated(controlId, controlData) {
-      // validate input
+      console.log('controlUpdated', controlId, controlData);
+      console.log('controlUpdated formData', this.formData); // validate input
+
       if (!this.formData.controls.hasOwnProperty(controlId)) {
         return;
       } // update by using the extend . best way
