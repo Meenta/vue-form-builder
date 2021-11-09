@@ -3,7 +3,7 @@ import FormBuilder from "@/components/FormBuilder";
 import FormRenderer from "@/components/FormRenderer";
 import BaseControlSkeleton from "@/skeletons/controls/BaseControlSkeleton";
 import BaseControlConfigSkeleton from "@/skeletons/controls/BaseControlConfigSkeleton";
-
+import ControlView from '../src/views/builder/ControlView';
 import '@/assets/v-form-builder.css'
 
 // Create module definition for Vue.use()
@@ -32,5 +32,8 @@ export {
 
     // For Vue.extend
     BaseControlSkeleton,
-    BaseControlConfigSkeleton
+    BaseControlConfigSkeleton,
+
+    //For manual child component instances
+    ControlView
 }

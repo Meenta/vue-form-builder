@@ -34321,13 +34321,13 @@ module.exports = function xhrAdapter(config) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return VueFormBuilderPlugin; });
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return VueFormBuilderPlugin; });
 /* harmony import */ var _installer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2560");
 /* harmony import */ var _components_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("6a29");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _components_FormBuilder__WEBPACK_IMPORTED_MODULE_1__["a"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "d", function() { return _components_FormBuilder__WEBPACK_IMPORTED_MODULE_1__["a"]; });
 
 /* harmony import */ var _components_FormRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fbdb");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "d", function() { return _components_FormRenderer__WEBPACK_IMPORTED_MODULE_2__["a"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "e", function() { return _components_FormRenderer__WEBPACK_IMPORTED_MODULE_2__["a"]; });
 
 /* harmony import */ var _skeletons_controls_BaseControlSkeleton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("c72d");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _skeletons_controls_BaseControlSkeleton__WEBPACK_IMPORTED_MODULE_3__["a"]; });
@@ -34335,8 +34335,12 @@ module.exports = function xhrAdapter(config) {
 /* harmony import */ var _skeletons_controls_BaseControlConfigSkeleton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("da2a");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _skeletons_controls_BaseControlConfigSkeleton__WEBPACK_IMPORTED_MODULE_4__["a"]; });
 
-/* harmony import */ var _assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("c992");
-/* harmony import */ var _assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _src_views_builder_ControlView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("4f2e");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _src_views_builder_ControlView__WEBPACK_IMPORTED_MODULE_5__["a"]; });
+
+/* harmony import */ var _assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("c992");
+/* harmony import */ var _assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -48824,11 +48828,12 @@ module.exports = document && document.documentElement;
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "VueFormBuilderPlugin", function() { return /* reexport */ src_0["e" /* VueFormBuilderPlugin */]; });
-__webpack_require__.d(__webpack_exports__, "FormBuilder", function() { return /* reexport */ src_0["c" /* FormBuilder */]; });
-__webpack_require__.d(__webpack_exports__, "FormRenderer", function() { return /* reexport */ src_0["d" /* FormRenderer */]; });
+__webpack_require__.d(__webpack_exports__, "VueFormBuilderPlugin", function() { return /* reexport */ src_0["f" /* VueFormBuilderPlugin */]; });
+__webpack_require__.d(__webpack_exports__, "FormBuilder", function() { return /* reexport */ src_0["d" /* FormBuilder */]; });
+__webpack_require__.d(__webpack_exports__, "FormRenderer", function() { return /* reexport */ src_0["e" /* FormRenderer */]; });
 __webpack_require__.d(__webpack_exports__, "BaseControlSkeleton", function() { return /* reexport */ src_0["b" /* BaseControlSkeleton */]; });
 __webpack_require__.d(__webpack_exports__, "BaseControlConfigSkeleton", function() { return /* reexport */ src_0["a" /* BaseControlConfigSkeleton */]; });
+__webpack_require__.d(__webpack_exports__, "ControlView", function() { return /* reexport */ src_0["c" /* ControlView */]; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
