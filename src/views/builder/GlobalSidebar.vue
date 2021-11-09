@@ -125,6 +125,7 @@ export default {
      * @param {SidebarRenderer} rendererInfo - data that will be assigned for the Component
      */
     updateBody(rendererInfo) {
+      console.log('rendererInfo', rendererInfo);
       if (this.isOpen) {
         return;
       }
