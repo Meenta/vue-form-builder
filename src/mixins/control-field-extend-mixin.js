@@ -3,7 +3,6 @@
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
 import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
-import { createControlData } from "../configs/controls";
 import ControlView from "../views/builder/ControlView.vue";
 import DefaultPermission from "../configs/roles";
 import Vue from "vue";
@@ -57,19 +56,26 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             this.$emit(EMIT_EVENT, val)
         },
          /**
-         * Creates controls within controls
+         * controls within childControls
          */
-        renderSubControls() {
-          if (this.control.controls) {
-            for (const ctrl of this.control.controls) {
-              const Control = Vue.extend(ControlView);
-              new Control({
-                propsData: {
-                  control: createControlData(ctrl.controlKey),
-                  parentId: ctrl.containerId,
-                  permissions: DefaultPermission
-                }
-              }).$mount(ctrl.containerId);
+        renderChildControl(controlType, containerId) {
+          if (this.control.childControls) {
+            //check in the child controls for the control type
+            //if it matches it will rendered in the DOM element
+            //with the id passed (containerId)
+            for (const ctrl of this.control.childControls) {
+              if (ctrl.type === controlType) {
+                //component creator based on ControlView class
+                const Control = Vue.extend(ControlView);
+                //component instance
+                new Control({
+                  propsData: {
+                    control: ctrl,
+                    parentId: containerId,
+                    permissions: DefaultPermission
+                  }
+                }).$mount(`#${containerId}`);
+              }
             }
           }
         },

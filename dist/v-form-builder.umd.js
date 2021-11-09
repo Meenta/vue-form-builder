@@ -15351,11 +15351,10 @@ module.exports = $export;
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("7f7f");
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("28fe");
-/* harmony import */ var _configs_controls__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("8dbe");
-/* harmony import */ var _views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("4f2e");
-/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("270a");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("8bbf");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("4f2e");
+/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("270a");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("8bbf");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -15374,7 +15373,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * Base Setup for any `controls` of Control in Vue-Form-Builder
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
-
 
 
 
@@ -15426,24 +15424,32 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
     },
 
     /**
-    * Creates controls within controls
+    * controls within childControls
     */
-    renderSubControls: function renderSubControls() {
-      if (this.control.controls) {
-        var _iterator = _createForOfIteratorHelper(this.control.controls),
+    renderChildControl: function renderChildControl(controlType, containerId) {
+      if (this.control.childControls) {
+        //check in the child controls for the control type
+        //if it matches it will rendered in the DOM element
+        //with the id passed (containerId)
+        var _iterator = _createForOfIteratorHelper(this.control.childControls),
             _step;
 
         try {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var ctrl = _step.value;
-            var Control = vue__WEBPACK_IMPORTED_MODULE_11___default.a.extend(_views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]);
-            new Control({
-              propsData: {
-                control: Object(_configs_controls__WEBPACK_IMPORTED_MODULE_8__[/* createControlData */ "c"])(ctrl.controlKey),
-                parentId: ctrl.containerId,
-                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
-              }
-            }).$mount(ctrl.containerId);
+
+            if (ctrl.type === controlType) {
+              //component creator based on ControlView class
+              var Control = vue__WEBPACK_IMPORTED_MODULE_10___default.a.extend(_views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]); //component instance
+
+              new Control({
+                propsData: {
+                  control: ctrl,
+                  parentId: containerId,
+                  permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+                }
+              }).$mount("#".concat(containerId));
+            }
           }
         } catch (err) {
           _iterator.e(err);
@@ -26517,9 +26523,7 @@ var CONTROL_DEFAULT_DATA = {
    * Validation that applied to the control
    * @var {ValidationRule[]} validations
    */
-  'validations': [],
-  // internal components
-  'controls': [] // data of the others - coming up later
+  'validations': [] // data of the others - coming up later
 
 };
 /**
@@ -26534,7 +26538,18 @@ function createControlData(controlKey) {
   newData.label = CONTROLS[controlKey].label || CONTROLS[controlKey].name;
   newData.type = controlKey; // unique ID is a must - I used UUIDv4 => 99% Unique
 
-  newData.uniqueId = "control-" + helper["a" /* HELPER */].getUUIDv4();
+  newData.uniqueId = "control-" + helper["a" /* HELPER */].getUUIDv4(); //check if control has child controls and create them for registration in form data
+  //childControls is an array of strings with the control key,
+  //it will be replaced by an array of the control configuration so it can register in form data.
+  //NOTE: all controls need to be fully configured on creation, can't add new controls from controls programatically
+  //because they will render, but not be saved in the form data.
+
+  if (newData.childControls) {
+    newData.childControls = newData.childControls.map(function (ctrl) {
+      return createControlData(ctrl);
+    });
+  }
+
   return newData;
 }
 
