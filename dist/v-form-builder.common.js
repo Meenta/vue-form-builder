@@ -26541,6 +26541,7 @@ function createControlData(controlKey) {
     });
   }
 
+  console.log('createControlData newData', newData);
   return newData;
 }
 

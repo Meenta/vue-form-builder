@@ -346,7 +346,8 @@ function createControlData(controlKey) {
         return createControlData(ctrl);
       });
     }
-    return newData
+    console.log('createControlData newData', newData);
+    return newData;
 }
 
 export {
