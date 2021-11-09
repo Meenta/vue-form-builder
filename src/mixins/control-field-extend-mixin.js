@@ -79,6 +79,22 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             }
           }
         },
+        // gets props for manual control component instances
+        getChildComponentProps(controlType, containerId='') {
+          if (this.control.childControls) {
+            //check in the child controls for the control type
+            //if it matches it will be returned
+            for (const ctrl of this.control.childControls) {
+              if (ctrl.type === controlType) {
+                return {
+                  control: ctrl,
+                  parentId: containerId,
+                  permissions: DefaultPermission
+                };
+              }
+            }
+          }
+        },
         /**
          * Need-To-Override Method - Set Value.
          * Set value from parent to the current field/control

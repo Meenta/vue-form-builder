@@ -15449,6 +15449,35 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
         }
       }
     },
+    // gets props for manual control component instances
+    getChildComponentProps: function getChildComponentProps(controlType) {
+      var containerId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+      if (this.control.childControls) {
+        //check in the child controls for the control type
+        //if it matches it will be returned
+        var _iterator2 = _createForOfIteratorHelper(this.control.childControls),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var ctrl = _step2.value;
+
+            if (ctrl.type === controlType) {
+              return {
+                control: ctrl,
+                parentId: containerId,
+                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+              };
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+    },
 
     /**
      * Need-To-Override Method - Set Value.
