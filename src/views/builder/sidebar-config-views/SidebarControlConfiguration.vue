@@ -78,7 +78,9 @@
             // clone to make sure, no references will interrupt the configuration...
             this.control = HELPER.cloneDeep(this.dataPackage)
         },
-
+        mounted(){
+          console.log('CONTROL SIDE BAR MOUNTED', this);
+        },
         computed: {
             /**
              * Quick'n'Short access to the control type
