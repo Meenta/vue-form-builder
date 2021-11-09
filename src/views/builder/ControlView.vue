@@ -5,8 +5,10 @@
             <ControlLabel v-show="control.isShowLabel" :control="control" />
 
             <!-- render the exact field -->
+            <!-- controlProps are any special prop data that may need to be pass to child controls -->
             <component :is="controlComponent"
                        :control="control"
+                       v-bind="controlProps"
             />
 
         </div>
@@ -42,7 +44,8 @@
                 type: String,
                 required: true,
             },
-            permissions: Object
+            permissions: Object,
+            controlProps: Object
         },
 
         data: () => ({
