@@ -145,8 +145,13 @@ const FORM_BUILDER_EVENT_HANDLER = {
          */
         controlNewAdded(parentId, controlObj) {
             // add into big list
-            this.$set(this.formData.controls, controlObj.uniqueId, controlObj)
-
+            this.$set(this.formData.controls, controlObj.uniqueId, controlObj);
+            //if control has child controls they also need to be added to the list
+            if (controlObj.childControls) {
+              for (const childControl of controlObj.childControls) {
+                this.$set(this.formData.controls, childControl.uniqueId, childControl);
+              }
+            }
             // get type of the parent (section / row)
             const type = this.formData.sections.hasOwnProperty(parentId)
                 ? 'section'

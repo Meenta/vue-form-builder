@@ -17046,7 +17046,24 @@ var FORM_BUILDER_EVENT_HANDLER = {
      */
     controlNewAdded: function controlNewAdded(parentId, controlObj) {
       // add into big list
-      this.$set(this.formData.controls, controlObj.uniqueId, controlObj); // get type of the parent (section / row)
+      this.$set(this.formData.controls, controlObj.uniqueId, controlObj); //if control has child controls they also need to be added to the list
+
+      if (controlObj.childControls) {
+        var _iterator2 = _createForOfIteratorHelper(controlObj.childControls),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var childControl = _step2.value;
+            this.$set(this.formData.controls, childControl.uniqueId, childControl);
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      } // get type of the parent (section / row)
+
 
       var type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row';
       var controlUniqueId = controlObj.uniqueId; // add controlID to section / row
