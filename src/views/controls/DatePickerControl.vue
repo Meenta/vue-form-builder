@@ -78,7 +78,6 @@
 
         methods: {
             onDatePicked() {
-              console.log('this.currentValue', this.currentValue);
               this.updateValue(this.currentValue)
             },
             /**

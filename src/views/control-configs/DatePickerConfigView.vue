@@ -13,22 +13,26 @@
 
             </select>
         </div>
-        <div class="form-check">
-          <input 
-          type="checkbox" 
-          class="form-check-input"
-          :true-value="true"
-          :false-value="false" 
-          v-model="control.useNative">
-          <label 
-            class="form-check-label"
-            >Use Native Datepicker</label>
+        <!-- MAKES DATE PICKER NATIVE INSTEAD OF MESSY 3rd PARTY -->
+        <div :class="styles.FORM.FORM_GROUP">
+          <div class="form-check">
+            <input 
+            type="checkbox" 
+            class="form-check-input"
+            :true-value="true"
+            :false-value="false" 
+            v-model="control.useNative">
+            <label 
+              class="form-check-label"
+              >Use Native Datepicker</label>
+            <small>Makes datepicker native JS</small>
+          </div>
         </div>
-
-
+       
         <!--- Only show this configuration if return Type is Format --->
         <div :class="styles.FORM.FORM_GROUP" v-show="control.returnType === listReturnTypes.format.val">
             <label>Date Format</label>
+
             <input type="text" :class="styles.FORM.FORM_CONTROL" v-model="control.format" />
         </div>
 
