@@ -164,7 +164,7 @@
 
                 // applying the configuration (base)
                 ...this.control,
-
+                dropdown:{"minYear":null,"maxYear":null,"months":true,"years":true},
                 /**
                  * Post-render processing
                  */
