@@ -158,27 +158,7 @@
             }
         },
         mounted() {
-            this.datepicker = new Litepicker({
-                element: document.getElementById(this.control.uniqueId),
-
-                // applying the configuration (base)
-                ...this.control,
-
-                /**
-                 * Post-render processing
-                 */
-                onRender: () => {
-                    if (this.control.defaultValue) {
-                        this.setValue(this.control.defaultValue);
-                    }
-                },
-
-                /**
-                 * On-Selected a Day
-                 * @param {Date} date
-                 */
-                onSelect: this.getValue
-            })
+            console.log('this', this);
         },
 
         beforeDestroy() {
