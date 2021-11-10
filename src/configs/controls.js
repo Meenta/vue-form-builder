@@ -343,10 +343,11 @@ function createControlData(controlKey) {
     
     if (newData.childControls) {
       newData.childControls = newData.childControls.map((ctrl)=>{
-        return createControlData(ctrl);
+        const ctrlData = createControlData(ctrl);
+        //used to solve scope being lost on child components by form builder
+        ctrlData.parentControlId = newData.uniqueId;
       });
     }
-    console.log('createControlData newData', newData);
     return newData;
 }
 

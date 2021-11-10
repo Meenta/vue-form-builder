@@ -84,10 +84,10 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
           if (this.control.childControls) {
             //check in the child controls for the control type
             //if it matches it will be returned
-            for(let i = 0; i < this.control.childControls.length; i++){
-              if (this.control.childControls[i].type === controlType) {
+            for (const ctrl of this.control.childControls) {
+              if (ctrl.type === controlType) {
                 return {
-                  control: this.control.childControls[i],
+                  control: ctrl,
                   parentId: containerId,
                   permissions: DefaultPermission
                 };

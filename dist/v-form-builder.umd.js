@@ -15467,14 +15467,25 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
       if (this.control.childControls) {
         //check in the child controls for the control type
         //if it matches it will be returned
-        for (var i = 0; i < this.control.childControls.length; i++) {
-          if (this.control.childControls[i].type === controlType) {
-            return {
-              control: this.control.childControls[i],
-              parentId: containerId,
-              permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
-            };
+        var _iterator2 = _createForOfIteratorHelper(this.control.childControls),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var ctrl = _step2.value;
+
+            if (ctrl.type === controlType) {
+              return {
+                control: ctrl,
+                parentId: containerId,
+                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+              };
+            }
           }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
         }
       }
     },
@@ -17126,15 +17137,32 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @param {Object} controlData
      */
     controlUpdated: function controlUpdated(controlId, controlData) {
-      // validate input
+      // avoid update loop
+      if (controlData.isUpdating) {
+        return;
+      }
+
+      controlData.isUpdating = true; // validate input
+
       if (!this.formData.controls.hasOwnProperty(controlId)) {
+        controlData.isUpdating = false;
         return;
       }
 
       console.log('controlUpdated', controlId, controlData);
-      console.log('controlUpdated formData', this.formData); // update by using the extend . best way
+      console.log('controlUpdated formData', this.formData);
+      this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData); // update by using the extend . best way
+      // if it's a child component updating form data will no update the needed scope
+      // so we need to update the parent
 
-      this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
+      if (controlData.parentControlId) {
+        var indexInParent = this.formData.controls[controlData.parentControlId].childControls.findIndex(function (cld_ctrl) {
+          return cld_ctrl.uniqueId === controlId;
+        });
+        this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
+      }
+
+      controlData.isUpdating = false;
     }
   },
   created: function created() {
@@ -26584,11 +26612,12 @@ function createControlData(controlKey) {
 
   if (newData.childControls) {
     newData.childControls = newData.childControls.map(function (ctrl) {
-      return createControlData(ctrl);
+      var ctrlData = createControlData(ctrl); //used to solve scope being lost on child components by form builder
+
+      ctrlData.parentControlId = newData.uniqueId;
     });
   }
 
-  console.log('createControlData newData', newData);
   return newData;
 }
 
