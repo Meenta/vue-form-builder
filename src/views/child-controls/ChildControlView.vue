@@ -21,8 +21,8 @@
   </div>
 </template>
 <script>
-import { ControlView as BuilderControlView } from "../builder/ControlView.vue";
-import { ControlView as RendererControlView } from "../renderer/ControlView.vue";
+import BuilderControlView from "../builder/ControlView.vue";
+import RendererControlView from "../renderer/ControlView.vue";
 export default {
   name: "ChildControlView",
   components: { BuilderControlView, RendererControlView },

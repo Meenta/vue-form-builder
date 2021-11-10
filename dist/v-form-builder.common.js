@@ -12802,7 +12802,7 @@ var ControlView_component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var ControlView = __webpack_exports__["b"] = (ControlView_component.exports);
+/* harmony default export */ var ControlView = __webpack_exports__["a"] = (ControlView_component.exports);
 
 /***/ }),
 
@@ -15440,13 +15440,10 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
             var ctrl = _step.value;
 
             if (ctrl.type === controlType) {
-              console.log('getChildComponentProps this', this);
               return {
                 control: ctrl,
                 parentId: containerId || ctrl.parentControlId,
-                permissions: _objectSpread(_objectSpread({}, _configs_roles__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]), permissionOverride),
-                validationErrors: this.validationErrors,
-                valueContainer: this.valueContainer
+                permissions: _objectSpread(_objectSpread({}, _configs_roles__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]), permissionOverride)
               };
             }
           }
@@ -28268,12 +28265,12 @@ exports.f = Object.getOwnPropertySymbols;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=4f192647&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=7e97b6c6&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.validationErrors)?[_c('RendererControlView',_vm._b({attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors}},'RendererControlView',_vm.controlProps,false))]:_vm._e(),(_vm.permissions)?[_c('BuilderControlView',_vm._b({attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer,"permissions":_vm.permissions}},'BuilderControlView',_vm.controlProps,false))]:_vm._e()],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=4f192647&
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=7e97b6c6&
 
 // EXTERNAL MODULE: ./src/views/builder/ControlView.vue + 29 modules
 var ControlView = __webpack_require__("4f2e");
@@ -28309,8 +28306,8 @@ var renderer_ControlView = __webpack_require__("cec8");
 /* harmony default export */ var ChildControlViewvue_type_script_lang_js_ = ({
   name: "ChildControlView",
   components: {
-    BuilderControlView: ControlView["ControlView"],
-    RendererControlView: renderer_ControlView["ControlView"]
+    BuilderControlView: ControlView["a" /* default */],
+    RendererControlView: renderer_ControlView["a" /* default */]
   },
   props: {
     control: {
@@ -42311,7 +42308,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var ControlView = __webpack_exports__["b"] = (component.exports);
+/* harmony default export */ var ControlView = __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
 
@@ -44425,7 +44422,7 @@ var SECTION_VIEW_MIXINS = {
     // For Sorting Row/Control
     AddControlControl: AddControlControl,
     // Add Control
-    ControlView: ControlView["b" /* default */] // Show Control
+    ControlView: ControlView["a" /* default */] // Show Control
 
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
@@ -44836,7 +44833,7 @@ var ROW_VIEW_MIXIN = {
   components: {
     draggable: vuedraggable_common_default.a,
     AddControlToRowControl: AddControlToRowControl,
-    ControlView: ControlView["b" /* default */]
+    ControlView: ControlView["a" /* default */]
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
   props: {
@@ -45306,7 +45303,7 @@ var renderer_ControlView = __webpack_require__("cec8");
 
 var RENDERER_SECTION_VIEW_MIXIN = {
   components: {
-    ControlView: renderer_ControlView["b" /* default */] // Show Control
+    ControlView: renderer_ControlView["a" /* default */] // Show Control
 
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
@@ -45553,7 +45550,7 @@ var TabContentRowViewvue_type_template_id_14cd7128_staticRenderFns = []
 
 var RENDERER_ROW_VIEW_MIXIN = {
   components: {
-    ControlView: renderer_ControlView["b" /* default */]
+    ControlView: renderer_ControlView["a" /* default */]
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
   props: {

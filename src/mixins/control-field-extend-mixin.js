@@ -61,13 +61,10 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             //if it matches it will be returned
             for (const ctrl of this.control.childControls) {
               if (ctrl.type === controlType) {
-                console.log('getChildComponentProps this', this);
                 return {
                   control: ctrl,
                   parentId: containerId || ctrl.parentControlId,
                   permissions: {...DefaultPermission, ...permissionOverride},
-                  validationErrors: this.validationErrors,
-                  valueContainer: this.valueContainer
                 };
               }
             }
