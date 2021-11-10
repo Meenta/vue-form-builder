@@ -1045,7 +1045,6 @@ html.md-theme-default .vue-form-builder .md-list-item {
     -webkit-box-flex: 1;
     flex: 1;
     width: 25%;
-    padding: 0 10px;
     text-align: center;
 }
 .tabs ul li label {
@@ -1251,9 +1250,6 @@ html.md-theme-default .vue-form-builder .md-list-item {
     .tabs ul li label {
         padding: 5px;
         border-radius: 5px;
-    }
-    .tabs ul li label span {
-        display: none;
     }
     .tabs .slider {
         display: none;
