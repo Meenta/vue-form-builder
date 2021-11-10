@@ -55,7 +55,7 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             this.$emit(EMIT_EVENT, val)
         },
         // gets props for manual control component instances
-        getChildComponentProps(controlType, containerId='') {
+        getChildComponentProps(controlType, permissionOverride={}, containerId) {
           if (this.control.childControls) {
             //check in the child controls for the control type
             //if it matches it will be returned
@@ -63,8 +63,8 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
               if (ctrl.type === controlType) {
                 return {
                   control: ctrl,
-                  parentId: containerId,
-                  permissions: DefaultPermission
+                  parentId: containerId || ctrl.parentControlId,
+                  permissions: {...DefaultPermission, ...permissionOverride}
                 };
               }
             }
