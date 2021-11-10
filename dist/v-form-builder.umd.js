@@ -15351,10 +15351,7 @@ module.exports = $export;
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("28fe");
 /* harmony import */ var _configs_events__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("fbe6");
-/* harmony import */ var _views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("4f2e");
-/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("270a");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("8bbf");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("270a");
 
 
 
@@ -15373,8 +15370,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * Base Setup for any `controls` of Control in Vue-Form-Builder
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
-
-
 
 
 
@@ -15423,15 +15418,13 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
     updateValue: function updateValue(val) {
       this.$emit(EMIT_EVENT, val);
     },
+    // gets props for manual control component instances
+    getChildComponentProps: function getChildComponentProps(controlType) {
+      var containerId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-    /**
-    * controls within childControls
-    */
-    renderChildControl: function renderChildControl(controlType, containerId) {
       if (this.control.childControls) {
         //check in the child controls for the control type
-        //if it matches it will rendered in the DOM element
-        //with the id passed (containerId)
+        //if it matches it will be returned
         var _iterator = _createForOfIteratorHelper(this.control.childControls),
             _step;
 
@@ -15440,51 +15433,17 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
             var ctrl = _step.value;
 
             if (ctrl.type === controlType) {
-              //component creator based on ControlView class
-              var Control = vue__WEBPACK_IMPORTED_MODULE_11___default.a.extend(_views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]); //component instance
-
-              new Control({
-                propsData: {
-                  control: ctrl,
-                  parentId: containerId,
-                  permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
-                }
-              }).$mount("#".concat(containerId));
+              return {
+                control: ctrl,
+                parentId: containerId,
+                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+              };
             }
           }
         } catch (err) {
           _iterator.e(err);
         } finally {
           _iterator.f();
-        }
-      }
-    },
-    // gets props for manual control component instances
-    getChildComponentProps: function getChildComponentProps(controlType) {
-      var containerId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-      if (this.control.childControls) {
-        //check in the child controls for the control type
-        //if it matches it will be returned
-        var _iterator2 = _createForOfIteratorHelper(this.control.childControls),
-            _step2;
-
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var ctrl = _step2.value;
-
-            if (ctrl.type === controlType) {
-              return {
-                control: ctrl,
-                parentId: containerId,
-                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
-              };
-            }
-          }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
         }
       }
     },
@@ -17156,7 +17115,6 @@ var FORM_BUILDER_EVENT_HANDLER = {
           return cld_ctrl.uniqueId === controlId;
         });
         this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
-        console.log('set in update ', controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
         this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
         this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE_CHILDREN, controlData.parentControlId);
       }
