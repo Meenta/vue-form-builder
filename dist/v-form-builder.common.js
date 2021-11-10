@@ -15440,10 +15440,13 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
             var ctrl = _step.value;
 
             if (ctrl.type === controlType) {
+              console.log('getChildComponentProps this', this);
               return {
                 control: ctrl,
                 parentId: containerId || ctrl.parentControlId,
-                permissions: _objectSpread(_objectSpread({}, _configs_roles__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]), permissionOverride)
+                permissions: _objectSpread(_objectSpread({}, _configs_roles__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]), permissionOverride),
+                validationErrors: this.validationErrors,
+                valueContainer: this.valueContainer
               };
             }
           }
