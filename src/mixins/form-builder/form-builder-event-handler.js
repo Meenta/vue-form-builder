@@ -144,7 +144,6 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param {Object} controlObj
          */
         controlNewAdded(parentId, controlObj) {
-            console.log('controlNewAdded', controlObj, parentId);
             // add into big list
             this.$set(this.formData.controls, controlObj.uniqueId, controlObj);
             //if control has child controls they also need to be added to the list
@@ -202,12 +201,12 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param {Object} controlData
          */
         controlUpdated(controlId, controlData) {
-            console.log('controlUpdated', controlId, controlData);
-            console.log('controlUpdated formData', this.formData);
             // validate input
             if (!this.formData.controls.hasOwnProperty(controlId)) {
                 return
             }
+            console.log('controlUpdated', controlId, controlData);
+            console.log('controlUpdated formData', this.formData);
             // update by using the extend . best way
             this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData)
         }

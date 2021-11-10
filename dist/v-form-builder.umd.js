@@ -17076,8 +17076,7 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @param {Object} controlObj
      */
     controlNewAdded: function controlNewAdded(parentId, controlObj) {
-      console.log('controlNewAdded', controlObj, parentId); // add into big list
-
+      // add into big list
       this.$set(this.formData.controls, controlObj.uniqueId, controlObj); //if control has child controls they also need to be added to the list
 
       if (controlObj.childControls) {
@@ -17138,13 +17137,13 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @param {Object} controlData
      */
     controlUpdated: function controlUpdated(controlId, controlData) {
-      console.log('controlUpdated', controlId, controlData);
-      console.log('controlUpdated formData', this.formData); // validate input
-
+      // validate input
       if (!this.formData.controls.hasOwnProperty(controlId)) {
         return;
-      } // update by using the extend . best way
+      }
 
+      console.log('controlUpdated', controlId, controlData);
+      console.log('controlUpdated formData', this.formData); // update by using the extend . best way
 
       this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
     }
@@ -17476,12 +17475,12 @@ var FormConfiguration_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var FormConfiguration = (FormConfiguration_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalSidebar.vue?vue&type=template&id=9df4afa6&
-var GlobalSidebarvue_type_template_id_9df4afa6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#000'))},on:{"click":_vm.close}}),(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)}
-var GlobalSidebarvue_type_template_id_9df4afa6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalSidebar.vue?vue&type=template&id=fef0dd3e&
+var GlobalSidebarvue_type_template_id_fef0dd3e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#000'))},on:{"click":_vm.close}}),(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)}
+var GlobalSidebarvue_type_template_id_fef0dd3e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/GlobalSidebar.vue?vue&type=template&id=9df4afa6&
+// CONCATENATED MODULE: ./src/views/builder/GlobalSidebar.vue?vue&type=template&id=fef0dd3e&
 
 // EXTERNAL MODULE: ./src/libraries/alert-dialog.js
 var alert_dialog = __webpack_require__("caca");
@@ -17564,11 +17563,7 @@ var SIDEBAR_WIDTH_SIZE = "400px";
      */
     save: function save() {
       var specialData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      console.log('specialData', specialData, this.runnerId); // this.$formEvent.$emit(
-      //   EVENT_CONSTANTS.BUILDER.SIDEBAR.SAVE,
-      //   this.runnerId,
-      //   Object.assign({}, specialData)
-      // );
+      this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE, this.runnerId, Object.assign({}, specialData));
     },
 
     /**
@@ -17631,8 +17626,8 @@ var SIDEBAR_WIDTH_SIZE = "400px";
 
 var GlobalSidebar_component = Object(componentNormalizer["a" /* default */])(
   builder_GlobalSidebarvue_type_script_lang_js_,
-  GlobalSidebarvue_type_template_id_9df4afa6_render,
-  GlobalSidebarvue_type_template_id_9df4afa6_staticRenderFns,
+  GlobalSidebarvue_type_template_id_fef0dd3e_render,
+  GlobalSidebarvue_type_template_id_fef0dd3e_staticRenderFns,
   false,
   null,
   null,
