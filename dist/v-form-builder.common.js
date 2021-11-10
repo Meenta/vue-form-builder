@@ -12802,7 +12802,7 @@ var ControlView_component = Object(componentNormalizer["a" /* default */])(
   
 )
 
-/* harmony default export */ var ControlView = __webpack_exports__["a"] = (ControlView_component.exports);
+/* harmony default export */ var ControlView = __webpack_exports__["b"] = (ControlView_component.exports);
 
 /***/ }),
 
@@ -16267,7 +16267,7 @@ var AddSectionControlvue_type_template_id_02d85b7e_staticRenderFns = []
 // EXTERNAL MODULE: ./src/configs/styles.js
 var styles = __webpack_require__("d60e");
 
-// EXTERNAL MODULE: ./src/configs/section.js + 80 modules
+// EXTERNAL MODULE: ./src/configs/section.js + 75 modules
 var section = __webpack_require__("dd3c");
 
 // EXTERNAL MODULE: ./src/mixins/style-injection-mixin.js
@@ -24535,6 +24535,9 @@ var esm_typeof = __webpack_require__("7618");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
 var web_dom_iterable = __webpack_require__("ac6a");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
+var es6_array_iterator = __webpack_require__("cadf");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.keys.js
 var es6_object_keys = __webpack_require__("456d");
 
@@ -24547,6 +24550,7 @@ var dayjs_min = __webpack_require__("5a0c");
 var dayjs_min_default = /*#__PURE__*/__webpack_require__.n(dayjs_min);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DatePickerControl.vue?vue&type=script&lang=js&
+
 
 
 
@@ -28253,6 +28257,105 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
 
 exports.f = Object.getOwnPropertySymbols;
 
+
+/***/ }),
+
+/***/ "9b37":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=4f192647&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.validationErrors)?[_c('RendererControlView',_vm._b({attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors}},'RendererControlView',_vm.controlProps,false))]:_vm._e(),(_vm.permissions)?[_c('BuilderControlView',_vm._b({attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer,"permissions":_vm.permissions}},'BuilderControlView',_vm.controlProps,false))]:_vm._e()],2)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=4f192647&
+
+// EXTERNAL MODULE: ./src/views/builder/ControlView.vue + 29 modules
+var ControlView = __webpack_require__("4f2e");
+
+// EXTERNAL MODULE: ./src/views/renderer/ControlView.vue + 4 modules
+var renderer_ControlView = __webpack_require__("cec8");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var ChildControlViewvue_type_script_lang_js_ = ({
+  name: "ChildControlView",
+  components: {
+    BuilderControlView: ControlView["ControlView"],
+    RendererControlView: renderer_ControlView["ControlView"]
+  },
+  props: {
+    control: {
+      type: Object,
+      required: true
+    },
+    parentId: {
+      type: String
+    },
+    valueContainer: {
+      type: Object
+    },
+    validationErrors: {
+      type: Object,
+      default: function _default() {
+        return {};
+      } // empty object
+
+    },
+    permissions: Object,
+    controlProps: Object
+  }
+});
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=script&lang=js&
+ /* harmony default export */ var child_controls_ChildControlViewvue_type_script_lang_js_ = (ChildControlViewvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__("2877");
+
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue
+
+
+
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  child_controls_ChildControlViewvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ChildControlView = __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
 
@@ -34323,8 +34426,8 @@ module.exports = function xhrAdapter(config) {
 /* harmony import */ var _skeletons_controls_BaseControlConfigSkeleton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("da2a");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _skeletons_controls_BaseControlConfigSkeleton__WEBPACK_IMPORTED_MODULE_4__["a"]; });
 
-/* harmony import */ var _src_views_builder_ControlView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("4f2e");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _src_views_builder_ControlView__WEBPACK_IMPORTED_MODULE_5__["a"]; });
+/* harmony import */ var _src_views_child_controls_ChildControlView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("9b37");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _src_views_child_controls_ChildControlView__WEBPACK_IMPORTED_MODULE_5__["a"]; });
 
 /* harmony import */ var _assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("c992");
 /* harmony import */ var _assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_v_form_builder_css__WEBPACK_IMPORTED_MODULE_6__);
@@ -34795,7 +34898,7 @@ var es6_object_keys = __webpack_require__("456d");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
 
-// EXTERNAL MODULE: ./src/configs/section.js + 80 modules
+// EXTERNAL MODULE: ./src/configs/section.js + 75 modules
 var section = __webpack_require__("dd3c");
 
 // EXTERNAL MODULE: ./src/configs/controls.js + 108 modules
@@ -42004,6 +42107,211 @@ module.exports = function (object, names) {
 
 /***/ }),
 
+/***/ "cec8":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=template&id=1cc3e3ea&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.conditionalMetVisible)?_c('div',{class:[
+    _vm.control.containerClass,
+    'control-view-wrapper',
+    _vm.control.additionalContainerClass
+  ]},[_c('div',{staticClass:"control-view"},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",class:_vm.validationErrorClasses,attrs:{"control":_vm.control,"value-container":_vm.valueContainer,"disabled":_vm.conditionalMetEnabled},model:{value:(_vm.valueContainer[_vm.controlName]),callback:function ($$v) {_vm.$set(_vm.valueContainer, _vm.controlName, $$v)},expression:"valueContainer[controlName]"}}),(_vm.hasValidationError && _vm.ageControlVerificationShow)?_vm._l((_vm.validationErrorMessages),function(mess,i){return _c('div',{key:i,class:_vm.styles.FORM.ERROR_MESSAGE,domProps:{"textContent":_vm._s(mess)}})}):_vm._e()],2)]):_vm._e()}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=template&id=1cc3e3ea&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
+var es6_function_name = __webpack_require__("7f7f");
+
+// EXTERNAL MODULE: ./src/mixins/style-injection-mixin.js
+var style_injection_mixin = __webpack_require__("28fe");
+
+// EXTERNAL MODULE: ./src/views/builder/control-views/ControlLabel.vue + 4 modules
+var ControlLabel = __webpack_require__("fcac");
+
+// EXTERNAL MODULE: ./src/configs/controls.js + 108 modules
+var controls = __webpack_require__("8dbe");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ var ControlViewvue_type_script_lang_js_ = ({
+  name: "ControlView",
+  components: {
+    ControlLabel: ControlLabel["a" /* default */]
+  },
+  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
+  props: {
+    control: {
+      type: Object,
+      required: true
+    },
+    parentId: {
+      type: String,
+      required: true
+    },
+    valueContainer: {
+      type: Object,
+      required: true
+    },
+    validationErrors: {
+      type: Object,
+      default: function _default() {
+        return {};
+      } // empty object
+
+    }
+  },
+  computed: {
+    /**
+     * This accessor will get the component object to let us inject the right control
+     */
+    controlComponent: function controlComponent() {
+      // validate input
+      if (!controls["a" /* CONTROLS */][this.control.type] || !controls["a" /* CONTROLS */][this.control.type].fieldComponent) {
+        throw new TypeError("Control Type Mapping failed => Can't be rendered. Reason: Your control type ".concat(this.control.type, " doesn't have 'fieldComponent' property"));
+      }
+
+      return controls["a" /* CONTROLS */][this.control.type].fieldComponent;
+    },
+
+    /**
+     * Generate Control Base Name
+     * @returns {string}
+     */
+    controlName: function controlName() {
+      return this.control.name || this.control.uniqueId;
+    },
+
+    /**
+     * Check if current control has validation error(s)
+     * @returns {boolean}
+     */
+    hasValidationError: function hasValidationError() {
+      return !!this.validationErrors[this.controlName];
+    },
+
+    /**
+     * Short-Path access to the Validation Error MEssages List
+     * @returns {String[]}
+     */
+    validationErrorMessages: function validationErrorMessages() {
+      return this.validationErrors[this.controlName];
+    },
+    validationErrorClasses: function validationErrorClasses() {
+      var classes = {};
+      classes[this.styles.FORM.ERROR_OUTLINE] = this.hasValidationError;
+      return classes;
+    },
+    conditionalMetVisible: function conditionalMetVisible() {
+      if (!this.control.isConditional) {
+        return true;
+      } else {
+        if (this.control.conditionalWhenMet === "visible") {
+          if (this.control.conditionMet) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return true;
+        }
+      }
+    },
+    conditionalMetEnabled: function conditionalMetEnabled() {
+      // remember, disabled/enabled, all this is backwards
+      if (!this.control.isConditional) {
+        return false;
+      } else {
+        if (this.control.conditionalWhenMet === "enabled") {
+          if (this.control.conditionMet) {
+            return false;
+          } else {
+            return true;
+          }
+        } else {
+          return false;
+        }
+      }
+    },
+    ageControlVerificationShow: function ageControlVerificationShow() {
+      if (this.control.type === 'ageVerification') {
+        return !!this.valueContainer[this.control.datePickerField];
+      }
+
+      return true;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
+ /* harmony default export */ var renderer_ControlViewvue_type_script_lang_js_ = (ControlViewvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+var componentNormalizer = __webpack_require__("2877");
+
+// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue
+
+
+
+
+
+/* normalize component */
+
+var component = Object(componentNormalizer["a" /* default */])(
+  renderer_ControlViewvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ControlView = __webpack_exports__["b"] = (component.exports);
+
+/***/ }),
+
 /***/ "cee4":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44114,7 +44422,7 @@ var SECTION_VIEW_MIXINS = {
     // For Sorting Row/Control
     AddControlControl: AddControlControl,
     // Add Control
-    ControlView: ControlView["a" /* default */] // Show Control
+    ControlView: ControlView["b" /* default */] // Show Control
 
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
@@ -44525,7 +44833,7 @@ var ROW_VIEW_MIXIN = {
   components: {
     draggable: vuedraggable_common_default.a,
     AddControlToRowControl: AddControlToRowControl,
-    ControlView: ControlView["a" /* default */]
+    ControlView: ControlView["b" /* default */]
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
   props: {
@@ -44987,200 +45295,15 @@ var NormalSectionViewvue_type_template_id_f1858bba_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/views/renderer/section-views/NormalSectionView.vue?vue&type=template&id=f1858bba&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=template&id=1cc3e3ea&
-var ControlViewvue_type_template_id_1cc3e3ea_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.conditionalMetVisible)?_c('div',{class:[
-    _vm.control.containerClass,
-    'control-view-wrapper',
-    _vm.control.additionalContainerClass
-  ]},[_c('div',{staticClass:"control-view"},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,{tag:"component",class:_vm.validationErrorClasses,attrs:{"control":_vm.control,"value-container":_vm.valueContainer,"disabled":_vm.conditionalMetEnabled},model:{value:(_vm.valueContainer[_vm.controlName]),callback:function ($$v) {_vm.$set(_vm.valueContainer, _vm.controlName, $$v)},expression:"valueContainer[controlName]"}}),(_vm.hasValidationError && _vm.ageControlVerificationShow)?_vm._l((_vm.validationErrorMessages),function(mess,i){return _c('div',{key:i,class:_vm.styles.FORM.ERROR_MESSAGE,domProps:{"textContent":_vm._s(mess)}})}):_vm._e()],2)]):_vm._e()}
-var ControlViewvue_type_template_id_1cc3e3ea_staticRenderFns = []
+// EXTERNAL MODULE: ./src/views/renderer/ControlView.vue + 4 modules
+var renderer_ControlView = __webpack_require__("cec8");
 
-
-// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=template&id=1cc3e3ea&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
-var es6_function_name = __webpack_require__("7f7f");
-
-// EXTERNAL MODULE: ./src/views/builder/control-views/ControlLabel.vue + 4 modules
-var ControlLabel = __webpack_require__("fcac");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ var ControlViewvue_type_script_lang_js_ = ({
-  name: "ControlView",
-  components: {
-    ControlLabel: ControlLabel["a" /* default */]
-  },
-  mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
-  props: {
-    control: {
-      type: Object,
-      required: true
-    },
-    parentId: {
-      type: String,
-      required: true
-    },
-    valueContainer: {
-      type: Object,
-      required: true
-    },
-    validationErrors: {
-      type: Object,
-      default: function _default() {
-        return {};
-      } // empty object
-
-    }
-  },
-  computed: {
-    /**
-     * This accessor will get the component object to let us inject the right control
-     */
-    controlComponent: function controlComponent() {
-      // validate input
-      if (!controls["a" /* CONTROLS */][this.control.type] || !controls["a" /* CONTROLS */][this.control.type].fieldComponent) {
-        throw new TypeError("Control Type Mapping failed => Can't be rendered. Reason: Your control type ".concat(this.control.type, " doesn't have 'fieldComponent' property"));
-      }
-
-      return controls["a" /* CONTROLS */][this.control.type].fieldComponent;
-    },
-
-    /**
-     * Generate Control Base Name
-     * @returns {string}
-     */
-    controlName: function controlName() {
-      return this.control.name || this.control.uniqueId;
-    },
-
-    /**
-     * Check if current control has validation error(s)
-     * @returns {boolean}
-     */
-    hasValidationError: function hasValidationError() {
-      return !!this.validationErrors[this.controlName];
-    },
-
-    /**
-     * Short-Path access to the Validation Error MEssages List
-     * @returns {String[]}
-     */
-    validationErrorMessages: function validationErrorMessages() {
-      return this.validationErrors[this.controlName];
-    },
-    validationErrorClasses: function validationErrorClasses() {
-      var classes = {};
-      classes[this.styles.FORM.ERROR_OUTLINE] = this.hasValidationError;
-      return classes;
-    },
-    conditionalMetVisible: function conditionalMetVisible() {
-      if (!this.control.isConditional) {
-        return true;
-      } else {
-        if (this.control.conditionalWhenMet === "visible") {
-          if (this.control.conditionMet) {
-            return true;
-          } else {
-            return false;
-          }
-        } else {
-          return true;
-        }
-      }
-    },
-    conditionalMetEnabled: function conditionalMetEnabled() {
-      // remember, disabled/enabled, all this is backwards
-      if (!this.control.isConditional) {
-        return false;
-      } else {
-        if (this.control.conditionalWhenMet === "enabled") {
-          if (this.control.conditionMet) {
-            return false;
-          } else {
-            return true;
-          }
-        } else {
-          return false;
-        }
-      }
-    },
-    ageControlVerificationShow: function ageControlVerificationShow() {
-      if (this.control.type === 'ageVerification') {
-        return !!this.valueContainer[this.control.datePickerField];
-      }
-
-      return true;
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue?vue&type=script&lang=js&
- /* harmony default export */ var renderer_ControlViewvue_type_script_lang_js_ = (ControlViewvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/views/renderer/ControlView.vue
-
-
-
-
-
-/* normalize component */
-
-var ControlView_component = Object(componentNormalizer["a" /* default */])(
-  renderer_ControlViewvue_type_script_lang_js_,
-  ControlViewvue_type_template_id_1cc3e3ea_render,
-  ControlViewvue_type_template_id_1cc3e3ea_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var renderer_ControlView = (ControlView_component.exports);
 // CONCATENATED MODULE: ./src/mixins/renderer-section-view-mixin.js
 
 
 var RENDERER_SECTION_VIEW_MIXIN = {
   components: {
-    ControlView: renderer_ControlView // Show Control
+    ControlView: renderer_ControlView["b" /* default */] // Show Control
 
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
@@ -45427,7 +45550,7 @@ var TabContentRowViewvue_type_template_id_14cd7128_staticRenderFns = []
 
 var RENDERER_ROW_VIEW_MIXIN = {
   components: {
-    ControlView: renderer_ControlView
+    ControlView: renderer_ControlView["b" /* default */]
   },
   mixins: [style_injection_mixin["a" /* STYLE_INJECTION_MIXIN */]],
   props: {
@@ -48829,7 +48952,7 @@ __webpack_require__.d(__webpack_exports__, "FormBuilder", function() { return /*
 __webpack_require__.d(__webpack_exports__, "FormRenderer", function() { return /* reexport */ src_0["e" /* FormRenderer */]; });
 __webpack_require__.d(__webpack_exports__, "BaseControlSkeleton", function() { return /* reexport */ src_0["b" /* BaseControlSkeleton */]; });
 __webpack_require__.d(__webpack_exports__, "BaseControlConfigSkeleton", function() { return /* reexport */ src_0["a" /* BaseControlConfigSkeleton */]; });
-__webpack_require__.d(__webpack_exports__, "ControlView", function() { return /* reexport */ src_0["c" /* ControlView */]; });
+__webpack_require__.d(__webpack_exports__, "ChildControlView", function() { return /* reexport */ src_0["c" /* ChildControlView */]; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -49627,7 +49750,7 @@ var SectionContainervue_type_template_id_f0fac5a2_scoped_true_staticRenderFns = 
 
 // CONCATENATED MODULE: ./src/views/renderer/SectionContainer.vue?vue&type=template&id=f0fac5a2&scoped=true&
 
-// EXTERNAL MODULE: ./src/configs/section.js + 80 modules
+// EXTERNAL MODULE: ./src/configs/section.js + 75 modules
 var section = __webpack_require__("dd3c");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/renderer/SectionContainer.vue?vue&type=script&lang=js&
