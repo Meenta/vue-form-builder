@@ -28278,12 +28278,12 @@ exports.f = Object.getOwnPropertySymbols;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=58b06b49&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Fragment',[(_vm.validationErrors)?_c('Fragment',[_c('RendererControlView',_vm._b({attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"validation-errors":_vm.validationErrors}},'RendererControlView',_vm.controlProps,false))],1):_vm._e(),(!_vm.validationErrors)?_c('Fragment',[_c('BuilderControlView',_vm._b({attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"permissions":_vm.permissions}},'BuilderControlView',_vm.controlProps,false))],1):_vm._e()],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=647df1ee&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Fragment',[(_vm.validationErrors)?_c('Fragment',[_c('RendererControlView',{attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"validation-errors":_vm.validationErrors,"control-props":_vm.controlProps}})],1):_vm._e(),(!_vm.validationErrors)?_c('Fragment',[_c('BuilderControlView',{attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"permissions":_vm.permissions,"control-props":_vm.controlProps}})],1):_vm._e()],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=58b06b49&
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=647df1ee&
 
 // EXTERNAL MODULE: ./src/views/builder/ControlView.vue + 29 modules
 var ControlView = __webpack_require__("4f2e");

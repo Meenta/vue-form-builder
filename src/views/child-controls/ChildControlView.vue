@@ -6,7 +6,7 @@
         :parent-id="parentId"
         :value-container="valueContainer || {}"
         :validation-errors="validationErrors"
-        v-bind="controlProps"
+        :control-props="controlProps"
       />
     </Fragment>
     <Fragment v-if="!validationErrors">
@@ -15,7 +15,7 @@
         :parent-id="parentId"
         :value-container="valueContainer || {}"
         :permissions="permissions"
-        v-bind="controlProps"
+        :control-props="controlProps"
       />
     </Fragment>
   </Fragment>
