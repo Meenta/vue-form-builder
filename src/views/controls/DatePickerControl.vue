@@ -1,5 +1,15 @@
 <template>
     <div>
+      <template v-if="control.useNative">
+            <input type="date"
+                   :id="control.uniqueId"
+                   :name="control.name || control.uniqueId"
+                   :placeholder="control.placeholderText"
+                   :class="styles.FORM.FORM_CONTROL"
+                   v-model="currentValue"
+                   @change="onDatePicked"
+            />
+        </template>
         <template v-if="control.singleMode">
             <input type="text"
                    :id="control.uniqueId"
@@ -9,7 +19,7 @@
                    autocomplete="off"
             />
         </template>
-        <template v-else>
+        <template v-if="!control.singleMode">
             <input type="text"
                    :id="control.uniqueId"
                    :placeholder="control.placeholderText"
@@ -67,6 +77,10 @@
         },
 
         methods: {
+            onDatePicked() {
+              console.log('this.currentValue', this.currentValue);
+              this.updateValue(this.currentValue)
+            },
             /**
              * Re-set the DatePicker Configuration
              */
@@ -158,13 +172,11 @@
             }
         },
         mounted() {
-            console.log('this', this);
             this.datepicker = new Litepicker({
                 element: document.getElementById(this.control.uniqueId),
 
                 // applying the configuration (base)
                 ...this.control,
-                dropdown:{"minYear":null,"maxYear":null,"months":true,"years":true},
                 /**
                  * Post-render processing
                  */
