@@ -122,9 +122,9 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             return this.control.name || this.control.uniqueId
         },
         //
-        // control
-        control(){
-          return this.control;
+        // childControls
+        childControls(){
+          return this.control.childControls;
         }
     },
 

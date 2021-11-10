@@ -15516,9 +15516,9 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
       return this.control.name || this.control.uniqueId;
     },
     //
-    // control
-    control: function control() {
-      return this.control;
+    // childControls
+    childControls: function childControls() {
+      return this.control.childControls;
     }
   },
 
