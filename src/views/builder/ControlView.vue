@@ -70,7 +70,6 @@
              * We're opening the sidebar configuration....
              */
             openConfiguration() {
-                console.log('openConfiguration', this.control.uniqueId);
                 // If the current one active => no trigger...
                 if (this.isActive) {
                     return

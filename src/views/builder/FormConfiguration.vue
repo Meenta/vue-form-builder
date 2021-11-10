@@ -58,9 +58,6 @@
              * @param {Object} data
              */
             saveConfiguration(runnerId, data) {
-                console.log('Form Config runnerId', runnerId)
-                console.log('Form Config RUNNER_ID', RUNNER_ID)
-                console.log('Form Config  data', data)
                 // does it out of scope? if it does, stop
                 if (runnerId !== RUNNER_ID) {
                     return

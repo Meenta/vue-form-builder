@@ -78,11 +78,11 @@ export default {
      */
     save(specialData = {}) {
       console.log('specialData', specialData, this.runnerId);
-      this.$formEvent.$emit(
-        EVENT_CONSTANTS.BUILDER.SIDEBAR.SAVE,
-        this.runnerId,
-        Object.assign({}, specialData)
-      );
+      // this.$formEvent.$emit(
+      //   EVENT_CONSTANTS.BUILDER.SIDEBAR.SAVE,
+      //   this.runnerId,
+      //   Object.assign({}, specialData)
+      // );
     },
 
     /**
