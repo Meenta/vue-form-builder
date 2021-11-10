@@ -23468,12 +23468,18 @@ var RadioCheckboxControl_component = Object(componentNormalizer["a" /* default *
 )
 
 /* harmony default export */ var RadioCheckboxControl = (RadioCheckboxControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DatePickerControl.vue?vue&type=template&id=3133c8bf&scoped=true&
-var DatePickerControlvue_type_template_id_3133c8bf_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.control.singleMode)?[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}})]:[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}}),_c('input',{attrs:{"type":"hidden","name":_vm.startDateFieldName},domProps:{"value":_vm.hasStartDate ? _vm.value.startDate : ''}}),_c('input',{attrs:{"type":"hidden","name":_vm.endDateFieldName},domProps:{"value":_vm.hasEndDate ? _vm.value.endDate : ''}})]],2)}
-var DatePickerControlvue_type_template_id_3133c8bf_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DatePickerControl.vue?vue&type=template&id=7bd0be12&scoped=true&
+var DatePickerControlvue_type_template_id_7bd0be12_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.control.singleMode)?[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}})]:[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}}),_c('input',{attrs:{"type":"hidden","name":_vm.startDateFieldName},domProps:{"value":_vm.hasStartDate ? _vm.value.startDate : ''}}),_c('input',{attrs:{"type":"hidden","name":_vm.endDateFieldName},domProps:{"value":_vm.hasEndDate ? _vm.value.endDate : ''}})]],2)}
+var DatePickerControlvue_type_template_id_7bd0be12_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/DatePickerControl.vue?vue&type=template&id=3133c8bf&scoped=true&
+// CONCATENATED MODULE: ./src/views/controls/DatePickerControl.vue?vue&type=template&id=7bd0be12&scoped=true&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.get-own-property-descriptors.js
+var es7_object_get_own_property_descriptors = __webpack_require__("8e6e");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__("bd86");
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/typeof.js
 var esm_typeof = __webpack_require__("7618");
@@ -23489,6 +23495,7 @@ var es6_object_keys = __webpack_require__("456d");
 
 // EXTERNAL MODULE: ./node_modules/litepicker/dist/js/main.js
 var main = __webpack_require__("5360");
+var main_default = /*#__PURE__*/__webpack_require__.n(main);
 
 // EXTERNAL MODULE: ./node_modules/dayjs/dayjs.min.js
 var dayjs_min = __webpack_require__("5a0c");
@@ -23499,6 +23506,13 @@ var dayjs_min_default = /*#__PURE__*/__webpack_require__.n(dayjs_min);
 
 
 
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 //
 //
@@ -23652,7 +23666,27 @@ var dayjs_min_default = /*#__PURE__*/__webpack_require__.n(dayjs_min);
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
     console.log('this', this);
+    this.datepicker = new main_default.a(_objectSpread(_objectSpread({
+      element: document.getElementById(this.control.uniqueId)
+    }, this.control), {}, {
+      /**
+       * Post-render processing
+       */
+      onRender: function onRender() {
+        if (_this.control.defaultValue) {
+          _this.setValue(_this.control.defaultValue);
+        }
+      },
+
+      /**
+       * On-Selected a Day
+       * @param {Date} date
+       */
+      onSelect: this.getValue
+    }));
   },
   beforeDestroy: function beforeDestroy() {
     this.datepicker.destroy();
@@ -23684,11 +23718,11 @@ var dayjs_min_default = /*#__PURE__*/__webpack_require__.n(dayjs_min);
 
 var DatePickerControl_component = Object(componentNormalizer["a" /* default */])(
   controls_DatePickerControlvue_type_script_lang_js_,
-  DatePickerControlvue_type_template_id_3133c8bf_scoped_true_render,
-  DatePickerControlvue_type_template_id_3133c8bf_scoped_true_staticRenderFns,
+  DatePickerControlvue_type_template_id_7bd0be12_scoped_true_render,
+  DatePickerControlvue_type_template_id_7bd0be12_scoped_true_staticRenderFns,
   false,
   null,
-  "3133c8bf",
+  "7bd0be12",
   null
   
 )
@@ -23805,9 +23839,6 @@ var DropdownControlvue_type_template_id_e37c459e_scoped_true_staticRenderFns = [
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js
 var classCallCheck = __webpack_require__("d225");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__("bd86");
 
 // CONCATENATED MODULE: ./src/libraries/list-item.class.js
 
@@ -25706,6 +25737,35 @@ module.exports = !__webpack_require__("294c")(function () {
 
 /***/ }),
 
+/***/ "8e6e":
+/***/ (function(module, exports, __webpack_require__) {
+
+// https://github.com/tc39/proposal-object-getownpropertydescriptors
+var $export = __webpack_require__("5ca1");
+var ownKeys = __webpack_require__("990b");
+var toIObject = __webpack_require__("6821");
+var gOPD = __webpack_require__("11e9");
+var createProperty = __webpack_require__("f1ae");
+
+$export($export.S, 'Object', {
+  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
+    var O = toIObject(object);
+    var getDesc = gOPD.f;
+    var keys = ownKeys(O);
+    var result = {};
+    var i = 0;
+    var key, desc;
+    while (keys.length > i) {
+      desc = getDesc(O, key = keys[i++]);
+      if (desc !== undefined) createProperty(result, key, desc);
+    }
+    return result;
+  }
+});
+
+
+/***/ }),
+
 /***/ "8e73":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27111,6 +27171,23 @@ var component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var SidebarToggleableContainer = __webpack_exports__["a"] = (component.exports);
+
+/***/ }),
+
+/***/ "990b":
+/***/ (function(module, exports, __webpack_require__) {
+
+// all object keys, includes non-enumerable and symbols
+var gOPN = __webpack_require__("9093");
+var gOPS = __webpack_require__("2621");
+var anObject = __webpack_require__("cb7c");
+var Reflect = __webpack_require__("7726").Reflect;
+module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
+  var keys = gOPN.f(anObject(it));
+  var getSymbols = gOPS.f;
+  return getSymbols ? keys.concat(getSymbols(it)) : keys;
+};
+
 
 /***/ }),
 
