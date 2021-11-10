@@ -11988,12 +11988,12 @@ var events = __webpack_require__("fbe6");
 // EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
 var sidebar_renderer_class = __webpack_require__("1ec8");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=5a50dcb0&
-var SidebarControlConfigurationvue_type_template_id_5a50dcb0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Control Configuration")]),(_vm.permissions.canUpdateControlBasicDetail)?_c('ControlBasicInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.permissions.canUpdateControlStyling)?_c('ControlStylingInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.specificConfigurationView && _vm.permissions.canUpdateControlSpecialConfiguration)?_c('SidebarToggleableContainer',{attrs:{"headline":"Control Specific Configuration"}},[_c(_vm.specificConfigurationView,{tag:"component",attrs:{"formData":_vm.formData,"control":_vm.control}})],1):_vm._e(),(!_vm.isValidationDisabled && _vm.permissions.canUpdateControlValidation)?_c('ControlValidationInformation',{attrs:{"control":_vm.control}}):_vm._e(),_c('div',{staticClass:"buttons"},[_c('button',{class:_vm.styles.BUTTON.PRIMARY,on:{"click":function($event){return _vm.save(false)}}},[_vm._v(" Save ")]),_c('button',{class:_vm.styles.BUTTON.INFO,on:{"click":function($event){return _vm.save(true)}}},[_vm._v(" Save & Close ")])])],1)}
-var SidebarControlConfigurationvue_type_template_id_5a50dcb0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=41bfb9ad&
+var SidebarControlConfigurationvue_type_template_id_41bfb9ad_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Control Configuration")]),(_vm.permissions.canUpdateControlBasicDetail)?_c('ControlBasicInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.permissions.canUpdateControlStyling)?_c('ControlStylingInformation',{attrs:{"control":_vm.control}}):_vm._e(),(_vm.specificConfigurationView && _vm.permissions.canUpdateControlSpecialConfiguration)?_c('SidebarToggleableContainer',{attrs:{"headline":"Control Specific Configuration"}},[_c(_vm.specificConfigurationView,{tag:"component",attrs:{"formData":_vm.formData,"control":_vm.control}})],1):_vm._e(),(!_vm.isValidationDisabled && _vm.permissions.canUpdateControlValidation)?_c('ControlValidationInformation',{attrs:{"control":_vm.control}}):_vm._e(),_c('div',{staticClass:"buttons"},[_c('button',{class:_vm.styles.BUTTON.PRIMARY,on:{"click":function($event){return _vm.save(false)}}},[_vm._v(" Save ")]),_c('button',{class:_vm.styles.BUTTON.INFO,on:{"click":function($event){return _vm.save(true)}}},[_vm._v(" Save & Close ")])])],1)}
+var SidebarControlConfigurationvue_type_template_id_41bfb9ad_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=5a50dcb0&
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlConfiguration.vue?vue&type=template&id=41bfb9ad&
 
 // EXTERNAL MODULE: ./src/mixins/sidebar-body-mixin.js
 var sidebar_body_mixin = __webpack_require__("cbce");
@@ -12589,9 +12589,6 @@ var ControlValidationInformation_component = Object(componentNormalizer["a" /* d
     // clone to make sure, no references will interrupt the configuration...
     this.control = helper["a" /* HELPER */].cloneDeep(this.dataPackage);
   },
-  mounted: function mounted() {
-    console.log('CONTROL SIDE BAR MOUNTED', this);
-  },
   computed: {
     /**
      * Quick'n'Short access to the control type
@@ -12639,8 +12636,8 @@ var ControlValidationInformation_component = Object(componentNormalizer["a" /* d
 
 var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* default */])(
   sidebar_config_views_SidebarControlConfigurationvue_type_script_lang_js_,
-  SidebarControlConfigurationvue_type_template_id_5a50dcb0_render,
-  SidebarControlConfigurationvue_type_template_id_5a50dcb0_staticRenderFns,
+  SidebarControlConfigurationvue_type_template_id_41bfb9ad_render,
+  SidebarControlConfigurationvue_type_template_id_41bfb9ad_staticRenderFns,
   false,
   null,
   null,
@@ -15344,10 +15341,11 @@ module.exports = $export;
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("7f7f");
 /* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("28fe");
-/* harmony import */ var _views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("4f2e");
-/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("270a");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("8bbf");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _configs_events__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("fbe6");
+/* harmony import */ var _views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("4f2e");
+/* harmony import */ var _configs_roles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("270a");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("8bbf");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -15366,6 +15364,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * Base Setup for any `controls` of Control in Vue-Form-Builder
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
+
 
 
 
@@ -15433,13 +15432,13 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
 
             if (ctrl.type === controlType) {
               //component creator based on ControlView class
-              var Control = vue__WEBPACK_IMPORTED_MODULE_10___default.a.extend(_views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]); //component instance
+              var Control = vue__WEBPACK_IMPORTED_MODULE_11___default.a.extend(_views_builder_ControlView_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]); //component instance
 
               new Control({
                 propsData: {
                   control: ctrl,
                   parentId: containerId,
-                  permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+                  permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
                 }
               }).$mount("#".concat(containerId));
             }
@@ -15469,7 +15468,7 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
               return {
                 control: ctrl,
                 parentId: containerId,
-                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+                permissions: _configs_roles__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
               };
             }
           }
@@ -15479,6 +15478,11 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
           _iterator2.f();
         }
       }
+    },
+    // scope is assigned by events, causing issues propagating info (a store would be very useful)
+    // we need to listen for an event to know we need to update the references for child components
+    onChildComponentListener: function onChildComponentListener(listenerFn) {
+      this.$formEvent.$on(_configs_events__WEBPACK_IMPORTED_MODULE_8__[/* EVENT_CONSTANTS */ "a"].BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
     },
 
     /**
@@ -17145,6 +17149,7 @@ var FORM_BUILDER_EVENT_HANDLER = {
         this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
         console.log('set in update ', controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
         this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
+        this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE_CHILDREN, controlData.parentControlId);
       }
     }
   },
@@ -17475,12 +17480,12 @@ var FormConfiguration_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var FormConfiguration = (FormConfiguration_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalSidebar.vue?vue&type=template&id=fef0dd3e&
-var GlobalSidebarvue_type_template_id_fef0dd3e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#000'))},on:{"click":_vm.close}}),(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)}
-var GlobalSidebarvue_type_template_id_fef0dd3e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalSidebar.vue?vue&type=template&id=220a368a&
+var GlobalSidebarvue_type_template_id_220a368a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#000'))},on:{"click":_vm.close}}),(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)}
+var GlobalSidebarvue_type_template_id_220a368a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/GlobalSidebar.vue?vue&type=template&id=fef0dd3e&
+// CONCATENATED MODULE: ./src/views/builder/GlobalSidebar.vue?vue&type=template&id=220a368a&
 
 // EXTERNAL MODULE: ./src/libraries/alert-dialog.js
 var alert_dialog = __webpack_require__("caca");
@@ -17596,8 +17601,6 @@ var SIDEBAR_WIDTH_SIZE = "400px";
      * @param {SidebarRenderer} rendererInfo - data that will be assigned for the Component
      */
     updateBody: function updateBody(rendererInfo) {
-      console.log('rendererInfo', rendererInfo);
-
       if (this.isOpen) {
         return;
       }
@@ -17626,8 +17629,8 @@ var SIDEBAR_WIDTH_SIZE = "400px";
 
 var GlobalSidebar_component = Object(componentNormalizer["a" /* default */])(
   builder_GlobalSidebarvue_type_script_lang_js_,
-  GlobalSidebarvue_type_template_id_fef0dd3e_render,
-  GlobalSidebarvue_type_template_id_fef0dd3e_staticRenderFns,
+  GlobalSidebarvue_type_template_id_220a368a_render,
+  GlobalSidebarvue_type_template_id_220a368a_staticRenderFns,
   false,
   null,
   null,
@@ -41935,7 +41938,6 @@ var SIDEBAR_BODY_MIXIN = {
     save: function save() {
       var close = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var data = this[this.dataKey];
-      console.log('data', this.dataKey, data);
 
       if (close) {
         this.$emit(this.emitSaveAndCloseKey, data);
@@ -43897,12 +43899,12 @@ var events = __webpack_require__("fbe6");
 var vuedraggable_common = __webpack_require__("310e");
 var vuedraggable_common_default = /*#__PURE__*/__webpack_require__.n(vuedraggable_common);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=3df4b8b0&
-var AddControlControlvue_type_template_id_3df4b8b0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-control-outer",class:_vm.styles.COLUMNS.COL12},[_c('div',{staticClass:"add-control-container",on:{"click":_vm.openAddControl}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v("Add Control")])])])}
-var AddControlControlvue_type_template_id_3df4b8b0_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=b39f8510&
+var AddControlControlvue_type_template_id_b39f8510_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-control-outer",class:_vm.styles.COLUMNS.COL12},[_c('div',{staticClass:"add-control-container",on:{"click":_vm.openAddControl}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v("Add Control")])])])}
+var AddControlControlvue_type_template_id_b39f8510_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=3df4b8b0&
+// CONCATENATED MODULE: ./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=b39f8510&
 
 // EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
 var sidebar_renderer_class = __webpack_require__("1ec8");
@@ -44065,10 +44067,9 @@ var SidebarControlSelectList_component = Object(componentNormalizer["a" /* defau
       // uniqueId to check if we create new control or not
       if (this.runnerId !== runnerId) {
         return;
-      }
-
-      console.log('createNewControlForSection', controlObj); // emit to FormBuilder and let it create control...
+      } // emit to FormBuilder and let it create control...
       // TODO: Need to extend - For Rows
+
 
       this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.CREATE, this.section.uniqueId, controlObj);
     }
@@ -44100,8 +44101,8 @@ var SidebarControlSelectList_component = Object(componentNormalizer["a" /* defau
 
 var AddControlControl_component = Object(componentNormalizer["a" /* default */])(
   add_controls_AddControlControlvue_type_script_lang_js_,
-  AddControlControlvue_type_template_id_3df4b8b0_render,
-  AddControlControlvue_type_template_id_3df4b8b0_staticRenderFns,
+  AddControlControlvue_type_template_id_b39f8510_render,
+  AddControlControlvue_type_template_id_b39f8510_staticRenderFns,
   false,
   null,
   null,
@@ -49823,6 +49824,7 @@ var EVENT_CONSTANTS = {
     CONTROL: {
       CREATE: "builder.control.create",
       UPDATE: "builder.control.update",
+      UPDATE_CHILDREN: "builder.control.update_children",
       DELETE: "builder.control.delete",
       DELETED: "builder.control.deleted",
       SORT: "builder.control.delete"

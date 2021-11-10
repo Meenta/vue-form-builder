@@ -36,8 +36,7 @@ const SIDEBAR_BODY_MIXIN = {
          * Save the configuration (Actually I will close the sidebar and emit event =)) )
          */
         save(close = false) {
-            let data = this[this.dataKey]
-            console.log('data', this.dataKey, data);
+            let data = this[this.dataKey];
             if (close) {
                 this.$emit(this.emitSaveAndCloseKey, data)
             } else {

@@ -213,8 +213,9 @@ const FORM_BUILDER_EVENT_HANDLER = {
             if (controlData.parentControlId) {
               const indexInParent = this.formData.controls[controlData.parentControlId].childControls.findIndex(cld_ctrl => cld_ctrl.uniqueId === controlId);
               this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
-              console.log('set in update ', controlData.parentControlId, this.formData.controls[controlData.parentControlId])
+              console.log('set in update ', controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
               this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
+              this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, controlData.parentControlId);
             }
         }
     },
