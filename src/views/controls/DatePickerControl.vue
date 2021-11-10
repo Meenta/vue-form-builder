@@ -10,7 +10,7 @@
                    @change="onDatePicked"
             />
         </template>
-        <template v-if="control.singleMode">
+        <template v-if="control.singleMode && !control.useNative">
             <input type="text"
                    :id="control.uniqueId"
                    :name="control.name || control.uniqueId"
@@ -19,7 +19,7 @@
                    autocomplete="off"
             />
         </template>
-        <template v-if="!control.singleMode">
+        <template v-if="!control.singleMode && !control.useNative">
             <input type="text"
                    :id="control.uniqueId"
                    :placeholder="control.placeholderText"
