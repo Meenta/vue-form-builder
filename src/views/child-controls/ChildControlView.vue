@@ -9,7 +9,7 @@
         v-bind="controlProps"
       />
     </template>
-    <template v-if="!validationErrors">
+    <template v-if="permissions">
       <BuilderControlView
         :control="control"
         :parent-id="parentId"
@@ -38,8 +38,7 @@ export default {
       type: Object
     },
     validationErrors: {
-      type: Object,
-      default: () => ({}), // empty object
+      type: Object
     },
     permissions: Object,
     controlProps: Object,
