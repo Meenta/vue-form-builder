@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <template v-if="validationErrors">
+  <Fragment>
+    <Fragment v-if="validationErrors">
       <RendererControlView
         :control="control"
         :parent-id="parentId"
@@ -8,8 +8,8 @@
         :validation-errors="validationErrors"
         v-bind="controlProps"
       />
-    </template>
-    <template v-if="permissions">
+    </Fragment>
+    <Fragment v-if="!validationErrors">
       <BuilderControlView
         :control="control"
         :parent-id="parentId"
@@ -17,15 +17,16 @@
         :permissions="permissions"
         v-bind="controlProps"
       />
-    </template>
-  </div>
+    </Fragment>
+  </Fragment>
 </template>
 <script>
 import BuilderControlView from "../builder/ControlView.vue";
 import RendererControlView from "../renderer/ControlView.vue";
+import { Fragment } from 'vue-fragment';
 export default {
   name: "ChildControlView",
-  components: { BuilderControlView, RendererControlView },
+  components: { Fragment, BuilderControlView, RendererControlView },
   props: {
     control: {
       type: Object,
