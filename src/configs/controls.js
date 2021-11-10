@@ -346,6 +346,7 @@ function createControlData(controlKey) {
         const ctrlData = createControlData(ctrl);
         //used to solve scope being lost on child components by form builder
         ctrlData.parentControlId = newData.uniqueId;
+        return ctrlData;
       });
     }
     return newData;
