@@ -21,7 +21,6 @@ const FORM_BUILDER_METHODS = {
          */
         mapping(value) {
             this.formData = Object.assign({}, this.formData, dataApplier(value))
-            console.log('mapping', this.formData);
             this.doSortSection()
         },
 

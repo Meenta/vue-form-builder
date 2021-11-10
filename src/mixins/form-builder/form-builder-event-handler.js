@@ -205,7 +205,8 @@ const FORM_BUILDER_EVENT_HANDLER = {
             if (!this.formData.controls.hasOwnProperty(controlId)) {
                 return
             }
-            this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
+            // this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
+            this.$set(this.formData.controls, controlId, Object.assign(this.formData.controls[controlId], controlData));
             // update by using the extend . best way
             // if it's a child component updating form data will no update the needed scope
             // so we need to update the parent

@@ -90,9 +90,6 @@
                 this.createDefaultData()
             }
         },
-        mounted() {
-          console.log('FROM BUILDER FORM DATA', this.formData);
-        },
         computed: {
             /**
              * Copyright Text
