@@ -187,9 +187,15 @@ const FORM_BUILDER_EVENT_HANDLER = {
                 let indexInRow = HELPER.findIndex(this.formData.rows[parentId].controls, undefined, controlId)
                 this.formData.rows[parentId].controls.splice(indexInRow, 1)
             }
-
+            //Check if the control has child controls that need to be deleted
+            if (this.formData.controls[controlId].childControls) {
+              this.formData.controls[controlId].childControls.forEach((chldCtrl)=>{
+                this.$delete(this.formData.controls, chldCtrl.uniqueId);
+              });
+            }
             // SECOND: We delete the control object in `controls`
-            this.$delete(this.formData.controls, controlId)
+            this.$delete(this.formData.controls, controlId);
+            
 
             // LAST: Emit DELETED (might be some component will register this??)
             this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.CONTROL.DELETED, parentId, controlId)

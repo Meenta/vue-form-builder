@@ -17083,6 +17083,8 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @afterHandled Emit an event to notify the deletion is complete
      */
     controlDeletion: function controlDeletion(parentId, controlId) {
+      var _this2 = this;
+
       var type = this.formData.sections.hasOwnProperty(parentId) ? 'section' : 'row'; // FIRST: We delete the relationship in section/row
 
       if (type === 'section') {
@@ -17093,6 +17095,13 @@ var FORM_BUILDER_EVENT_HANDLER = {
         // find index and delete in row-controls
         var indexInRow = helper["a" /* HELPER */].findIndex(this.formData.rows[parentId].controls, undefined, controlId);
         this.formData.rows[parentId].controls.splice(indexInRow, 1);
+      } //Check if the control has child controls that need to be deleted
+
+
+      if (this.formData.controls[controlId].childControls) {
+        this.formData.controls[controlId].childControls.forEach(function (chldCtrl) {
+          _this2.$delete(_this2.formData.controls, chldCtrl.uniqueId);
+        });
       } // SECOND: We delete the control object in `controls`
 
 
