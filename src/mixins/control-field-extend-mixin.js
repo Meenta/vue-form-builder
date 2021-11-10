@@ -120,6 +120,11 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
          */
         controlName() {
             return this.control.name || this.control.uniqueId
+        },
+        //
+        // control
+        control(){
+          return this.control;
         }
     },
 

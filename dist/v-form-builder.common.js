@@ -15505,6 +15505,11 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
      */
     controlName: function controlName() {
       return this.control.name || this.control.uniqueId;
+    },
+    //
+    // control
+    control: function control() {
+      return this.control;
     }
   },
 
