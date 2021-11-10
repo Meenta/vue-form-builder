@@ -1252,9 +1252,6 @@ html.md-theme-default .vue-form-builder .md-list-item {
         padding: 5px;
         border-radius: 5px;
     }
-    .tabs ul li label span {
-        display: none;
-    }
     .tabs .slider {
         display: none;
     }
