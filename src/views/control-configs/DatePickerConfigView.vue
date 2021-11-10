@@ -20,13 +20,12 @@
             type="checkbox" 
             class="form-check-input"
             :true-value="true"
-            :false-value="false" 
+            :false-value="false"
+             name="enableNativeMode"
             v-model="control.useNative">
-            <label 
-              class="form-check-label"
-              >Use Native Datepicker</label>
-            <small>Makes datepicker native JS</small>
+            <label class="form-check-label">Use Native Datepicker</label>
           </div>
+          <small>Makes datepicker native JS</small>
         </div>
        
         <!--- Only show this configuration if return Type is Format --->
