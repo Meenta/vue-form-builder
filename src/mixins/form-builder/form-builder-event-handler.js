@@ -201,18 +201,10 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param {Object} controlData
          */
         controlUpdated(controlId, controlData) {
-            // avoid update loop
-            if (controlData.isUpdating) {
-              return;
-            }
-            controlData.isUpdating = true; 
             // validate input
             if (!this.formData.controls.hasOwnProperty(controlId)) {
-                controlData.isUpdating = false; 
                 return
             }
-            console.log('controlUpdated', controlId, controlData);
-            console.log('controlUpdated formData', this.formData);
             this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
             // update by using the extend . best way
             // if it's a child component updating form data will no update the needed scope
@@ -220,8 +212,9 @@ const FORM_BUILDER_EVENT_HANDLER = {
             if (controlData.parentControlId) {
               const indexInParent = this.formData.controls[controlData.parentControlId].childControls.findIndex(cld_ctrl => cld_ctrl.uniqueId === controlId);
               this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
+              console.log('set in update ', controlData.parentControlId, this.formData.controls[controlData.parentControlId])
+              this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
             }
-            controlData.isUpdating = false;
         }
     },
 
