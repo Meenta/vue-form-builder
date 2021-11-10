@@ -51,6 +51,14 @@
         data: () => ({
 
         }),
+        mounted() {
+          console.log('NormalSectionView', this.controls);
+        },
+        watch: {
+          controls: function (newControls, oldControls) {
+            console.log('NormalSectionView controls watch', newControls, oldControls);
+          }
+        }
 
     }
 </script>
