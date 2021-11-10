@@ -4,16 +4,16 @@
       <RendererControlView
         :control="control"
         :parent-id="parentId"
-        :value-container="valueContainer"
+        :value-container="valueContainer || {}"
         :validation-errors="validationErrors"
         v-bind="controlProps"
       />
     </template>
-    <template v-if="permissions">
+    <template v-if="!validationErrors">
       <BuilderControlView
         :control="control"
         :parent-id="parentId"
-        :value-container="valueContainer"
+        :value-container="valueContainer || {}"
         :permissions="permissions"
         v-bind="controlProps"
       />
