@@ -23468,12 +23468,12 @@ var RadioCheckboxControl_component = Object(componentNormalizer["a" /* default *
 )
 
 /* harmony default export */ var RadioCheckboxControl = (RadioCheckboxControl_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DatePickerControl.vue?vue&type=template&id=363b686c&scoped=true&
-var DatePickerControlvue_type_template_id_363b686c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.control.useNative)?[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"date","id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"placeholder":_vm.control.placeholderText},domProps:{"value":(_vm.currentValue)},on:{"change":_vm.onDatePicked,"input":function($event){if($event.target.composing){ return; }_vm.currentValue=$event.target.value}}})]:_vm._e(),(_vm.control.singleMode)?[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}})]:_vm._e(),(!_vm.control.singleMode)?[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}}),_c('input',{attrs:{"type":"hidden","name":_vm.startDateFieldName},domProps:{"value":_vm.hasStartDate ? _vm.value.startDate : ''}}),_c('input',{attrs:{"type":"hidden","name":_vm.endDateFieldName},domProps:{"value":_vm.hasEndDate ? _vm.value.endDate : ''}})]:_vm._e()],2)}
-var DatePickerControlvue_type_template_id_363b686c_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"673bb2b0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/controls/DatePickerControl.vue?vue&type=template&id=02ecc025&scoped=true&
+var DatePickerControlvue_type_template_id_02ecc025_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[(_vm.control.useNative)?[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"date","id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"placeholder":_vm.control.placeholderText},domProps:{"value":(_vm.currentValue)},on:{"change":_vm.onDatePicked,"input":function($event){if($event.target.composing){ return; }_vm.currentValue=$event.target.value}}})]:_vm._e(),(_vm.control.singleMode)?[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"name":_vm.control.name || _vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}})]:_vm._e(),(!_vm.control.singleMode)?[_c('input',{class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","id":_vm.control.uniqueId,"placeholder":_vm.control.placeholderText,"autocomplete":"off"}}),_c('input',{attrs:{"type":"hidden","name":_vm.startDateFieldName},domProps:{"value":_vm.hasStartDate ? _vm.value.startDate : ''}}),_c('input',{attrs:{"type":"hidden","name":_vm.endDateFieldName},domProps:{"value":_vm.hasEndDate ? _vm.value.endDate : ''}})]:_vm._e()],2)}
+var DatePickerControlvue_type_template_id_02ecc025_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/controls/DatePickerControl.vue?vue&type=template&id=363b686c&scoped=true&
+// CONCATENATED MODULE: ./src/views/controls/DatePickerControl.vue?vue&type=template&id=02ecc025&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.object.get-own-property-descriptors.js
 var es7_object_get_own_property_descriptors = __webpack_require__("8e6e");
@@ -23683,26 +23683,34 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
   mounted: function mounted() {
     var _this = this;
 
-    this.datepicker = new main_default.a(_objectSpread(_objectSpread({
-      element: document.getElementById(this.control.uniqueId)
-    }, this.control), {}, {
-      /**
-       * Post-render processing
-       */
-      onRender: function onRender() {
-        if (_this.control.defaultValue) {
-          _this.setValue(_this.control.defaultValue);
-        }
-      },
+    if (this.control.useNative) {
+      this.currentValue = this.control.defaultValue || '';
+    } else {
+      this.datepicker = new main_default.a(_objectSpread(_objectSpread({
+        element: document.getElementById(this.control.uniqueId)
+      }, this.control), {}, {
+        /**
+         * Post-render processing
+         */
+        onRender: function onRender() {
+          if (_this.control.defaultValue) {
+            _this.setValue(_this.control.defaultValue);
+          }
+        },
 
-      /**
-       * On-Selected a Day
-       * @param {Date} date
-       */
-      onSelect: this.getValue
-    }));
+        /**
+         * On-Selected a Day
+         * @param {Date} date
+         */
+        onSelect: this.getValue
+      }));
+    }
   },
   beforeDestroy: function beforeDestroy() {
+    if (this.control.useNative) {
+      return;
+    }
+
     this.datepicker.destroy();
   },
   computed: {
@@ -23732,11 +23740,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 var DatePickerControl_component = Object(componentNormalizer["a" /* default */])(
   controls_DatePickerControlvue_type_script_lang_js_,
-  DatePickerControlvue_type_template_id_363b686c_scoped_true_render,
-  DatePickerControlvue_type_template_id_363b686c_scoped_true_staticRenderFns,
+  DatePickerControlvue_type_template_id_02ecc025_scoped_true_render,
+  DatePickerControlvue_type_template_id_02ecc025_scoped_true_staticRenderFns,
   false,
   null,
-  "363b686c",
+  "02ecc025",
   null
   
 )

@@ -172,29 +172,38 @@
             }
         },
         mounted() {
-            this.datepicker = new Litepicker({
-                element: document.getElementById(this.control.uniqueId),
+            if (this.control.useNative) {
+              this.currentValue = this.control.defaultValue || ''
+            }
+            else {
+              this.datepicker = new Litepicker({
+                  element: document.getElementById(this.control.uniqueId),
 
-                // applying the configuration (base)
-                ...this.control,
-                /**
-                 * Post-render processing
-                 */
-                onRender: () => {
-                    if (this.control.defaultValue) {
-                        this.setValue(this.control.defaultValue);
-                    }
-                },
+                  // applying the configuration (base)
+                  ...this.control,
+                  /**
+                   * Post-render processing
+                   */
+                  onRender: () => {
+                      if (this.control.defaultValue) {
+                          this.setValue(this.control.defaultValue);
+                      }
+                  },
 
-                /**
-                 * On-Selected a Day
-                 * @param {Date} date
-                 */
-                onSelect: this.getValue
-            })
+                  /**
+                   * On-Selected a Day
+                   * @param {Date} date
+                   */
+                  onSelect: this.getValue
+              })
+            }
+            
         },
 
         beforeDestroy() {
+            if (this.control.useNative) {
+              return
+            }
             this.datepicker.destroy()
         },
 
