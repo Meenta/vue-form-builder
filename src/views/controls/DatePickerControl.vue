@@ -1,6 +1,16 @@
 <template>
     <div>
-        <template v-if="control.singleMode">
+      <template v-if="control.useNative">
+            <input type="date"
+                   :id="control.uniqueId"
+                   :name="control.name || control.uniqueId"
+                   :placeholder="control.placeholderText"
+                   :class="styles.FORM.FORM_CONTROL"
+                   v-model="currentValue"
+                   @change="onDatePicked"
+            />
+        </template>
+        <template v-if="control.singleMode && !control.useNative">
             <input type="text"
                    :id="control.uniqueId"
                    :name="control.name || control.uniqueId"
@@ -9,7 +19,7 @@
                    autocomplete="off"
             />
         </template>
-        <template v-else>
+        <template v-if="!control.singleMode && !control.useNative">
             <input type="text"
                    :id="control.uniqueId"
                    :placeholder="control.placeholderText"
@@ -67,6 +77,9 @@
         },
 
         methods: {
+            onDatePicked() {
+              this.updateValue(this.currentValue)
+            },
             /**
              * Re-set the DatePicker Configuration
              */
@@ -158,30 +171,38 @@
             }
         },
         mounted() {
-            this.datepicker = new Litepicker({
-                element: document.getElementById(this.control.uniqueId),
+            if (this.control.useNative) {
+              this.currentValue = this.control.defaultValue || ''
+            }
+            else {
+              this.datepicker = new Litepicker({
+                  element: document.getElementById(this.control.uniqueId),
 
-                // applying the configuration (base)
-                ...this.control,
+                  // applying the configuration (base)
+                  ...this.control,
+                  /**
+                   * Post-render processing
+                   */
+                  onRender: () => {
+                      if (this.control.defaultValue) {
+                          this.setValue(this.control.defaultValue);
+                      }
+                  },
 
-                /**
-                 * Post-render processing
-                 */
-                onRender: () => {
-                    if (this.control.defaultValue) {
-                        this.setValue(this.control.defaultValue);
-                    }
-                },
-
-                /**
-                 * On-Selected a Day
-                 * @param {Date} date
-                 */
-                onSelect: this.getValue
-            })
+                  /**
+                   * On-Selected a Day
+                   * @param {Date} date
+                   */
+                  onSelect: this.getValue
+              })
+            }
+            
         },
 
         beforeDestroy() {
+            if (this.control.useNative) {
+              return
+            }
             this.datepicker.destroy()
         },
 
