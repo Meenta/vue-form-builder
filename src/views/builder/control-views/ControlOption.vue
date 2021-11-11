@@ -1,5 +1,5 @@
 <template>
-    <div class="control-option-container">
+    <div class="control-option-container" :class="isChildControl ? 'control-option-container-child':''">
 
         <div class="option-control drag-item"
              title="Re-position / Drag"
@@ -27,7 +27,8 @@
     export default {
         name: "ControlOption",
         props: {
-            permissions: Object
+            permissions: Object,
+            isChildControl:Boolean
         },
         methods: {
             /**

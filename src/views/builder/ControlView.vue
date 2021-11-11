@@ -18,6 +18,7 @@
             @delete="deleteControl"
             @config="openConfiguration"
             :permissions="permissions"
+            :is-child-control="isChildControl"
         />
     </div>
 </template>
@@ -45,7 +46,8 @@
                 required: true,
             },
             permissions: Object,
-            controlProps: Object
+            controlProps: Object,
+            isChildControl:Boolean
         },
 
         data: () => ({

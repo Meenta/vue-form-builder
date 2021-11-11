@@ -16,6 +16,7 @@
         :value-container="valueContainer || {}"
         :permissions="permissions"
         :control-props="controlProps"
+        :is-child-control="true"
       />
     </Fragment>
   </Fragment>
