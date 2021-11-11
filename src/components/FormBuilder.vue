@@ -90,7 +90,6 @@
                 this.createDefaultData()
             }
         },
-
         computed: {
             /**
              * Copyright Text

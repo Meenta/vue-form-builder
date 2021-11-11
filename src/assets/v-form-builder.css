@@ -247,6 +247,9 @@
     background-color: white;
     display: none;
 }
+.vue-form-builder .control-option-container-child {
+  left: -35px;
+}
 
 .vue-form-builder .control-view-wrapper:hover .control-option-container {
     display: block;

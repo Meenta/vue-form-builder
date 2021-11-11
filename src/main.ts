@@ -4,6 +4,7 @@
  */
 
 import Vue from "vue";
+import Fragment from 'vue-fragment'
 import App from "./App.vue";
 // @ts-ignore
 import { VueFormBuilderPlugin } from "@/index";
@@ -14,6 +15,8 @@ Vue.use(VueFormBuilderPlugin, {
   fieldMatchingApi:
     "https://us-central1-covid-4e0ce.cloudfunctions.net/public/api/schemas/all/true"
 });
+//Vue fragment for rootless components
+Vue.use(Fragment.Plugin);
 
 new Vue({
   render: (h) => h(App)

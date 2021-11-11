@@ -78,7 +78,6 @@
             // clone to make sure, no references will interrupt the configuration...
             this.control = HELPER.cloneDeep(this.dataPackage)
         },
-
         computed: {
             /**
              * Quick'n'Short access to the control type

@@ -19,6 +19,7 @@
         v-model="valueContainer[controlName]"
         :class="validationErrorClasses"
         :disabled="conditionalMetEnabled"
+        v-bind="controlProps"
       />
 
       <!-- validation error -->
@@ -59,7 +60,8 @@ export default {
     validationErrors: {
       type: Object,
       default: () => ({}) // empty object
-    }
+    },
+    controlProps: Object
   },
 
   computed: {

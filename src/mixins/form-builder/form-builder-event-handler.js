@@ -145,8 +145,13 @@ const FORM_BUILDER_EVENT_HANDLER = {
          */
         controlNewAdded(parentId, controlObj) {
             // add into big list
-            this.$set(this.formData.controls, controlObj.uniqueId, controlObj)
-
+            this.$set(this.formData.controls, controlObj.uniqueId, controlObj);
+            //if control has child controls they also need to be added to the list
+            if (controlObj.childControls) {
+              for (const childControl of controlObj.childControls) {
+                this.$set(this.formData.controls, childControl.uniqueId, childControl);
+              }
+            }
             // get type of the parent (section / row)
             const type = this.formData.sections.hasOwnProperty(parentId)
                 ? 'section'
@@ -182,9 +187,15 @@ const FORM_BUILDER_EVENT_HANDLER = {
                 let indexInRow = HELPER.findIndex(this.formData.rows[parentId].controls, undefined, controlId)
                 this.formData.rows[parentId].controls.splice(indexInRow, 1)
             }
-
+            //Check if the control has child controls that need to be deleted
+            if (this.formData.controls[controlId].childControls) {
+              this.formData.controls[controlId].childControls.forEach((chldCtrl)=>{
+                this.$delete(this.formData.controls, chldCtrl.uniqueId);
+              });
+            }
             // SECOND: We delete the control object in `controls`
-            this.$delete(this.formData.controls, controlId)
+            this.$delete(this.formData.controls, controlId);
+            
 
             // LAST: Emit DELETED (might be some component will register this??)
             this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.CONTROL.DELETED, parentId, controlId)
@@ -200,9 +211,17 @@ const FORM_BUILDER_EVENT_HANDLER = {
             if (!this.formData.controls.hasOwnProperty(controlId)) {
                 return
             }
-
+            // this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData);
+            this.$set(this.formData.controls, controlId, Object.assign(this.formData.controls[controlId], controlData));
             // update by using the extend . best way
-            this.formData.controls[controlId] = Object.assign(this.formData.controls[controlId], controlData)
+            // if it's a child component updating form data will no update the needed scope
+            // so we need to update the parent
+            if (controlData.parentControlId) {
+              const indexInParent = this.formData.controls[controlData.parentControlId].childControls.findIndex(cld_ctrl => cld_ctrl.uniqueId === controlId);
+              this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
+              this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
+              this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, controlData.parentControlId);
+            }
         }
     },
 

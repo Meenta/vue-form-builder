@@ -3,6 +3,8 @@
  * @example InputControl - use the mixin. I'll keep our code extendable as possible
  */
 import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
+import {EVENT_CONSTANTS} from "@/configs/events";
+import DefaultPermission from "../configs/roles";
 
 const EMIT_EVENT = "change";
 
@@ -52,7 +54,27 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
         updateValue(val) {
             this.$emit(EMIT_EVENT, val)
         },
-
+        // gets props for manual control component instances
+        getChildComponentProps(controlType, permissionOverride={}, containerId) {
+          if (this.control.childControls) {
+            //check in the child controls for the control type
+            //if it matches it will be returned
+            for (const ctrl of this.control.childControls) {
+              if (ctrl.type === controlType) {
+                return {
+                  control: ctrl,
+                  parentId: containerId || ctrl.parentControlId,
+                  permissions: {...DefaultPermission, ...permissionOverride},
+                };
+              }
+            }
+          }
+        },
+        // scope is assigned by events, causing issues propagating info (a store would be very useful)
+        // we need to listen for an event to know we need to update the references for child components
+        onChildComponentListener(listenerFn){
+          this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
+        },
         /**
          * Need-To-Override Method - Set Value.
          * Set value from parent to the current field/control

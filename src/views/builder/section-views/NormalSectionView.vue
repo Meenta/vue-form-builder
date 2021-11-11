@@ -50,7 +50,6 @@
         mixins: [SECTION_VIEW_MIXINS],
         data: () => ({
 
-        }),
-
+        })
     }
 </script>

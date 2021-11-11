@@ -315,7 +315,7 @@ const CONTROL_DEFAULT_DATA = {
      * Validation that applied to the control
      * @var {ValidationRule[]} validations
      */
-    'validations': [],
+    'validations': []
 
     // data of the others - coming up later
 };
@@ -329,13 +329,27 @@ function createControlData(controlKey) {
     const newData = Object.assign({}, CONTROL_DEFAULT_DATA, CONTROLS[controlKey].configData || {})
 
     // set default data
-    newData.label = CONTROLS[controlKey].name
-    newData.type = controlKey
+    newData.label = CONTROLS[controlKey].label || CONTROLS[controlKey].name;
+    newData.type = controlKey;
 
     // unique ID is a must - I used UUIDv4 => 99% Unique
-    newData.uniqueId = "control-" + HELPER.getUUIDv4()
-
-    return newData
+    newData.uniqueId = "control-" + HELPER.getUUIDv4();
+    
+    //check if control has child controls and create them for registration in form data
+    //childControls is an array of strings with the control key,
+    //it will be replaced by an array of the control configuration so it can register in form data.
+    //NOTE: all controls need to be fully configured on creation, can't add new controls from controls programatically
+    //because they will render, but not be saved in the form data.
+    
+    if (newData.childControls) {
+      newData.childControls = newData.childControls.map((ctrl)=>{
+        const ctrlData = createControlData(ctrl);
+        //used to solve scope being lost on child components by form builder
+        ctrlData.parentControlId = newData.uniqueId;
+        return ctrlData;
+      });
+    }
+    return newData;
 }
 
 export {
