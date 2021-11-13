@@ -69,7 +69,7 @@ export default class Validation {
    * Start a validation check
    * @return {ValidationResult}
    */
-  run() {
+  async run () {
     this.validationResult = new ValidationResult();
     const controlKeys = Object.keys(this.rules);
 
@@ -96,7 +96,7 @@ export default class Validation {
        * start the validation process by each rules added for the control
        */
       for (const validationRule of controlRules) {
-        const status = this._singleRuleRun(validationRule, controlValue);
+        const status = await this._singleRuleRun(validationRule, controlValue);
         if (!status) {
           this.validationResult.addError(key, validationRule);
         }
@@ -139,7 +139,7 @@ export default class Validation {
    * @param {any} fieldValue
    * @private
    */
-  _singleRuleRun(validationRule, fieldValue) {
+  async _singleRuleRun(validationRule, fieldValue) {
     switch (validationRule.ruleType) {
       case "required":
         return requiredRule(fieldValue);
@@ -172,9 +172,15 @@ export default class Validation {
         return isRegexPassed(fieldValue, validationRule.additionalValue);
 
       default:
-        throw new TypeError(
-          `This validation type ${validationRule.ruleType} is not supported.`
-        );
+        // Adding flexibility to validations by checking the return type before rejecting the rule
+        // this will allow validations to be added easier at the control registration level in boba
+        const ruleResult = await validationRule.rule(fieldValue );
+        if (typeof ruleResult !== 'boolean') {
+          throw new TypeError(
+            `This validation type ${validationRule.ruleType} is not supported.`
+          );
+        }
+        return ruleResult;
     }
   }
 }
