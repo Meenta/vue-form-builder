@@ -163,7 +163,7 @@
                  */
                 onRender: () => {
                     if (this.control.defaultValue) {
-                        this.setValue(this.control.defaultValue);
+                        // this.setValue(this.control.defaultValue);
                     }
                 },
 
