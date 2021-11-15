@@ -166,9 +166,11 @@
             }
         },
         mounted() {
-            this.currentValue = this.control.defaultValue || '';
-            console.log('this.currentValue', this.currentValue);
-            if (!this.control.useNative) {
+            if (this.control.useNative) {
+              this.currentValue = this.control.defaultValue ? new Date(this.control.defaultValue).toLocaleDateString() : '';
+            }
+            else {
+              this.control.startDate = this.control.defaultValue || '';
               this.datepicker = new Litepicker({
                   element: document.getElementById(this.control.uniqueId),
 
@@ -178,6 +180,7 @@
                    * Post-render processing
                    */
                   onRender: () => {
+                      console.log('onRender', this.currentValue);
                       if (this.currentValue) {
                           this.setValue(this.currentValue);
                       }
@@ -190,6 +193,7 @@
                   onSelect: this.getValue
               })
             }
+            console.log('this.currentValue', this.currentValue);
         },
 
         beforeDestroy() {
