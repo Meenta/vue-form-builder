@@ -6,6 +6,7 @@
                    :name="control.name || control.uniqueId"
                    :placeholder="control.placeholderText"
                    :class="styles.FORM.FORM_CONTROL"
+                   :value="currentValue"
                    v-model="currentValue"
                    @change="onDatePicked"
             />
@@ -169,14 +170,23 @@
             if (this.control.useNative) {
               this.currentValue = this.control.defaultValue ? new Date(this.control.defaultValue).toLocaleDateString() : '';
               this.testProp = this.control.defaultValue;
-              console.log('testProp', this.testProp, this.currentValue);
             }
             else {
               this.control.startDate = this.control.defaultValue || '';
               this.datepicker = new Litepicker({
                   element: document.getElementById(this.control.uniqueId),
+
                   // applying the configuration (base)
                   ...this.control,
+                  /**
+                   * Post-render processing
+                   */
+                  onRender: () => {
+                      if (this.control.defaultValue) {
+                          this.setValue(this.control.defaultValue);
+                      }
+                  },
+
                   /**
                    * On-Selected a Day
                    * @param {Date} date
