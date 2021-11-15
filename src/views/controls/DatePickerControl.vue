@@ -168,24 +168,15 @@
         mounted() {
             if (this.control.useNative) {
               this.currentValue = this.control.defaultValue ? new Date(this.control.defaultValue).toLocaleDateString() : '';
+              this.testProp = this.control.defaultValue;
+              console.log('testProp', this.testProp, this.currentValue);
             }
             else {
               this.control.startDate = this.control.defaultValue || '';
               this.datepicker = new Litepicker({
                   element: document.getElementById(this.control.uniqueId),
-
                   // applying the configuration (base)
                   ...this.control,
-                  /**
-                   * Post-render processing
-                   */
-                  onRender: () => {
-                      console.log('onRender', this.currentValue);
-                      if (this.currentValue) {
-                          this.setValue(this.currentValue);
-                      }
-                  },
-
                   /**
                    * On-Selected a Day
                    * @param {Date} date
@@ -193,7 +184,6 @@
                   onSelect: this.getValue
               })
             }
-            console.log('this.currentValue', this.currentValue);
         },
 
         beforeDestroy() {
