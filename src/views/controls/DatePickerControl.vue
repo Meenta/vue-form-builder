@@ -1,17 +1,6 @@
 <template>
     <div>
-      <template v-if="control.useNative">
-            <input type="date"
-                   :id="control.uniqueId"
-                   :name="control.name || control.uniqueId"
-                   :placeholder="control.placeholderText"
-                   :class="styles.FORM.FORM_CONTROL"
-                   :value="currentValue"
-                   v-model="currentValue"
-                   @change="onDatePicked"
-            />
-        </template>
-        <template v-if="control.singleMode && !control.useNative">
+        <template v-if="control.singleMode">
             <input type="text"
                    :id="control.uniqueId"
                    :name="control.name || control.uniqueId"
@@ -20,7 +9,7 @@
                    autocomplete="off"
             />
         </template>
-        <template v-if="!control.singleMode && !control.useNative">
+        <template v-if="!control.singleMode">
             <input type="text"
                    :id="control.uniqueId"
                    :placeholder="control.placeholderText"
@@ -78,9 +67,6 @@
         },
 
         methods: {
-            onDatePicked() {
-              this.updateValue(this.currentValue)
-            },
             /**
              * Re-set the DatePicker Configuration
              */
@@ -97,7 +83,6 @@
              * @param val
              */
             setValue(val) {
-                cosole.log('setValue this.currentValue vs val', this.currentValue, val)
                 if (!val) {
                     this.datepicker.setDate(null);
                     return;
@@ -167,39 +152,30 @@
             }
         },
         mounted() {
-            if (this.control.useNative) {
-              this.currentValue = this.control.defaultValue ? new Date(this.control.defaultValue).toLocaleDateString() : '';
-              this.testProp = this.control.defaultValue;
-            }
-            else {
-              this.control.startDate = this.control.defaultValue || '';
-              this.datepicker = new Litepicker({
-                  element: document.getElementById(this.control.uniqueId),
+            this.control.startDate = this.control.defaultValue || '';
+            this.datepicker = new Litepicker({
+                element: document.getElementById(this.control.uniqueId),
 
-                  // applying the configuration (base)
-                  ...this.control,
-                  /**
-                   * Post-render processing
-                   */
-                  onRender: () => {
-                      if (this.control.defaultValue) {
-                          this.setValue(this.control.defaultValue);
-                      }
-                  },
+                // applying the configuration (base)
+                ...this.control,
+                /**
+                 * Post-render processing
+                 */
+                onRender: () => {
+                    if (this.control.defaultValue) {
+                        this.setValue(this.control.defaultValue);
+                    }
+                },
 
-                  /**
-                   * On-Selected a Day
-                   * @param {Date} date
-                   */
-                  onSelect: this.getValue
-              })
-            }
+                /**
+                 * On-Selected a Day
+                 * @param {Date} date
+                 */
+                onSelect: this.getValue
+            })
         },
 
         beforeDestroy() {
-            if (this.control.useNative) {
-              return
-            }
             this.datepicker.destroy()
         },
 
