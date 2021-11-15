@@ -96,11 +96,11 @@
              * @param val
              */
             setValue(val) {
-                if (val === null || val === undefined || val === '') {
-                    this.datepicker.setDate(null)
-                    return
+                cosole.log('setValue this.currentValue vs val', this.currentValue, val)
+                if (!val) {
+                    this.datepicker.setDate(null);
+                    return;
                 }
-
                 // set for date-range
                 if (typeof val === 'object' && val.startDate && val.endDate) {
 
@@ -110,20 +110,15 @@
                         this.currentValue.startDate === val.startDate &&
                         this.currentValue.endDate === val.endDate
                     ) {
-                        return
+                        return;
                     }
 
-                    this.datepicker.setDateRange(val.startDate, val.endDate)
-                    return
+                    this.datepicker.setDateRange(val.startDate, val.endDate);
+                    return;
                 }
 
                 // set by single date
                 if (typeof val === 'string' || val instanceof Date) {
-                    // stop reset because of same date
-                    if (this.val === this.currentValue) {
-                        return
-                    }
-
                     this.datepicker.setDate(val);
                 }
             },
@@ -171,10 +166,9 @@
             }
         },
         mounted() {
-            if (this.control.useNative) {
-              this.currentValue = this.control.defaultValue || ''
-            }
-            else {
+            this.currentValue = this.control.defaultValue || '';
+            console.log('this.currentValue', this.currentValue);
+            if (!this.control.useNative) {
               this.datepicker = new Litepicker({
                   element: document.getElementById(this.control.uniqueId),
 
@@ -184,8 +178,8 @@
                    * Post-render processing
                    */
                   onRender: () => {
-                      if (this.control.defaultValue) {
-                          this.setValue(this.control.defaultValue);
+                      if (this.currentValue) {
+                          this.setValue(this.currentValue);
                       }
                   },
 
@@ -196,7 +190,6 @@
                   onSelect: this.getValue
               })
             }
-            
         },
 
         beforeDestroy() {
