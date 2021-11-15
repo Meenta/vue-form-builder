@@ -159,15 +159,6 @@
                 // applying the configuration (base)
                 ...this.control,
                 /**
-                 * Post-render processing
-                 */
-                onRender: () => {
-                    if (this.control.defaultValue) {
-                        // this.setValue(this.control.defaultValue);
-                    }
-                },
-
-                /**
                  * On-Selected a Day
                  * @param {Date} date
                  */
