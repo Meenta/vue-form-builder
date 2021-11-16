@@ -51396,9 +51396,13 @@ var VALIDATION_MIXIN = {
   created: function created() {
     console.log('this.formData.controls', this.formData.controls); //debug
     // create validation instance
-
-    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections);
-    console.log('this.$form.Validation', this.$form.Validation); //debug
+    // this.$form.Validation = new Validation(
+    //     this.valueContainer,
+    //     this.formData.controls,
+    //     this.$form.validationClosures || {},
+    //     this.formData.sections
+    // )
+    // console.log('this.$form.Validation', this.$form.Validation); //debug
     // listen to validation invoke
 
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].RENDERER.RUN_VALIDATION, this.runValidation);
