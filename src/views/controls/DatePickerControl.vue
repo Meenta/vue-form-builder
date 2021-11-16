@@ -1,16 +1,6 @@
 <template>
     <div>
-      <template v-if="control.useNative">
-            <input type="date"
-                   :id="control.uniqueId"
-                   :name="control.name || control.uniqueId"
-                   :placeholder="control.placeholderText"
-                   :class="styles.FORM.FORM_CONTROL"
-                   v-model="currentValue"
-                   @change="onDatePicked"
-            />
-        </template>
-        <template v-if="control.singleMode && !control.useNative">
+        <template v-if="control.singleMode">
             <input type="text"
                    :id="control.uniqueId"
                    :name="control.name || control.uniqueId"
@@ -19,7 +9,7 @@
                    autocomplete="off"
             />
         </template>
-        <template v-if="!control.singleMode && !control.useNative">
+        <template v-if="!control.singleMode">
             <input type="text"
                    :id="control.uniqueId"
                    :placeholder="control.placeholderText"
@@ -77,9 +67,6 @@
         },
 
         methods: {
-            onDatePicked() {
-              this.updateValue(this.currentValue)
-            },
             /**
              * Re-set the DatePicker Configuration
              */
@@ -96,11 +83,10 @@
              * @param val
              */
             setValue(val) {
-                if (val === null || val === undefined || val === '') {
-                    this.datepicker.setDate(null)
-                    return
+                if (!val) {
+                    this.datepicker.setDate(null);
+                    return;
                 }
-
                 // set for date-range
                 if (typeof val === 'object' && val.startDate && val.endDate) {
 
@@ -110,20 +96,15 @@
                         this.currentValue.startDate === val.startDate &&
                         this.currentValue.endDate === val.endDate
                     ) {
-                        return
+                        return;
                     }
 
-                    this.datepicker.setDateRange(val.startDate, val.endDate)
-                    return
+                    this.datepicker.setDateRange(val.startDate, val.endDate);
+                    return;
                 }
 
                 // set by single date
                 if (typeof val === 'string' || val instanceof Date) {
-                    // stop reset because of same date
-                    if (this.val === this.currentValue) {
-                        return
-                    }
-
                     this.datepicker.setDate(val);
                 }
             },
@@ -171,38 +152,21 @@
             }
         },
         mounted() {
-            if (this.control.useNative) {
-              this.currentValue = this.control.defaultValue || ''
-            }
-            else {
-              this.datepicker = new Litepicker({
-                  element: document.getElementById(this.control.uniqueId),
+            this.control.startDate = this.control.defaultValue || '';
+            this.datepicker = new Litepicker({
+                element: document.getElementById(this.control.uniqueId),
 
-                  // applying the configuration (base)
-                  ...this.control,
-                  /**
-                   * Post-render processing
-                   */
-                  onRender: () => {
-                      if (this.control.defaultValue) {
-                          this.setValue(this.control.defaultValue);
-                      }
-                  },
-
-                  /**
-                   * On-Selected a Day
-                   * @param {Date} date
-                   */
-                  onSelect: this.getValue
-              })
-            }
-            
+                // applying the configuration (base)
+                ...this.control,
+                /**
+                 * On-Selected a Day
+                 * @param {Date} date
+                 */
+                onSelect: this.getValue
+            })
         },
 
         beforeDestroy() {
-            if (this.control.useNative) {
-              return
-            }
             this.datepicker.destroy()
         },
 
