@@ -77,11 +77,9 @@ class ValidationRule {
     ruleType = ""
     errorMessage = ""
     additionalValue = ""
-    rule = null
 
-    constructor(ruleType, customErrorMessage, rule) {
+    constructor(ruleType, customErrorMessage) {
         this.ruleType = ruleType
-        this.rule = rule || null;
         if (ruleType) {
             this.errorMessage = customErrorMessage || VALIDATION_RULES[ruleType].errorMessage || ""
         }

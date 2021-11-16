@@ -30339,7 +30339,7 @@ var ValidationRule =
 /**
  * Needed properties
  */
-function ValidationRule(ruleType, customErrorMessage, rule) {
+function ValidationRule(ruleType, customErrorMessage) {
   Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, ValidationRule);
 
   Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "ruleType", "");
@@ -30348,10 +30348,7 @@ function ValidationRule(ruleType, customErrorMessage, rule) {
 
   Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "additionalValue", "");
 
-  Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "rule", null);
-
   this.ruleType = ruleType;
-  this.rule = rule || null;
 
   if (ruleType) {
     this.errorMessage = customErrorMessage || VALIDATION_RULES[ruleType].errorMessage || "";
@@ -50530,7 +50527,6 @@ var MODEL = {
     createValueContainer: function createValueContainer() {
       var _this = this;
 
-      console.log('createValueContainer controls', this.formData.controls);
       var containerObj = {};
       var controlIds = Object.keys(this.formData.controls);
       controlIds.forEach(function (controlId) {
@@ -51017,7 +51013,6 @@ var validation_Validation = /*#__PURE__*/function () {
 
     Object(defineProperty["a" /* default */])(this, "validationResult", null);
 
-    console.log('Validation construct controls', controls);
     this.valueContainer = valueContainer;
     this.sections = sections;
     this.validationClosures = definedClosures; // this.setRules(controls);
@@ -51073,11 +51068,13 @@ var validation_Validation = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                console.log('run validation'); //debug
+
                 this.validationResult = new validation_result_class_ValidationResult();
                 controlKeys = Object.keys(this.rules);
                 _i = 0, _controlKeys = controlKeys;
 
-              case 3:
+              case 4:
                 if (!(_i < _controlKeys.length)) {
                   _context.next = 37;
                   break;
@@ -51092,49 +51089,48 @@ var validation_Validation = /*#__PURE__*/function () {
                 controlConditionalMet = control.conditionMet || false; // no rule no run
 
                 if (controlRules.length) {
-                  _context.next = 12;
+                  _context.next = 13;
                   break;
                 }
 
                 return _context.abrupt("continue", 34);
 
-              case 12:
+              case 13:
                 if (!(controlConditional && controlConditionalMet !== true)) {
-                  _context.next = 14;
+                  _context.next = 15;
                   break;
                 }
 
                 return _context.abrupt("continue", 34);
 
-              case 14:
+              case 15:
                 /**
                  * start the validation process by each rules added for the control
                  */
                 _iterator = _createForOfIteratorHelper(controlRules);
-                _context.prev = 15;
+                _context.prev = 16;
 
                 _iterator.s();
 
-              case 17:
+              case 18:
                 if ((_step = _iterator.n()).done) {
                   _context.next = 26;
                   break;
                 }
 
                 validationRule = _step.value;
-                _context.next = 21;
+                _context.next = 22;
                 return this._singleRuleRun(validationRule, controlValue);
 
-              case 21:
+              case 22:
                 status = _context.sent;
-                console.log('status', status);
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
               case 24:
-                _context.next = 17;
+                _context.next = 18;
                 break;
 
               case 26:
@@ -51143,7 +51139,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 28:
                 _context.prev = 28;
-                _context.t0 = _context["catch"](15);
+                _context.t0 = _context["catch"](16);
 
                 _iterator.e(_context.t0);
 
@@ -51156,7 +51152,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 34:
                 _i++;
-                _context.next = 3;
+                _context.next = 4;
                 break;
 
               case 37:
@@ -51201,7 +51197,7 @@ var validation_Validation = /*#__PURE__*/function () {
                 return _context.stop();
             }
           }
-        }, _callee, this, [[15, 28, 31, 34]]);
+        }, _callee, this, [[16, 28, 31, 34]]);
       }));
 
       function run() {

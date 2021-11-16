@@ -43,7 +43,6 @@ const MODEL = {
          * Create Value Container to Store the Data
          */
         createValueContainer() {
-            console.log('createValueContainer controls', this.formData.controls);
             let containerObj = {}
             const controlIds = Object.keys(this.formData.controls)
 

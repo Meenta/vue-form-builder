@@ -28,7 +28,6 @@ export default class Validation {
    * @param {Object} sections
    */
   constructor(valueContainer, controls, definedClosures = {}, sections) {
-    console.log('Validation construct controls', controls);
     this.valueContainer = valueContainer;
     this.sections = sections;
     this.validationClosures = definedClosures;
@@ -69,6 +68,7 @@ export default class Validation {
    * @return {ValidationResult}
    */
   async run () {
+    console.log('run validation')//debug
     this.validationResult = new ValidationResult();
     const controlKeys = Object.keys(this.rules);
     for (const key of controlKeys) {
@@ -95,7 +95,6 @@ export default class Validation {
        */
       for (const validationRule of controlRules) {
         const status = await this._singleRuleRun(validationRule, controlValue);
-        console.log('status', status);
         if (!status) {
           this.validationResult.addError(key, validationRule);
         }
