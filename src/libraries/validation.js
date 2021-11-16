@@ -97,6 +97,7 @@ export default class Validation {
        */
       for (const validationRule of controlRules) {
         const status = await this._singleRuleRun(validationRule, controlValue);
+        console.log('status', status);
         if (!status) {
           this.validationResult.addError(key, validationRule);
         }
@@ -140,7 +141,9 @@ export default class Validation {
    * @private
    */
   async _singleRuleRun(validationRule, fieldValue) {
-    console.log('validationRule', validationRule); //debug
+    console.log('validationRule', validationRule, fieldValue); //debug
+    console.log('validationRule.ruleType', validationRule.ruleType); //debug
+    console.log('validationRule.rule', validationRule.rule); //debug
     switch (validationRule.ruleType) {
       case "required":
         return requiredRule(fieldValue);

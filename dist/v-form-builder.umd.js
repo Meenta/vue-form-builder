@@ -51096,7 +51096,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 3:
                 if (!(_i < _controlKeys.length)) {
-                  _context.next = 36;
+                  _context.next = 37;
                   break;
                 }
 
@@ -51113,7 +51113,7 @@ var validation_Validation = /*#__PURE__*/function () {
                   break;
                 }
 
-                return _context.abrupt("continue", 33);
+                return _context.abrupt("continue", 34);
 
               case 12:
                 if (!(controlConditional && controlConditionalMet !== true)) {
@@ -51121,7 +51121,7 @@ var validation_Validation = /*#__PURE__*/function () {
                   break;
                 }
 
-                return _context.abrupt("continue", 33);
+                return _context.abrupt("continue", 34);
 
               case 14:
                 /**
@@ -51134,7 +51134,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 17:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 25;
+                  _context.next = 26;
                   break;
                 }
 
@@ -51144,38 +51144,39 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 21:
                 status = _context.sent;
+                console.log('status', status);
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
-              case 23:
+              case 24:
                 _context.next = 17;
                 break;
 
-              case 25:
-                _context.next = 30;
+              case 26:
+                _context.next = 31;
                 break;
 
-              case 27:
-                _context.prev = 27;
+              case 28:
+                _context.prev = 28;
                 _context.t0 = _context["catch"](15);
 
                 _iterator.e(_context.t0);
 
-              case 30:
-                _context.prev = 30;
+              case 31:
+                _context.prev = 31;
 
                 _iterator.f();
 
-                return _context.finish(30);
+                return _context.finish(31);
 
-              case 33:
+              case 34:
                 _i++;
                 _context.next = 3;
                 break;
 
-              case 36:
+              case 37:
                 // If a section is hidden, then we remove the validation in that section's controllers
                 if (Object.keys(this.validationResult.errorBuckets).length > 0) {
                   for (sectionId in this.sections) {
@@ -51212,12 +51213,12 @@ var validation_Validation = /*#__PURE__*/function () {
 
                 return _context.abrupt("return", this.validationResult);
 
-              case 38:
+              case 39:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[15, 27, 30, 33]]);
+        }, _callee, this, [[15, 28, 31, 34]]);
       }));
 
       function run() {
@@ -51242,51 +51243,55 @@ var validation_Validation = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log('validationRule', validationRule); //debug
+                console.log('validationRule', validationRule, fieldValue); //debug
+
+                console.log('validationRule.ruleType', validationRule.ruleType); //debug
+
+                console.log('validationRule.rule', validationRule.rule); //debug
 
                 _context2.t0 = validationRule.ruleType;
-                _context2.next = _context2.t0 === "required" ? 4 : _context2.t0 === "min" ? 5 : _context2.t0 === "max" ? 6 : _context2.t0 === "isEmail" ? 7 : _context2.t0 === "sameAs" ? 8 : _context2.t0 === "customClosure" ? 9 : _context2.t0 === "regex" ? 10 : 11;
+                _context2.next = _context2.t0 === "required" ? 6 : _context2.t0 === "min" ? 7 : _context2.t0 === "max" ? 8 : _context2.t0 === "isEmail" ? 9 : _context2.t0 === "sameAs" ? 10 : _context2.t0 === "customClosure" ? 11 : _context2.t0 === "regex" ? 12 : 13;
                 break;
 
-              case 4:
+              case 6:
                 return _context2.abrupt("return", requiredRule(fieldValue));
 
-              case 5:
+              case 7:
                 return _context2.abrupt("return", minRule(fieldValue, validationRule.additionalValue));
 
-              case 6:
+              case 8:
                 return _context2.abrupt("return", maxRule(fieldValue, validationRule.additionalValue));
 
-              case 7:
+              case 9:
                 return _context2.abrupt("return", isEmailRule(fieldValue));
 
-              case 8:
+              case 10:
                 return _context2.abrupt("return", sameAsRule(fieldValue, validationRule.additionalValue, this.valueContainer));
 
-              case 9:
+              case 11:
                 return _context2.abrupt("return", customClosureRule(fieldValue, validationRule.additionalValue, this.valueContainer, this.customClosures));
 
-              case 10:
+              case 12:
                 return _context2.abrupt("return", isRegexPassed(fieldValue, validationRule.additionalValue));
 
-              case 11:
-                _context2.next = 13;
+              case 13:
+                _context2.next = 15;
                 return validationRule.rule(fieldValue);
 
-              case 13:
+              case 15:
                 ruleResult = _context2.sent;
 
                 if (!(typeof ruleResult !== 'boolean')) {
-                  _context2.next = 16;
+                  _context2.next = 18;
                   break;
                 }
 
                 throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
 
-              case 16:
+              case 18:
                 return _context2.abrupt("return", ruleResult);
 
-              case 17:
+              case 19:
               case "end":
                 return _context2.stop();
             }
