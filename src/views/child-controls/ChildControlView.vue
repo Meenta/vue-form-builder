@@ -45,5 +45,8 @@ export default {
     permissions: Object,
     controlProps: Object,
   },
+  mounted(){
+    console.log('ChildControlView', this); //debug
+  }
 };
 </script>

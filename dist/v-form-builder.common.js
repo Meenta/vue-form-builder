@@ -15959,39 +15959,44 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
       this.$emit(EMIT_EVENT, val);
     },
     // gets props for manual control component instances
-    getChildComponentProps: function getChildComponentProps(controlType) {
+    getChildComponentProps: function getChildComponentProps(controlId) {
       var permissionOverride = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var containerId = arguments.length > 2 ? arguments[2] : undefined;
 
       if (this.control.childControls) {
-        //check in the child controls for the control type
-        //if it matches it will be returned
-        var _iterator = _createForOfIteratorHelper(this.control.childControls),
-            _step;
+        //need to go all the way up to the form data to make sure we keep
+        //controls in sync
+        var formData = this.$parent.$parent;
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var ctrl = _step.value;
+        if (formData.controls) {
+          //check in the child controls for the controlId
+          //if it matches it will be returned
+          var _iterator = _createForOfIteratorHelper(formData.controls),
+              _step;
 
-            if (ctrl.type === controlType) {
-              return {
-                control: ctrl,
-                parentId: containerId || ctrl.parentControlId,
-                permissions: _objectSpread(_objectSpread({}, _configs_roles__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]), permissionOverride)
-              };
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var ctrl = _step.value;
+
+              if (ctrl.uniqueId === controlId) {
+                return {
+                  control: ctrl,
+                  parentId: containerId || ctrl.parentControlId,
+                  permissions: _objectSpread(_objectSpread({}, _configs_roles__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"]), permissionOverride)
+                };
+              }
             }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
           }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
         }
       }
     },
     // scope is assigned by events, causing issues propagating info (a store would be very useful)
     // we need to listen for an event to know we need to update the references for child components
     onChildComponentListener: function onChildComponentListener(listenerFn) {
-      console.log('onChildComponentListener', listenerFn);
       this.$formEvent.$on(_configs_events__WEBPACK_IMPORTED_MODULE_12__[/* EVENT_CONSTANTS */ "a"].BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
     },
 
@@ -29575,12 +29580,12 @@ exports.f = Object.getOwnPropertySymbols;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=afd10b82&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=fa7286c8&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Fragment',[(_vm.validationErrors)?_c('Fragment',[_c('RendererControlView',{attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"validation-errors":_vm.validationErrors,"control-props":_vm.controlProps}})],1):_vm._e(),(!_vm.validationErrors)?_c('Fragment',[_c('BuilderControlView',{attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"permissions":_vm.permissions,"control-props":_vm.controlProps,"is-child-control":true}})],1):_vm._e()],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=afd10b82&
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=fa7286c8&
 
 // EXTERNAL MODULE: ./src/views/builder/ControlView.vue + 29 modules
 var ControlView = __webpack_require__("4f2e");
@@ -29641,6 +29646,9 @@ function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n
     },
     permissions: Object,
     controlProps: Object
+  },
+  mounted: function mounted() {
+    console.log('ChildControlView', this); //debug
   }
 });
 // CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=script&lang=js&

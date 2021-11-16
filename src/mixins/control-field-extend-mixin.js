@@ -55,17 +55,22 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             this.$emit(EMIT_EVENT, val)
         },
         // gets props for manual control component instances
-        getChildComponentProps(controlType, permissionOverride={}, containerId) {
+        getChildComponentProps(controlId, permissionOverride={}, containerId) {
           if (this.control.childControls) {
-            //check in the child controls for the control type
-            //if it matches it will be returned
-            for (const ctrl of this.control.childControls) {
-              if (ctrl.type === controlType) {
-                return {
-                  control: ctrl,
-                  parentId: containerId || ctrl.parentControlId,
-                  permissions: {...DefaultPermission, ...permissionOverride},
-                };
+            //need to go all the way up to the form data to make sure we keep
+            //controls in sync
+            const formData = this.$parent.$parent;
+            if (formData.controls) {
+              //check in the child controls for the controlId
+              //if it matches it will be returned
+              for (const ctrl of formData.controls) {
+                if (ctrl.uniqueId === controlId) {
+                  return {
+                    control: ctrl,
+                    parentId: containerId || ctrl.parentControlId,
+                    permissions: {...DefaultPermission, ...permissionOverride},
+                  };
+                }
               }
             }
           }
@@ -73,7 +78,6 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
         // scope is assigned by events, causing issues propagating info (a store would be very useful)
         // we need to listen for an event to know we need to update the references for child components
         onChildComponentListener(listenerFn){
-          console.log('onChildComponentListener', listenerFn);
           this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
         },
         /**
