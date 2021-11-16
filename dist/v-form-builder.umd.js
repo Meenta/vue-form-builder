@@ -45656,12 +45656,12 @@ var AddControlControlvue_type_template_id_b39f8510_staticRenderFns = []
 // EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
 var sidebar_renderer_class = __webpack_require__("1ec8");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=3067f6c8&scoped=true&
-var SidebarControlSelectListvue_type_template_id_3067f6c8_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Choose your Control")]),_c('div',{class:[_vm.styles.LIST_GROUP.CONTAINER]},_vm._l((_vm.controlTypes),function(controlInfo,controlKey){return (!controlInfo.isHidden)?_c('a',{class:_vm.styles.LIST_GROUP.SINGLE_ITEM,attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return _vm.selectedControl(controlKey)}}},[_c('p',{staticClass:"type-headline",domProps:{"textContent":_vm._s(controlInfo.name)}}),_c('p',{staticClass:"type-desc",domProps:{"textContent":_vm._s(controlInfo.description)}})]):_vm._e()}),0)])}
-var SidebarControlSelectListvue_type_template_id_3067f6c8_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=2dd75b03&scoped=true&
+var SidebarControlSelectListvue_type_template_id_2dd75b03_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-form-configuration"},[_c('h5',[_vm._v("Choose your Control")]),_c('div',{class:[_vm.styles.LIST_GROUP.CONTAINER]},_vm._l((_vm.controlTypes),function(controlInfo,controlKey){return (!controlInfo.isHidden)?_c('a',{class:_vm.styles.LIST_GROUP.SINGLE_ITEM,attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return _vm.selectedControl(controlKey)}}},[_c('p',{staticClass:"type-headline",domProps:{"textContent":_vm._s(controlInfo.name)}}),_c('p',{staticClass:"type-desc",domProps:{"textContent":_vm._s(controlInfo.description)}})]):_vm._e()}),0)])}
+var SidebarControlSelectListvue_type_template_id_2dd75b03_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=3067f6c8&scoped=true&
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/SidebarControlSelectList.vue?vue&type=template&id=2dd75b03&scoped=true&
 
 // EXTERNAL MODULE: ./src/configs/controls.js + 108 modules
 var controls = __webpack_require__("8dbe");
@@ -45724,6 +45724,8 @@ var sidebar_body_mixin = __webpack_require__("cbce");
 
 
       this.newControlData = Object(controls["c" /* createControlData */])(controlKey);
+      console.log('this.newControlData', this.newControlData); //debug
+
       this.save(true);
     }
   }
@@ -45740,11 +45742,11 @@ var sidebar_body_mixin = __webpack_require__("cbce");
 
 var SidebarControlSelectList_component = Object(componentNormalizer["a" /* default */])(
   sidebar_config_views_SidebarControlSelectListvue_type_script_lang_js_,
-  SidebarControlSelectListvue_type_template_id_3067f6c8_scoped_true_render,
-  SidebarControlSelectListvue_type_template_id_3067f6c8_scoped_true_staticRenderFns,
+  SidebarControlSelectListvue_type_template_id_2dd75b03_scoped_true_render,
+  SidebarControlSelectListvue_type_template_id_2dd75b03_scoped_true_staticRenderFns,
   false,
   null,
-  "3067f6c8",
+  "2dd75b03",
   null
   
 )
