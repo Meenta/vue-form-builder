@@ -73,7 +73,7 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
         // scope is assigned by events, causing issues propagating info (a store would be very useful)
         // we need to listen for an event to know we need to update the references for child components
         onChildComponentListener(listenerFn){
-          console.log('onChildComponentListener', onChildComponentListener);
+          console.log('onChildComponentListener', listenerFn);
           this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
         },
         /**
