@@ -47,7 +47,8 @@
             },
             permissions: Object,
             controlProps: Object,
-            isChildControl:Boolean
+            isChildControl:Boolean,
+            isBuilder:Boolean
         },
 
         data: () => ({

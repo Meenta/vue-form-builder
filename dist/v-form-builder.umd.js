@@ -12403,12 +12403,12 @@ module.exports = function (exec, skipClosing) {
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=e737a168&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/ControlView.vue?vue&type=template&id=5f29f386&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.control.containerClass, 'control-view-wrapper', _vm.control.additionalContainerClass]},[_c('div',{staticClass:"control-view",class:{'active': _vm.isActive}},[_c('ControlLabel',{directives:[{name:"show",rawName:"v-show",value:(_vm.control.isShowLabel),expression:"control.isShowLabel"}],attrs:{"control":_vm.control}}),_c(_vm.controlComponent,_vm._b({tag:"component",attrs:{"control":_vm.control}},'component',_vm.controlProps,false))],1),_c('ControlOption',{attrs:{"permissions":_vm.permissions,"is-child-control":_vm.isChildControl},on:{"delete":_vm.deleteControl,"config":_vm.openConfiguration}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=e737a168&
+// CONCATENATED MODULE: ./src/views/builder/ControlView.vue?vue&type=template&id=5f29f386&
 
 // EXTERNAL MODULE: ./src/mixins/style-injection-mixin.js
 var style_injection_mixin = __webpack_require__("28fe");
@@ -13224,7 +13224,8 @@ var SidebarControlConfiguration_component = Object(componentNormalizer["a" /* de
     },
     permissions: Object,
     controlProps: Object,
-    isChildControl: Boolean
+    isChildControl: Boolean,
+    isBuilder: Boolean
   },
   data: function data() {
     return {
@@ -15947,14 +15948,16 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
       this.$emit(EMIT_EVENT, val);
     },
     // gets props for manual control component instances
-    getChildComponentProps: function getChildComponentProps(controlType) {
+    getRendererChildComponentProps: function getRendererChildComponentProps(controlType) {
       var permissionOverride = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var containerId = arguments.length > 2 ? arguments[2] : undefined;
 
       if (this.control.childControls) {
         //need to go all the way up to the form data to make sure we keep
         //controls in sync
-        var formData = this.$parent.$parent;
+        //if no controls are available at 2 levels it means we are viewing the control in the form builder
+        //so we need to add a 3rd level
+        var formData = this.$parent.$parent.controls ? this.$parent.$parent : this.$parent.$parent.$parent;
 
         if (formData.controls) {
           //check in the child controls for the controlId

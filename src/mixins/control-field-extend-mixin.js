@@ -55,11 +55,13 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             this.$emit(EMIT_EVENT, val)
         },
         // gets props for manual control component instances
-        getChildComponentProps(controlType, permissionOverride={}, containerId) {
+        getRendererChildComponentProps(controlType, permissionOverride={}, containerId) {
           if (this.control.childControls) {
             //need to go all the way up to the form data to make sure we keep
             //controls in sync
-            const formData = this.$parent.$parent;
+            //if no controls are available at 2 levels it means we are viewing the control in the form builder
+            //so we need to add a 3rd level
+            const formData = this.$parent.$parent.controls ? this.$parent.$parent : this.$parent.$parent.$parent;
             if (formData.controls) {
               //check in the child controls for the controlId
               //if it matches it will be returned
