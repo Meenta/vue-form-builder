@@ -57,5 +57,8 @@
         data: () => ({
             formData: null
         }),
+        mounted(){
+          console.log('FormRenderer this', this);//debug
+        }
     }
 </script>

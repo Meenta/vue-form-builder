@@ -50469,12 +50469,12 @@ var src_0 = __webpack_require__("b635");
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FormRenderer.vue?vue&type=template&id=0273a75b&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FormRenderer.vue?vue&type=template&id=c11c0982&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:[_vm.styles.CONTAINER.FLUID, 'form-padding', 'vue-form-renderer']},[(_vm.formData.formConfig.renderFormTag)?_c('form',{attrs:{"action":_vm.formData.formConfig.formActionURL,"method":_vm.formData.formConfig.formMethod,"id":_vm.formTagId},on:{"submit":function($event){$event.preventDefault();}}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.formData.formConfig.isShowHeadline),expression:"formData.formConfig.isShowHeadline"}],staticClass:"form-headline-container"},[_c('h1',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.headline)}}),_c('p',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.subHeadline)}})]),_vm._l((_vm.sortedSections),function(sectionData){return _c('SectionContainer',{key:sectionData.uniqueId,attrs:{"section":sectionData,"rows":_vm.formData.rows,"controls":_vm.formData.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors}})})],2):[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.formData.formConfig.isShowHeadline),expression:"formData.formConfig.isShowHeadline"}],staticClass:"form-headline-container"},[_c('h1',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.headline)}}),_c('p',{domProps:{"textContent":_vm._s(_vm.formData.formConfig.subHeadline)}})]),_vm._l((_vm.sortedSections),function(sectionData){return _c('SectionContainer',{key:sectionData.uniqueId,attrs:{"section":sectionData,"rows":_vm.formData.rows,"controls":_vm.formData.controls,"value-container":_vm.valueContainer,"validation-errors":_vm.validationErrors}})})]],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FormRenderer.vue?vue&type=template&id=0273a75b&
+// CONCATENATED MODULE: ./src/components/FormRenderer.vue?vue&type=template&id=c11c0982&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
@@ -51036,10 +51036,11 @@ var validation_Validation = /*#__PURE__*/function () {
 
     Object(defineProperty["a" /* default */])(this, "validationResult", null);
 
+    console.log('Validation construct controls', controls);
     this.valueContainer = valueContainer;
     this.sections = sections;
-    this.validationClosures = definedClosures;
-    this.setRules(controls);
+    this.validationClosures = definedClosures; // this.setRules(controls);
+
     this.controls = controls;
   }
   /**
@@ -51393,7 +51394,9 @@ var VALIDATION_MIXIN = {
    * Dependencies Injection into the Form-Renderer.
    */
   created: function created() {
+    console.log('this.formData.controls', this.formData.controls); //debug
     // create validation instance
+
     this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections);
     console.log('this.$form.Validation', this.$form.Validation); //debug
     // listen to validation invoke
@@ -51537,6 +51540,9 @@ var component = Object(componentNormalizer["a" /* default */])(
     return {
       formData: null
     };
+  },
+  mounted: function mounted() {
+    console.log('FormRenderer this', this); //debug
   }
 });
 // CONCATENATED MODULE: ./src/components/FormRenderer.vue?vue&type=script&lang=js&

@@ -28,10 +28,11 @@ export default class Validation {
    * @param {Object} sections
    */
   constructor(valueContainer, controls, definedClosures = {}, sections) {
+    console.log('Validation construct controls', controls);
     this.valueContainer = valueContainer;
     this.sections = sections;
     this.validationClosures = definedClosures;
-    this.setRules(controls);
+    // this.setRules(controls);
 
     this.controls = controls;
   }
