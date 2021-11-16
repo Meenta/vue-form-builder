@@ -144,6 +144,7 @@ const FORM_BUILDER_EVENT_HANDLER = {
          * @param {Object} controlObj
          */
         controlNewAdded(parentId, controlObj) {
+            console.log('controlNewAdded', parentId, controlObj);
             // add into big list
             this.$set(this.formData.controls, controlObj.uniqueId, controlObj);
             //if control has child controls they also need to be added to the list

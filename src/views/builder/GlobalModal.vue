@@ -90,6 +90,7 @@
              * Save event with close the right sidebar
              */
             saveAndClose(specialData = {}) {
+                console.log('saveAndClose specialData GLOBAL MODAL', specialData);
                 this.$formEvent.$emit(
                     MODAL_EVENT.SAVE_AND_CLOSE,
                     this.runnerId,
