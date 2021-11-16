@@ -63,11 +63,12 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             if (formData.controls) {
               //check in the child controls for the controlId
               //if it matches it will be returned
-              for (const ctrl of formData.controls) {
-                if (ctrl.type === controlType) {
+              for (const ctrlId in formData.controls) {
+                const chldCtrl = formData.controls[ctrlId];
+                if (chldCtrl.type === controlType) {
                   return {
-                    control: ctrl,
-                    parentId: containerId || ctrl.parentControlId,
+                    control: chldCtrl,
+                    parentId: containerId || chldCtrl.parentControlId,
                     permissions: {...DefaultPermission, ...permissionOverride},
                   };
                 }
