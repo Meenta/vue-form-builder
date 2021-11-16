@@ -30372,6 +30372,8 @@ function ValidationRule(ruleType, customErrorMessage) {
 
   Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "additionalValue", "");
 
+  Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "rule", null);
+
   this.ruleType = ruleType;
 
   if (ruleType) {

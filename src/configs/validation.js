@@ -77,6 +77,7 @@ class ValidationRule {
     ruleType = ""
     errorMessage = ""
     additionalValue = ""
+    rule = null
 
     constructor(ruleType, customErrorMessage) {
         this.ruleType = ruleType
