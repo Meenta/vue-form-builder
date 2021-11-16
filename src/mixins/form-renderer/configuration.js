@@ -23,7 +23,7 @@ const CONFIGURATION = {
                 if (deepEqual(val, this.formData)) {
                     return
                 }
-
+                console.log('formConfiguration watch', val)//debug
                 this.mapping(val)
                 this.createValueContainer(val)
             }
@@ -31,6 +31,7 @@ const CONFIGURATION = {
     },
 
     created() {
+        console.log('created this.formConfiguration', this.formConfiguration)//debug
         this.mapping(this.formConfiguration)
     },
 

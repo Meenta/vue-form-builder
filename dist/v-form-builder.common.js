@@ -17765,8 +17765,10 @@ var FORM_BUILDER_MODEL = {
 
         if (deepEqual(newFormData, oldFormData)) {
           return;
-        } // okay this time object is fully new and we need to do mapping again
+        }
 
+        console.log('newFormData', newFormData); //debug
+        // okay this time object is fully new and we need to do mapping again
 
         return this.mapping(newFormData);
       }
@@ -24396,9 +24398,8 @@ module.exports = require("vue");
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ CONTROLS; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ createControlData; });
-
-// UNUSED EXPORTS: CONTROL_DEFAULT_DATA
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ CONTROL_DEFAULT_DATA; });
+__webpack_require__.d(__webpack_exports__, "c", function() { return /* binding */ createControlData; });
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
@@ -36370,8 +36371,6 @@ var applier_dataApplier = function dataApplier(formConfigObject) {
   } // Control(s) Apply
 
 
-  console.log('formConfigObject', formConfigObject); //debug
-
   for (var _i3 = 0, _Object$entries3 = Object.entries(formConfigObject.controls); _i3 < _Object$entries3.length; _i3++) {
     var _Object$entries3$_i = Object(slicedToArray["a" /* default */])(_Object$entries3[_i3], 2),
         controlId = _Object$entries3$_i[0],
@@ -36379,11 +36378,12 @@ var applier_dataApplier = function dataApplier(formConfigObject) {
 
     console.log('controlObject', controlObject); //debug
     // get type - pick up config of type - merge it with the base
-    // let type = controlObject.type
-    // let baseConfigOfType = CONTROLS[type].configData
-    // let baseDefaultConfig = baseObjectExtend(CONTROL_DEFAULT_DATA, baseConfigOfType)
-    // add to base
-    // appliedObject.controls[controlId] = Object.assign(baseDefaultConfig, controlObject)
+
+    var type = controlObject.type;
+    var baseConfigOfType = controls["a" /* CONTROLS */][type].configData;
+    var baseDefaultConfig = baseObjectExtend(controls["b" /* CONTROL_DEFAULT_DATA */], baseConfigOfType); // add to base
+
+    appliedObject.controls[controlId] = Object.assign(baseDefaultConfig, controlObject);
   }
 
   return appliedObject;
@@ -45700,7 +45700,7 @@ var sidebar_body_mixin = __webpack_require__("cbce");
       } // create
 
 
-      this.newControlData = Object(controls["b" /* createControlData */])(controlKey);
+      this.newControlData = Object(controls["c" /* createControlData */])(controlKey);
       console.log('this.newControlData', this.newControlData); //debug
 
       this.save(true);
@@ -50599,12 +50599,16 @@ var CONFIGURATION = {
           return;
         }
 
+        console.log('formConfiguration watch', val); //debug
+
         this.mapping(val);
         this.createValueContainer(val);
       }
     }
   },
   created: function created() {
+    console.log('created this.formConfiguration', this.formConfiguration); //debug
+
     this.mapping(this.formConfiguration);
   },
   computed: {
