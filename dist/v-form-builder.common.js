@@ -15876,10 +15876,10 @@ module.exports = $export;
 /* harmony import */ var core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("1c4c");
 /* harmony import */ var core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("6b54");
-/* harmony import */ var core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("7f7f");
-/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("7f7f");
+/* harmony import */ var core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_function_name__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("6b54");
+/* harmony import */ var core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_regexp_to_string__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("bd86");
 /* harmony import */ var _mixins_style_injection_mixin__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("28fe");
 /* harmony import */ var _configs_events__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("fbe6");
@@ -15990,9 +15990,20 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
     },
     // scope is assigned by events, causing issues propagating info (a store would be very useful)
     // we need to listen for an event to know we need to update the references for child components
-    onChildComponentListener: function onChildComponentListener(listenerFn) {
+    onChildComponentListener: function (_onChildComponentListener) {
+      function onChildComponentListener(_x) {
+        return _onChildComponentListener.apply(this, arguments);
+      }
+
+      onChildComponentListener.toString = function () {
+        return _onChildComponentListener.toString();
+      };
+
+      return onChildComponentListener;
+    }(function (listenerFn) {
+      console.log('onChildComponentListener', onChildComponentListener);
       this.$formEvent.$on(_configs_events__WEBPACK_IMPORTED_MODULE_12__[/* EVENT_CONSTANTS */ "a"].BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
-    },
+    }),
 
     /**
      * Need-To-Override Method - Set Value.
@@ -36456,6 +36467,10 @@ var FORM_BUILDER_METHODS = {
      * Do Mapping Before Rendering/Showing Up
      */
     mapping: function mapping(value) {
+      console.log('this.formData mapping form', this.formData); //debug
+
+      console.log('this.formData mapping value', this.value); //debug
+
       this.formData = Object.assign({}, this.formData, applier_dataApplier(value));
       this.doSortSection();
     },
@@ -50550,6 +50565,7 @@ var MODEL = {
     createValueContainer: function createValueContainer() {
       var _this = this;
 
+      console.log('createValueContainer controls', this.formData.controls);
       var containerObj = {};
       var controlIds = Object.keys(this.formData.controls);
       controlIds.forEach(function (controlId) {
@@ -51396,13 +51412,9 @@ var VALIDATION_MIXIN = {
   created: function created() {
     console.log('this.formData.controls', this.formData.controls); //debug
     // create validation instance
-    // this.$form.Validation = new Validation(
-    //     this.valueContainer,
-    //     this.formData.controls,
-    //     this.$form.validationClosures || {},
-    //     this.formData.sections
-    // )
-    // console.log('this.$form.Validation', this.$form.Validation); //debug
+
+    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections);
+    console.log('this.$form.Validation', this.$form.Validation); //debug
     // listen to validation invoke
 
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].RENDERER.RUN_VALIDATION, this.runValidation);
