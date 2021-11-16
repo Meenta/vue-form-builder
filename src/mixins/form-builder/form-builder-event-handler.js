@@ -220,7 +220,6 @@ const FORM_BUILDER_EVENT_HANDLER = {
               const indexInParent = this.formData.controls[controlData.parentControlId].childControls.findIndex(cld_ctrl => cld_ctrl.uniqueId === controlId);
               this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
               this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
-              this.$formEvent.$emit(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, controlData.parentControlId);
             }
         }
     },

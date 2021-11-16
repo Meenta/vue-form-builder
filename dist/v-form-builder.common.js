@@ -15966,11 +15966,6 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
         }
       }
     },
-    // scope is assigned by events, causing issues propagating info (a store would be very useful)
-    // we need to listen for an event to know we need to update the references for child components
-    onChildComponentListener: function onChildComponentListener(listenerFn) {
-      this.$formEvent.$on(_configs_events__WEBPACK_IMPORTED_MODULE_7__[/* EVENT_CONSTANTS */ "a"].BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
-    },
 
     /**
      * Need-To-Override Method - Set Value.
@@ -17684,7 +17679,6 @@ var FORM_BUILDER_EVENT_HANDLER = {
         });
         this.formData.controls[controlData.parentControlId].childControls[indexInParent] = this.formData.controls[controlId];
         this.$set(this.formData.controls, controlData.parentControlId, this.formData.controls[controlData.parentControlId]);
-        this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.CONTROL.UPDATE_CHILDREN, controlData.parentControlId);
       }
     }
   },
@@ -29552,12 +29546,12 @@ exports.f = Object.getOwnPropertySymbols;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=fa7286c8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/child-controls/ChildControlView.vue?vue&type=template&id=27e1f765&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('Fragment',[(_vm.validationErrors)?_c('Fragment',[_c('RendererControlView',{attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"validation-errors":_vm.validationErrors,"control-props":_vm.controlProps}})],1):_vm._e(),(!_vm.validationErrors)?_c('Fragment',[_c('BuilderControlView',{attrs:{"control":_vm.control,"parent-id":_vm.parentId,"value-container":_vm.valueContainer || {},"permissions":_vm.permissions,"control-props":_vm.controlProps,"is-child-control":true}})],1):_vm._e()],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=fa7286c8&
+// CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=template&id=27e1f765&
 
 // EXTERNAL MODULE: ./src/views/builder/ControlView.vue + 29 modules
 var ControlView = __webpack_require__("4f2e");
@@ -29618,9 +29612,6 @@ function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n
     },
     permissions: Object,
     controlProps: Object
-  },
-  mounted: function mounted() {
-    console.log('ChildControlView', this); //debug
   }
 });
 // CONCATENATED MODULE: ./src/views/child-controls/ChildControlView.vue?vue&type=script&lang=js&
@@ -51588,7 +51579,6 @@ var EVENT_CONSTANTS = {
     CONTROL: {
       CREATE: "builder.control.create",
       UPDATE: "builder.control.update",
-      UPDATE_CHILDREN: "builder.control.update_children",
       DELETE: "builder.control.delete",
       DELETED: "builder.control.deleted",
       SORT: "builder.control.delete"
