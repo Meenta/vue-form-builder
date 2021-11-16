@@ -101,7 +101,6 @@ const extendingControls = function(moreControlObject) {
  * @param {Object} validationObj
  */
 const extendingValidations = function(validationObj) {
-  console.log('extendingValidations', validationObj);//debug
   // validation if it does conflict or not
   const allKeys = Object.keys(validationObj);
   for (let iKey = 0; iKey < allKeys.length; iKey++) {

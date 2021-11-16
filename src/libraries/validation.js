@@ -43,7 +43,6 @@ export default class Validation {
    */
   setRules(controls) {
     const rules = {};
-    console.log('setRules controls', controls); //debug
     // traversal all control and pick the validations info
     Object.entries(controls).forEach((controlInfo) => {
       let [controlId, controlItem] = controlInfo;
@@ -62,9 +61,7 @@ export default class Validation {
         rules[controlName].uniqueId = controlId;
       }
     });
-
     this.rules = rules;
-    console.log('this.rules', this.rules); //debug
   }
 
   /**
@@ -74,7 +71,6 @@ export default class Validation {
   async run () {
     this.validationResult = new ValidationResult();
     const controlKeys = Object.keys(this.rules);
-    console.log('run controlKeys', controlKeys); //debug
     for (const key of controlKeys) {
       // pickup basic data
       const controlValue = this.valueContainer[key];

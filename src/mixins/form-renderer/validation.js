@@ -39,7 +39,6 @@ const VALIDATION_MIXIN = {
      * Dependencies Injection into the Form-Renderer.
      */
     created() {
-        console.log('this.formData.controls', this.formData.controls); //debug
         // create validation instance
         this.$form.Validation = new Validation(
             this.valueContainer,
@@ -47,8 +46,6 @@ const VALIDATION_MIXIN = {
             this.$form.validationClosures || {},
             this.formData.sections
         )
-        console.log('this.$form.Validation', this.$form.Validation); //debug
-
         // listen to validation invoke
         this.$formEvent.$on(EVENT_CONSTANTS.RENDERER.RUN_VALIDATION, this.runValidation);
     }

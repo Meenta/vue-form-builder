@@ -20,8 +20,6 @@ const FORM_BUILDER_METHODS = {
          * Do Mapping Before Rendering/Showing Up
          */
         mapping(value) {
-            console.log('this.formData mapping form', this.formData); //debug
-            console.log('this.formData mapping value', value); //debug
             this.formData = Object.assign({}, this.formData, dataApplier(value));
             this.doSortSection()
         },
