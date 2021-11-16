@@ -37,6 +37,7 @@ const SIDEBAR_BODY_MIXIN = {
          */
         save(close = false) {
             let data = this[this.dataKey];
+            console.log('data', data) //debug
             if (close) {
                 this.$emit(this.emitSaveAndCloseKey, data)
             } else {

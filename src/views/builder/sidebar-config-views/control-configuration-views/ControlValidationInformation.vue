@@ -122,13 +122,14 @@
              */
             getRuleList(currentRule) {
                 console.log('getRuleList this.control.validations', this.control.validations); //debug
-                const allUsedRules = this.control.validations
-                    .map(rule => rule.ruleType)
-                    .filter(ruleName => ruleName !== currentRule)
-                const allRules = Object.keys(VALIDATION_RULES)
-                console.log('getRuleList allUsedRules', allUsedRules); //debug
-                console.log('getRuleList allRules', allRules); //debug
-                return allRules.filter(rule => !allUsedRules.includes(rule))
+                // const allUsedRules = this.control.validations
+                //     .map(rule => rule.ruleType)
+                //     .filter(ruleName => ruleName !== currentRule)
+                // const allRules = Object.keys(VALIDATION_RULES)
+                // console.log('getRuleList allUsedRules', allUsedRules); //debug
+                // console.log('getRuleList allRules', allRules); //debug
+                // return allRules.filter(rule => !allUsedRules.includes(rule));
+                return this.control.validation;
             },
         },
 
