@@ -15959,7 +15959,7 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
       this.$emit(EMIT_EVENT, val);
     },
     // gets props for manual control component instances
-    getChildComponentProps: function getChildComponentProps(controlId) {
+    getChildComponentProps: function getChildComponentProps(controlType) {
       var permissionOverride = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var containerId = arguments.length > 2 ? arguments[2] : undefined;
 
@@ -15978,7 +15978,7 @@ var CONTROL_FIELD_EXTEND_MIXIN = {
             for (_iterator.s(); !(_step = _iterator.n()).done;) {
               var ctrl = _step.value;
 
-              if (ctrl.uniqueId === controlId) {
+              if (ctrl.type === controlType) {
                 return {
                   control: ctrl,
                   parentId: containerId || ctrl.parentControlId,

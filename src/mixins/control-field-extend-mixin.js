@@ -55,7 +55,7 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
             this.$emit(EMIT_EVENT, val)
         },
         // gets props for manual control component instances
-        getChildComponentProps(controlId, permissionOverride={}, containerId) {
+        getChildComponentProps(controlType, permissionOverride={}, containerId) {
           if (this.control.childControls) {
             //need to go all the way up to the form data to make sure we keep
             //controls in sync
@@ -64,7 +64,7 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
               //check in the child controls for the controlId
               //if it matches it will be returned
               for (const ctrl of formData.controls) {
-                if (ctrl.uniqueId === controlId) {
+                if (ctrl.type === controlType) {
                   return {
                     control: ctrl,
                     parentId: containerId || ctrl.parentControlId,
