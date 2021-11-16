@@ -46,6 +46,7 @@ const VALIDATION_MIXIN = {
             this.$form.validationClosures || {},
             this.formData.sections
         )
+        console.log('this.$form.Validation', this.$form.Validation); //debug
 
         // listen to validation invoke
         this.$formEvent.$on(EVENT_CONSTANTS.RENDERER.RUN_VALIDATION, this.runValidation);

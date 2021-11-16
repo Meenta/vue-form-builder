@@ -51053,7 +51053,9 @@ var validation_Validation = /*#__PURE__*/function () {
     value: function setRules(controls) {
       var _this = this;
 
-      var rules = {}; // traversal all control and pick the validations info
+      var rules = {};
+      console.log('setRules controls', controls); //debug
+      // traversal all control and pick the validations info
 
       Object.entries(controls).forEach(function (controlInfo) {
         var _controlInfo = Object(slicedToArray["a" /* default */])(controlInfo, 2),
@@ -51392,7 +51394,9 @@ var VALIDATION_MIXIN = {
    */
   created: function created() {
     // create validation instance
-    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections); // listen to validation invoke
+    this.$form.Validation = new validation_Validation(this.valueContainer, this.formData.controls, this.$form.validationClosures || {}, this.formData.sections);
+    console.log('this.$form.Validation', this.$form.Validation); //debug
+    // listen to validation invoke
 
     this.$formEvent.$on(events["a" /* EVENT_CONSTANTS */].RENDERER.RUN_VALIDATION, this.runValidation);
   }

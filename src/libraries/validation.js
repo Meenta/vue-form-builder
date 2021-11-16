@@ -42,7 +42,7 @@ export default class Validation {
    */
   setRules(controls) {
     const rules = {};
-
+    console.log('setRules controls', controls); //debug
     // traversal all control and pick the validations info
     Object.entries(controls).forEach((controlInfo) => {
       let [controlId, controlItem] = controlInfo;
