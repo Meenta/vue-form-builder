@@ -21,7 +21,7 @@ const FORM_BUILDER_METHODS = {
          */
         mapping(value) {
             console.log('this.formData mapping form', this.formData); //debug
-            console.log('this.formData mapping value', this.value); //debug
+            console.log('this.formData mapping value', value); //debug
             this.formData = Object.assign({}, this.formData, dataApplier(value));
             this.doSortSection()
         },

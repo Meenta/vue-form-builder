@@ -40,6 +40,7 @@ const dataApplier = function(formConfigObject) {
 
     // Control(s) Apply
     for (let [controlId, controlObject] of Object.entries(formConfigObject.controls)) {
+        console.log('formConfigObject', formConfigObject);//debug
         // get type - pick up config of type - merge it with the base
         let type = controlObject.type
         let baseConfigOfType = CONTROLS[type].configData

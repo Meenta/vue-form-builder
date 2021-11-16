@@ -36383,7 +36383,9 @@ var applier_dataApplier = function dataApplier(formConfigObject) {
         controlId = _Object$entries3$_i[0],
         controlObject = _Object$entries3$_i[1];
 
+    console.log('formConfigObject', formConfigObject); //debug
     // get type - pick up config of type - merge it with the base
+
     var type = controlObject.type;
     var baseConfigOfType = controls["a" /* CONTROLS */][type].configData;
     var baseDefaultConfig = baseObjectExtend(controls["b" /* CONTROL_DEFAULT_DATA */], baseConfigOfType); // add to base
@@ -36439,7 +36441,7 @@ var FORM_BUILDER_METHODS = {
     mapping: function mapping(value) {
       console.log('this.formData mapping form', this.formData); //debug
 
-      console.log('this.formData mapping value', this.value); //debug
+      console.log('this.formData mapping value', value); //debug
 
       this.formData = Object.assign({}, this.formData, applier_dataApplier(value));
       this.doSortSection();
