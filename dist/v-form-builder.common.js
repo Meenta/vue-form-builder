@@ -17588,8 +17588,7 @@ var FORM_BUILDER_EVENT_HANDLER = {
      * @param {Object} controlObj
      */
     controlNewAdded: function controlNewAdded(parentId, controlObj) {
-      console.log('controlNewAdded', parentId, controlObj); // add into big list
-
+      // add into big list
       this.$set(this.formData.controls, controlObj.uniqueId, controlObj); //if control has child controls they also need to be added to the list
 
       if (controlObj.childControls) {
@@ -18009,12 +18008,12 @@ var FormConfiguration_component = Object(componentNormalizer["a" /* default */])
 )
 
 /* harmony default export */ var FormConfiguration = (FormConfiguration_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalSidebar.vue?vue&type=template&id=708476f4&
-var GlobalSidebarvue_type_template_id_708476f4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#000'))},on:{"click":_vm.close}}),(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)}
-var GlobalSidebarvue_type_template_id_708476f4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalSidebar.vue?vue&type=template&id=220a368a&
+var GlobalSidebarvue_type_template_id_220a368a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#000'))},on:{"click":_vm.close}}),(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)}
+var GlobalSidebarvue_type_template_id_220a368a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/GlobalSidebar.vue?vue&type=template&id=708476f4&
+// CONCATENATED MODULE: ./src/views/builder/GlobalSidebar.vue?vue&type=template&id=220a368a&
 
 // EXTERNAL MODULE: ./src/libraries/alert-dialog.js
 var alert_dialog = __webpack_require__("caca");
@@ -18105,7 +18104,6 @@ var SIDEBAR_WIDTH_SIZE = "400px";
      */
     saveAndClose: function saveAndClose() {
       var specialData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      console.log('saveAndClose specialData GLOBAL SIDEBAR', specialData);
       this.$formEvent.$emit(events["a" /* EVENT_CONSTANTS */].BUILDER.SIDEBAR.SAVE_AND_CLOSE, this.runnerId, Object.assign({}, specialData));
       this.close();
     },
@@ -18159,8 +18157,8 @@ var SIDEBAR_WIDTH_SIZE = "400px";
 
 var GlobalSidebar_component = Object(componentNormalizer["a" /* default */])(
   builder_GlobalSidebarvue_type_script_lang_js_,
-  GlobalSidebarvue_type_template_id_708476f4_render,
-  GlobalSidebarvue_type_template_id_708476f4_staticRenderFns,
+  GlobalSidebarvue_type_template_id_220a368a_render,
+  GlobalSidebarvue_type_template_id_220a368a_staticRenderFns,
   false,
   null,
   null,
@@ -18169,12 +18167,12 @@ var GlobalSidebar_component = Object(componentNormalizer["a" /* default */])(
 )
 
 /* harmony default export */ var GlobalSidebar = (GlobalSidebar_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalModal.vue?vue&type=template&id=e6158688&
-var GlobalModalvue_type_template_id_e6158688_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal",attrs:{"id":"vfb-global-modal"}},[_c('div',{staticClass:"modal-content"},[_c('div',{staticClass:"modal-header"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#fff'))},on:{"click":_vm.close}}),_c('h4',{domProps:{"textContent":_vm._s(_vm.modalTitle)}})]),_c('div',{staticClass:"modal-body"},[(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)])])}
-var GlobalModalvue_type_template_id_e6158688_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalModal.vue?vue&type=template&id=6b43a3ee&
+var GlobalModalvue_type_template_id_6b43a3ee_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"modal",attrs:{"id":"vfb-global-modal"}},[_c('div',{staticClass:"modal-content"},[_c('div',{staticClass:"modal-header"},[_c('span',{staticClass:"close",domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '24px', '24px', '#fff'))},on:{"click":_vm.close}}),_c('h4',{domProps:{"textContent":_vm._s(_vm.modalTitle)}})]),_c('div',{staticClass:"modal-body"},[(_vm.component)?_c(_vm.component,{tag:"component",attrs:{"dataPackage":_vm.dynamicData,"formData":_vm.formData,"permissions":_vm.permissions},on:{"save":_vm.save,"saveAndClose":_vm.saveAndClose,"close":_vm.close}}):_vm._e()],1)])])}
+var GlobalModalvue_type_template_id_6b43a3ee_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/GlobalModal.vue?vue&type=template&id=e6158688&
+// CONCATENATED MODULE: ./src/views/builder/GlobalModal.vue?vue&type=template&id=6b43a3ee&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/GlobalModal.vue?vue&type=script&lang=js&
 
@@ -18265,7 +18263,6 @@ var MODAL_EVENT = events["a" /* EVENT_CONSTANTS */].BUILDER.MODAL;
      */
     saveAndClose: function saveAndClose() {
       var specialData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      console.log('saveAndClose specialData GLOBAL MODAL', specialData);
       this.$formEvent.$emit(MODAL_EVENT.SAVE_AND_CLOSE, this.runnerId, Object.assign({}, specialData));
       this.close();
     },
@@ -18322,8 +18319,8 @@ var MODAL_EVENT = events["a" /* EVENT_CONSTANTS */].BUILDER.MODAL;
 
 var GlobalModal_component = Object(componentNormalizer["a" /* default */])(
   builder_GlobalModalvue_type_script_lang_js_,
-  GlobalModalvue_type_template_id_e6158688_render,
-  GlobalModalvue_type_template_id_e6158688_staticRenderFns,
+  GlobalModalvue_type_template_id_6b43a3ee_render,
+  GlobalModalvue_type_template_id_6b43a3ee_staticRenderFns,
   false,
   null,
   null,
@@ -45611,12 +45608,12 @@ var events = __webpack_require__("fbe6");
 var vuedraggable_common = __webpack_require__("310e");
 var vuedraggable_common_default = /*#__PURE__*/__webpack_require__.n(vuedraggable_common);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=441fb7e3&
-var AddControlControlvue_type_template_id_441fb7e3_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-control-outer",class:_vm.styles.COLUMNS.COL12},[_c('div',{staticClass:"add-control-container",on:{"click":_vm.openAddControl}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v("Add Control")])])])}
-var AddControlControlvue_type_template_id_441fb7e3_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=b39f8510&
+var AddControlControlvue_type_template_id_b39f8510_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"add-control-outer",class:_vm.styles.COLUMNS.COL12},[_c('div',{staticClass:"add-control-container",on:{"click":_vm.openAddControl}},[_c('span',{domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '32px', '32px', '#000'))}}),_c('span',[_vm._v("Add Control")])])])}
+var AddControlControlvue_type_template_id_b39f8510_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=441fb7e3&
+// CONCATENATED MODULE: ./src/views/builder/add-controls/AddControlControl.vue?vue&type=template&id=b39f8510&
 
 // EXTERNAL MODULE: ./src/libraries/sidebar-renderer.class.js
 var sidebar_renderer_class = __webpack_require__("1ec8");
@@ -45775,10 +45772,8 @@ var SidebarControlSelectList_component = Object(componentNormalizer["a" /* defau
      * After user chose a control. This will be invoked in order to create a new control
      */
     createNewControlForSection: function createNewControlForSection(runnerId, controlObj) {
-      console.log('createNewControlForSection', runnerId, controlObj); //debiug
       // runnerId to check the right identifier of the Invoker
       // uniqueId to check if we create new control or not
-
       if (this.runnerId !== runnerId) {
         return;
       } // emit to FormBuilder and let it create control...
@@ -45815,8 +45810,8 @@ var SidebarControlSelectList_component = Object(componentNormalizer["a" /* defau
 
 var AddControlControl_component = Object(componentNormalizer["a" /* default */])(
   add_controls_AddControlControlvue_type_script_lang_js_,
-  AddControlControlvue_type_template_id_441fb7e3_render,
-  AddControlControlvue_type_template_id_441fb7e3_staticRenderFns,
+  AddControlControlvue_type_template_id_b39f8510_render,
+  AddControlControlvue_type_template_id_b39f8510_staticRenderFns,
   false,
   null,
   null,
@@ -51021,20 +51016,14 @@ var validation_Validation = /*#__PURE__*/function () {
     value: function setRules(controls) {
       var _this = this;
 
-      console.log('setRules controls', controls); //debug
-
       var rules = {}; // traversal all control and pick the validations info
 
       Object.entries(controls).forEach(function (controlInfo) {
-        console.log('controlInfo', controlInfo); //debug
-
         var _controlInfo = Object(slicedToArray["a" /* default */])(controlInfo, 2),
             controlId = _controlInfo[0],
             controlItem = _controlInfo[1];
 
-        var controlName = controlItem.name || controlId;
-        console.log('valueContainer', _this.valueContainer); //debug
-        // no name => this field didn't have value
+        var controlName = controlItem.name || controlId; // no name => this field didn't have value
 
         if (!_this.valueContainer.hasOwnProperty(controlName)) {
           return;
@@ -51048,8 +51037,6 @@ var validation_Validation = /*#__PURE__*/function () {
           rules[controlName].uniqueId = controlId;
         }
       });
-      console.log('rules', rules); //debug
-
       this.rules = rules;
     }
     /**
@@ -51068,19 +51055,13 @@ var validation_Validation = /*#__PURE__*/function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                console.log('try to run validation'); //debug
-
                 this.validationResult = new validation_result_class_ValidationResult();
-                console.log('validationResult', this.validationResult); //debug
-
-                console.log('controlKeys', controlKeys); //debug
-
                 controlKeys = Object.keys(this.rules);
                 _i = 0, _controlKeys = controlKeys;
 
-              case 7:
+              case 4:
                 if (!(_i < _controlKeys.length)) {
-                  _context.next = 46;
+                  _context.next = 37;
                   break;
                 }
 
@@ -51088,92 +51069,78 @@ var validation_Validation = /*#__PURE__*/function () {
                 // pickup basic data
                 controlValue = this.valueContainer[key];
                 controlRules = this.rules[key] || [];
-                console.log('controlRules', controlRules); //debug
-
                 control = this.controls[controlRules.uniqueId];
-                console.log('control', control); //debug
-
                 controlConditional = control.isConditional || false;
                 controlConditionalMet = control.conditionMet || false; // no rule no run
 
                 if (controlRules.length) {
-                  _context.next = 18;
+                  _context.next = 13;
                   break;
                 }
 
-                return _context.abrupt("continue", 43);
+                return _context.abrupt("continue", 34);
 
-              case 18:
-                // is this input conditional and has the condition for it not been meet?
-                // it's either invisible or disabled
-                // as such, we can't apply ANY of our validation rules to it.
-                console.log('controlConditional', controlConditional); //debug
-
-                console.log('controlConditionalMet', controlConditionalMet); //debug
-
+              case 13:
                 if (!(controlConditional && controlConditionalMet !== true)) {
-                  _context.next = 22;
+                  _context.next = 15;
                   break;
                 }
 
-                return _context.abrupt("continue", 43);
+                return _context.abrupt("continue", 34);
 
-              case 22:
+              case 15:
                 /**
                  * start the validation process by each rules added for the control
                  */
                 _iterator = _createForOfIteratorHelper(controlRules);
-                _context.prev = 23;
+                _context.prev = 16;
 
                 _iterator.s();
 
-              case 25:
+              case 18:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 35;
+                  _context.next = 26;
                   break;
                 }
 
                 validationRule = _step.value;
-                console.log('validationRule', validationRule); //debug
-
-                _context.next = 30;
+                _context.next = 22;
                 return this._singleRuleRun(validationRule, controlValue);
 
-              case 30:
+              case 22:
                 status = _context.sent;
-                console.log('status', status); //debug
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
-              case 33:
-                _context.next = 25;
+              case 24:
+                _context.next = 18;
                 break;
 
-              case 35:
-                _context.next = 40;
+              case 26:
+                _context.next = 31;
                 break;
 
-              case 37:
-                _context.prev = 37;
-                _context.t0 = _context["catch"](23);
+              case 28:
+                _context.prev = 28;
+                _context.t0 = _context["catch"](16);
 
                 _iterator.e(_context.t0);
 
-              case 40:
-                _context.prev = 40;
+              case 31:
+                _context.prev = 31;
 
                 _iterator.f();
 
-                return _context.finish(40);
+                return _context.finish(31);
 
-              case 43:
+              case 34:
                 _i++;
-                _context.next = 7;
+                _context.next = 4;
                 break;
 
-              case 46:
+              case 37:
                 // If a section is hidden, then we remove the validation in that section's controllers
                 if (Object.keys(this.validationResult.errorBuckets).length > 0) {
                   for (sectionId in this.sections) {
@@ -51210,17 +51177,17 @@ var validation_Validation = /*#__PURE__*/function () {
 
                 return _context.abrupt("return", this.validationResult);
 
-              case 50:
-                _context.prev = 50;
+              case 41:
+                _context.prev = 41;
                 _context.t1 = _context["catch"](0);
                 console.error('VUE FORM ERROR: ', _context.t1);
 
-              case 53:
+              case 44:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 50], [23, 37, 40, 43]]);
+        }, _callee, this, [[0, 41], [16, 28, 31, 34]]);
       }));
 
       function run() {
@@ -51245,55 +51212,49 @@ var validation_Validation = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log('validationRule', validationRule, fieldValue); //debug
-
-                console.log('validationRule.ruleType', validationRule.ruleType); //debug
-
-                console.log('validationRule.rule', validationRule.rule); //debug
-
                 _context2.t0 = validationRule.ruleType;
-                _context2.next = _context2.t0 === "required" ? 6 : _context2.t0 === "min" ? 7 : _context2.t0 === "max" ? 8 : _context2.t0 === "isEmail" ? 9 : _context2.t0 === "sameAs" ? 10 : _context2.t0 === "customClosure" ? 11 : _context2.t0 === "regex" ? 12 : 13;
+                _context2.next = _context2.t0 === "required" ? 3 : _context2.t0 === "min" ? 4 : _context2.t0 === "max" ? 5 : _context2.t0 === "isEmail" ? 6 : _context2.t0 === "sameAs" ? 7 : _context2.t0 === "customClosure" ? 8 : _context2.t0 === "regex" ? 9 : 10;
                 break;
 
-              case 6:
+              case 3:
                 return _context2.abrupt("return", requiredRule(fieldValue));
 
-              case 7:
+              case 4:
                 return _context2.abrupt("return", minRule(fieldValue, validationRule.additionalValue));
 
-              case 8:
+              case 5:
                 return _context2.abrupt("return", maxRule(fieldValue, validationRule.additionalValue));
 
-              case 9:
+              case 6:
                 return _context2.abrupt("return", isEmailRule(fieldValue));
 
-              case 10:
+              case 7:
                 return _context2.abrupt("return", sameAsRule(fieldValue, validationRule.additionalValue, this.valueContainer));
 
-              case 11:
+              case 8:
                 return _context2.abrupt("return", customClosureRule(fieldValue, validationRule.additionalValue, this.valueContainer, this.customClosures));
 
-              case 12:
+              case 9:
                 return _context2.abrupt("return", isRegexPassed(fieldValue, validationRule.additionalValue));
 
-              case 13:
-                _context2.next = 15;
+              case 10:
+                _context2.next = 12;
                 return validationRule.rule(fieldValue);
 
-              case 15:
+              case 12:
                 ruleResult = _context2.sent;
 
                 if (!(typeof ruleResult !== 'boolean')) {
-                  _context2.next = 18;
+                  _context2.next = 15;
                   break;
                 }
 
                 throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
 
-              case 18:
+              case 15:
                 return _context2.abrupt("return", ruleResult);
 
-              case 19:
+              case 16:
               case "end":
                 return _context2.stop();
             }

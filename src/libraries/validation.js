@@ -41,14 +41,11 @@ export default class Validation {
    * @param {{validations: ValidationRule[]}} controls
    */
   setRules(controls) {
-    console.log('setRules controls', controls)//debug
     const rules = {};
     // traversal all control and pick the validations info
     Object.entries(controls).forEach((controlInfo) => {
-      console.log('controlInfo', controlInfo)//debug
       let [controlId, controlItem] = controlInfo;
       let controlName = controlItem.name || controlId;
-      console.log('valueContainer', this.valueContainer)//debug
       // no name => this field didn't have value
       if (!this.valueContainer.hasOwnProperty(controlName)) {
         return;
@@ -62,7 +59,6 @@ export default class Validation {
         rules[controlName].uniqueId = controlId;
       }
     });
-    console.log('rules', rules)//debug
     this.rules = rules;
   }
 
@@ -72,19 +68,14 @@ export default class Validation {
    */
   async run () {
     try{
-      console.log('try to run validation')//debug
       this.validationResult = new ValidationResult();
-      console.log('validationResult', this.validationResult)//debug
-      console.log('controlKeys', controlKeys)//debug
       const controlKeys = Object.keys(this.rules);
       
       for (const key of controlKeys) {
         // pickup basic data
         const controlValue = this.valueContainer[key];
         const controlRules = this.rules[key] || [];
-        console.log('controlRules', controlRules); //debug
         const control = this.controls[controlRules.uniqueId];
-        console.log('control', control); //debug
         const controlConditional = control.isConditional || false;
         const controlConditionalMet = control.conditionMet || false;
 
@@ -95,8 +86,6 @@ export default class Validation {
         // is this input conditional and has the condition for it not been meet?
         // it's either invisible or disabled
         // as such, we can't apply ANY of our validation rules to it.
-        console.log('controlConditional', controlConditional); //debug
-        console.log('controlConditionalMet', controlConditionalMet); //debug
         if (controlConditional && controlConditionalMet !== true) {
           continue;
         }
@@ -104,9 +93,7 @@ export default class Validation {
          * start the validation process by each rules added for the control
          */
         for (const validationRule of controlRules) {
-          console.log('validationRule', validationRule); //debug
           const status = await this._singleRuleRun(validationRule, controlValue);
-          console.log('status', status); //debug
           if (!status) {
             this.validationResult.addError(key, validationRule);
           }
@@ -154,9 +141,6 @@ export default class Validation {
    * @private
    */
   async _singleRuleRun(validationRule, fieldValue) {
-    console.log('validationRule', validationRule, fieldValue); //debug
-    console.log('validationRule.ruleType', validationRule.ruleType); //debug
-    console.log('validationRule.rule', validationRule.rule); //debug
     switch (validationRule.ruleType) {
       case "required":
         return requiredRule(fieldValue);
