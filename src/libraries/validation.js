@@ -41,12 +41,14 @@ export default class Validation {
    * @param {{validations: ValidationRule[]}} controls
    */
   setRules(controls) {
+    console.log('setRules controls', controls)//debug
     const rules = {};
     // traversal all control and pick the validations info
     Object.entries(controls).forEach((controlInfo) => {
+      console.log('controlInfo', controlInfo)//debug
       let [controlId, controlItem] = controlInfo;
       let controlName = controlItem.name || controlId;
-
+      console.log('valueContainer', this.valueContainer)//debug
       // no name => this field didn't have value
       if (!this.valueContainer.hasOwnProperty(controlName)) {
         return;
@@ -60,6 +62,7 @@ export default class Validation {
         rules[controlName].uniqueId = controlId;
       }
     });
+    console.log('rules', rules)//debug
     this.rules = rules;
   }
 
@@ -72,8 +75,9 @@ export default class Validation {
       console.log('try to run validation')//debug
       this.validationResult = new ValidationResult();
       console.log('validationResult', this.validationResult)//debug
-      const controlKeys = Object.keys(this.rules);
       console.log('controlKeys', controlKeys)//debug
+      const controlKeys = Object.keys(this.rules);
+      
       for (const key of controlKeys) {
         // pickup basic data
         const controlValue = this.valueContainer[key];

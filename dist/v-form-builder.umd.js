@@ -51030,14 +51030,20 @@ var validation_Validation = /*#__PURE__*/function () {
     value: function setRules(controls) {
       var _this = this;
 
+      console.log('setRules controls', controls); //debug
+
       var rules = {}; // traversal all control and pick the validations info
 
       Object.entries(controls).forEach(function (controlInfo) {
+        console.log('controlInfo', controlInfo); //debug
+
         var _controlInfo = Object(slicedToArray["a" /* default */])(controlInfo, 2),
             controlId = _controlInfo[0],
             controlItem = _controlInfo[1];
 
-        var controlName = controlItem.name || controlId; // no name => this field didn't have value
+        var controlName = controlItem.name || controlId;
+        console.log('valueContainer', _this.valueContainer); //debug
+        // no name => this field didn't have value
 
         if (!_this.valueContainer.hasOwnProperty(controlName)) {
           return;
@@ -51051,6 +51057,8 @@ var validation_Validation = /*#__PURE__*/function () {
           rules[controlName].uniqueId = controlId;
         }
       });
+      console.log('rules', rules); //debug
+
       this.rules = rules;
     }
     /**
@@ -51074,9 +51082,9 @@ var validation_Validation = /*#__PURE__*/function () {
                 this.validationResult = new validation_result_class_ValidationResult();
                 console.log('validationResult', this.validationResult); //debug
 
-                controlKeys = Object.keys(this.rules);
                 console.log('controlKeys', controlKeys); //debug
 
+                controlKeys = Object.keys(this.rules);
                 _i = 0, _controlKeys = controlKeys;
 
               case 7:
