@@ -152,12 +152,12 @@
             }
         },
         mounted() {
-            this.control.startDate = this.control.defaultValue || '';
             this.datepicker = new Litepicker({
                 element: document.getElementById(this.control.uniqueId),
 
                 // applying the configuration (base)
                 ...this.control,
+                startDate: this.control.defaultValue || '',
                 /**
                  * On-Selected a Day
                  * @param {Date} date
