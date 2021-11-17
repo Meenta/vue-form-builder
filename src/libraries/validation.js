@@ -68,74 +68,79 @@ export default class Validation {
    * @return {ValidationResult}
    */
   async run () {
-    console.log('run validation')//debug
-    this.validationResult = new ValidationResult();
-    console.log('validationResult', validationResult)//debug
-    const controlKeys = Object.keys(this.rules);
-    console.log('controlKeys', controlKeys)//debug
-    for (const key of controlKeys) {
-      // pickup basic data
-      const controlValue = this.valueContainer[key];
-      const controlRules = this.rules[key] || [];
-      console.log('controlRules', controlRules); //debug
-      const control = this.controls[controlRules.uniqueId];
-      console.log('control', control); //debug
-      const controlConditional = control.isConditional || false;
-      const controlConditionalMet = control.conditionMet || false;
+    try{
+      console.log('try to run validation')//debug
+      this.validationResult = new ValidationResult();
+      console.log('validationResult', validationResult)//debug
+      const controlKeys = Object.keys(this.rules);
+      console.log('controlKeys', controlKeys)//debug
+      for (const key of controlKeys) {
+        // pickup basic data
+        const controlValue = this.valueContainer[key];
+        const controlRules = this.rules[key] || [];
+        console.log('controlRules', controlRules); //debug
+        const control = this.controls[controlRules.uniqueId];
+        console.log('control', control); //debug
+        const controlConditional = control.isConditional || false;
+        const controlConditionalMet = control.conditionMet || false;
 
-      // no rule no run
-      if (!controlRules.length) {
-        continue;
-      }
-      // is this input conditional and has the condition for it not been meet?
-      // it's either invisible or disabled
-      // as such, we can't apply ANY of our validation rules to it.
-      console.log('controlConditional', controlConditional); //debug
-      console.log('controlConditionalMet', controlConditionalMet); //debug
-      if (controlConditional && controlConditionalMet !== true) {
-        continue;
-      }
-      /**
-       * start the validation process by each rules added for the control
-       */
-      for (const validationRule of controlRules) {
-        console.log('validationRule', validationRule); //debug
-        const status = await this._singleRuleRun(validationRule, controlValue);
-        console.log('status', status); //debug
-        if (!status) {
-          this.validationResult.addError(key, validationRule);
+        // no rule no run
+        if (!controlRules.length) {
+          continue;
+        }
+        // is this input conditional and has the condition for it not been meet?
+        // it's either invisible or disabled
+        // as such, we can't apply ANY of our validation rules to it.
+        console.log('controlConditional', controlConditional); //debug
+        console.log('controlConditionalMet', controlConditionalMet); //debug
+        if (controlConditional && controlConditionalMet !== true) {
+          continue;
+        }
+        /**
+         * start the validation process by each rules added for the control
+         */
+        for (const validationRule of controlRules) {
+          console.log('validationRule', validationRule); //debug
+          const status = await this._singleRuleRun(validationRule, controlValue);
+          console.log('status', status); //debug
+          if (!status) {
+            this.validationResult.addError(key, validationRule);
+          }
         }
       }
-    }
 
-    // If a section is hidden, then we remove the validation in that section's controllers
-    if (Object.keys(this.validationResult.errorBuckets).length > 0) {
-      for (const sectionId in this.sections) {
-        if (
-          this.sections[sectionId] &&
-          this.sections[sectionId].shouldHide &&
-          this.sections[sectionId].shouldHide.hide &&
-          this.sections[sectionId].shouldHide.hidden
-          ) {
-            // First check if the controls of this section have unique names, make an array with
-            // unique names or id if there is no unique name
-            const controlsNames = [];
-            for (const sectionControlId of this.sections[sectionId].controls) {
-              if (this.controls[sectionControlId]) {
-                controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
+      // If a section is hidden, then we remove the validation in that section's controllers
+      if (Object.keys(this.validationResult.errorBuckets).length > 0) {
+        for (const sectionId in this.sections) {
+          if (
+            this.sections[sectionId] &&
+            this.sections[sectionId].shouldHide &&
+            this.sections[sectionId].shouldHide.hide &&
+            this.sections[sectionId].shouldHide.hidden
+            ) {
+              // First check if the controls of this section have unique names, make an array with
+              // unique names or id if there is no unique name
+              const controlsNames = [];
+              for (const sectionControlId of this.sections[sectionId].controls) {
+                if (this.controls[sectionControlId]) {
+                  controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
+                }
               }
-            }
 
-            for (const controlId of controlsNames) {
-              if (this.validationResult.errorBuckets[controlId]) {
-                this.validationResult.removeError(controlId);
+              for (const controlId of controlsNames) {
+                if (this.validationResult.errorBuckets[controlId]) {
+                  this.validationResult.removeError(controlId);
+                }
               }
-            }
+          }
         }
       }
+      return this.validationResult;
     }
-
-    return this.validationResult;
+    catch(err) {
+      console.error('VUE FORM ERROR: ', err);
+    }
+    
   }
 
   /**
