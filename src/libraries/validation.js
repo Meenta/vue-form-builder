@@ -71,7 +71,7 @@ export default class Validation {
     try{
       console.log('try to run validation')//debug
       this.validationResult = new ValidationResult();
-      console.log('validationResult', validationResult)//debug
+      console.log('validationResult', this.validationResult)//debug
       const controlKeys = Object.keys(this.rules);
       console.log('controlKeys', controlKeys)//debug
       for (const key of controlKeys) {

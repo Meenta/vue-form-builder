@@ -51063,7 +51063,7 @@ var validation_Validation = /*#__PURE__*/function () {
                 console.log('try to run validation'); //debug
 
                 this.validationResult = new validation_result_class_ValidationResult();
-                console.log('validationResult', validationResult); //debug
+                console.log('validationResult', this.validationResult); //debug
 
                 controlKeys = Object.keys(this.rules);
                 console.log('controlKeys', controlKeys); //debug
