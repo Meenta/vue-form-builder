@@ -44,6 +44,6 @@ export default {
     },
     permissions: Object,
     controlProps: Object,
-  },
+  }
 };
 </script>

@@ -42,12 +42,10 @@ export default class Validation {
    */
   setRules(controls) {
     const rules = {};
-
     // traversal all control and pick the validations info
     Object.entries(controls).forEach((controlInfo) => {
       let [controlId, controlItem] = controlInfo;
       let controlName = controlItem.name || controlId;
-
       // no name => this field didn't have value
       if (!this.valueContainer.hasOwnProperty(controlName)) {
         return;
@@ -61,7 +59,6 @@ export default class Validation {
         rules[controlName].uniqueId = controlId;
       }
     });
-
     this.rules = rules;
   }
 
@@ -69,68 +66,72 @@ export default class Validation {
    * Start a validation check
    * @return {ValidationResult}
    */
-  run() {
-    this.validationResult = new ValidationResult();
-    const controlKeys = Object.keys(this.rules);
+  async run () {
+    try{
+      this.validationResult = new ValidationResult();
+      const controlKeys = Object.keys(this.rules);
+      
+      for (const key of controlKeys) {
+        // pickup basic data
+        const controlValue = this.valueContainer[key];
+        const controlRules = this.rules[key] || [];
+        const control = this.controls[controlRules.uniqueId];
+        const controlConditional = control.isConditional || false;
+        const controlConditionalMet = control.conditionMet || false;
 
-    for (const key of controlKeys) {
-      // pickup basic data
-      const controlValue = this.valueContainer[key];
-      const controlRules = this.rules[key] || [];
-
-      const control = this.controls[controlRules.uniqueId];
-      const controlConditional = control.isConditional || false;
-      const controlConditionalMet = control.conditionMet || false;
-
-      // no rule no run
-      if (!controlRules.length) {
-        continue;
-      }
-      // is this input conditional and has the condition for it not been meet?
-      // it's either invisible or disabled
-      // as such, we can't apply ANY of our validation rules to it.
-      if (controlConditional && controlConditionalMet !== true) {
-        continue;
-      }
-      /**
-       * start the validation process by each rules added for the control
-       */
-      for (const validationRule of controlRules) {
-        const status = this._singleRuleRun(validationRule, controlValue);
-        if (!status) {
-          this.validationResult.addError(key, validationRule);
+        // no rule no run
+        if (!controlRules.length) {
+          continue;
+        }
+        // is this input conditional and has the condition for it not been meet?
+        // it's either invisible or disabled
+        // as such, we can't apply ANY of our validation rules to it.
+        if (controlConditional && controlConditionalMet !== true) {
+          continue;
+        }
+        /**
+         * start the validation process by each rules added for the control
+         */
+        for (const validationRule of controlRules) {
+          const status = await this._singleRuleRun(validationRule, controlValue);
+          if (!status) {
+            this.validationResult.addError(key, validationRule);
+          }
         }
       }
-    }
 
-    // If a section is hidden, then we remove the validation in that section's controllers
-    if (Object.keys(this.validationResult.errorBuckets).length > 0) {
-      for (const sectionId in this.sections) {
-        if (
-          this.sections[sectionId] &&
-          this.sections[sectionId].shouldHide &&
-          this.sections[sectionId].shouldHide.hide &&
-          this.sections[sectionId].shouldHide.hidden
-          ) {
-            // First check if the controls of this section have unique names, make an array with
-            // unique names or id if there is no unique name
-            const controlsNames = [];
-            for (const sectionControlId of this.sections[sectionId].controls) {
-              if (this.controls[sectionControlId]) {
-                controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
+      // If a section is hidden, then we remove the validation in that section's controllers
+      if (Object.keys(this.validationResult.errorBuckets).length > 0) {
+        for (const sectionId in this.sections) {
+          if (
+            this.sections[sectionId] &&
+            this.sections[sectionId].shouldHide &&
+            this.sections[sectionId].shouldHide.hide &&
+            this.sections[sectionId].shouldHide.hidden
+            ) {
+              // First check if the controls of this section have unique names, make an array with
+              // unique names or id if there is no unique name
+              const controlsNames = [];
+              for (const sectionControlId of this.sections[sectionId].controls) {
+                if (this.controls[sectionControlId]) {
+                  controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
+                }
               }
-            }
 
-            for (const controlId of controlsNames) {
-              if (this.validationResult.errorBuckets[controlId]) {
-                this.validationResult.removeError(controlId);
+              for (const controlId of controlsNames) {
+                if (this.validationResult.errorBuckets[controlId]) {
+                  this.validationResult.removeError(controlId);
+                }
               }
-            }
+          }
         }
       }
+      return this.validationResult;
     }
-
-    return this.validationResult;
+    catch(err) {
+      console.error('VUE FORM ERROR: ', err);
+    }
+    
   }
 
   /**
@@ -139,7 +140,7 @@ export default class Validation {
    * @param {any} fieldValue
    * @private
    */
-  _singleRuleRun(validationRule, fieldValue) {
+  async _singleRuleRun(validationRule, fieldValue) {
     switch (validationRule.ruleType) {
       case "required":
         return requiredRule(fieldValue);
@@ -172,9 +173,15 @@ export default class Validation {
         return isRegexPassed(fieldValue, validationRule.additionalValue);
 
       default:
-        throw new TypeError(
-          `This validation type ${validationRule.ruleType} is not supported.`
-        );
+        // Adding flexibility to validations by checking the return type before rejecting the rule
+        // this will allow validations to be added easier at the control registration level in boba
+        const ruleResult = await validationRule.rule(fieldValue);
+        if (typeof ruleResult !== 'boolean') {
+          throw new TypeError(
+            `This validation type ${validationRule.ruleType} is not supported.`
+          );
+        }
+        return ruleResult;
     }
   }
 }

@@ -44,7 +44,6 @@ const dataApplier = function(formConfigObject) {
         let type = controlObject.type
         let baseConfigOfType = CONTROLS[type].configData
         let baseDefaultConfig = baseObjectExtend(CONTROL_DEFAULT_DATA, baseConfigOfType)
-
         // add to base
         appliedObject.controls[controlId] = Object.assign(baseDefaultConfig, controlObject)
     }

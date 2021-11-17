@@ -11,12 +11,12 @@ const VALIDATION_MIXIN = {
         /**
          * Run the validation process
          */
-        runValidation() {
+        async runValidation() {
             // always clear validation before run...
             this.$set(this, 'validationErrors', {})
 
             // run the validation
-            const result = this.$form.Validation.run()
+            const result = await this.$form.Validation.run();
 
             // field-error handling
             if (result.errors()) {
@@ -46,7 +46,6 @@ const VALIDATION_MIXIN = {
             this.$form.validationClosures || {},
             this.formData.sections
         )
-
         // listen to validation invoke
         this.$formEvent.$on(EVENT_CONSTANTS.RENDERER.RUN_VALIDATION, this.runValidation);
     }

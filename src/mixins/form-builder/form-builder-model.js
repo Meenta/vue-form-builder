@@ -50,7 +50,6 @@ const FORM_BUILDER_MODEL = {
                 if (deepEqual(newFormData, oldFormData)) {
                     return
                 }
-
                 // okay this time object is fully new and we need to do mapping again
                 return this.mapping(newFormData)
             }

@@ -57,23 +57,26 @@ const CONTROL_FIELD_EXTEND_MIXIN = {
         // gets props for manual control component instances
         getChildComponentProps(controlType, permissionOverride={}, containerId) {
           if (this.control.childControls) {
-            //check in the child controls for the control type
-            //if it matches it will be returned
-            for (const ctrl of this.control.childControls) {
-              if (ctrl.type === controlType) {
-                return {
-                  control: ctrl,
-                  parentId: containerId || ctrl.parentControlId,
-                  permissions: {...DefaultPermission, ...permissionOverride},
-                };
+            //need to go all the way up to the form data to make sure we keep
+            //controls in sync
+            //if no controls are available at 2 levels it means we are viewing the control in the form builder
+            //so we need to add a 3rd level
+            const formData = this.$parent.$parent.controls ? this.$parent.$parent : this.$parent.$parent.$parent;
+            if (formData.controls) {
+              //check in the child controls for the controlId
+              //if it matches it will be returned
+              for (const ctrlId in formData.controls) {
+                const chldCtrl = formData.controls[ctrlId];
+                if (chldCtrl.type === controlType) {
+                  return {
+                    control: chldCtrl,
+                    parentId: containerId || chldCtrl.parentControlId,
+                    permissions: {...DefaultPermission, ...permissionOverride},
+                  };
+                }
               }
             }
           }
-        },
-        // scope is assigned by events, causing issues propagating info (a store would be very useful)
-        // we need to listen for an event to know we need to update the references for child components
-        onChildComponentListener(listenerFn){
-          this.$formEvent.$on(EVENT_CONSTANTS.BUILDER.CONTROL.UPDATE_CHILDREN, listenerFn);
         },
         /**
          * Need-To-Override Method - Set Value.

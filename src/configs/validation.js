@@ -80,7 +80,6 @@ class ValidationRule {
 
     constructor(ruleType, customErrorMessage) {
         this.ruleType = ruleType
-
         if (ruleType) {
             this.errorMessage = customErrorMessage || VALIDATION_RULES[ruleType].errorMessage || ""
         }

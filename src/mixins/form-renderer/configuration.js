@@ -23,7 +23,6 @@ const CONFIGURATION = {
                 if (deepEqual(val, this.formData)) {
                     return
                 }
-
                 this.mapping(val)
                 this.createValueContainer(val)
             }
