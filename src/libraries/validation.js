@@ -75,8 +75,9 @@ export default class Validation {
       // pickup basic data
       const controlValue = this.valueContainer[key];
       const controlRules = this.rules[key] || [];
-
+      console.log('controlRules', controlRules); //debug
       const control = this.controls[controlRules.uniqueId];
+      console.log('control', control); //debug
       const controlConditional = control.isConditional || false;
       const controlConditionalMet = control.conditionMet || false;
 
@@ -87,6 +88,8 @@ export default class Validation {
       // is this input conditional and has the condition for it not been meet?
       // it's either invisible or disabled
       // as such, we can't apply ANY of our validation rules to it.
+      console.log('controlConditional', controlConditional); //debug
+      console.log('controlConditionalMet', controlConditionalMet); //debug
       if (controlConditional && controlConditionalMet !== true) {
         continue;
       }
@@ -94,7 +97,9 @@ export default class Validation {
        * start the validation process by each rules added for the control
        */
       for (const validationRule of controlRules) {
+        console.log('validationRule', validationRule); //debug
         const status = await this._singleRuleRun(validationRule, controlValue);
+        console.log('status', status); //debug
         if (!status) {
           this.validationResult.addError(key, validationRule);
         }

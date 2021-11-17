@@ -51067,7 +51067,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 4:
                 if (!(_i < _controlKeys.length)) {
-                  _context.next = 37;
+                  _context.next = 43;
                   break;
                 }
 
@@ -51075,78 +51075,92 @@ var validation_Validation = /*#__PURE__*/function () {
                 // pickup basic data
                 controlValue = this.valueContainer[key];
                 controlRules = this.rules[key] || [];
+                console.log('controlRules', controlRules); //debug
+
                 control = this.controls[controlRules.uniqueId];
+                console.log('control', control); //debug
+
                 controlConditional = control.isConditional || false;
                 controlConditionalMet = control.conditionMet || false; // no rule no run
 
                 if (controlRules.length) {
-                  _context.next = 13;
-                  break;
-                }
-
-                return _context.abrupt("continue", 34);
-
-              case 13:
-                if (!(controlConditional && controlConditionalMet !== true)) {
                   _context.next = 15;
                   break;
                 }
 
-                return _context.abrupt("continue", 34);
+                return _context.abrupt("continue", 40);
 
               case 15:
+                // is this input conditional and has the condition for it not been meet?
+                // it's either invisible or disabled
+                // as such, we can't apply ANY of our validation rules to it.
+                console.log('controlConditional', controlConditional); //debug
+
+                console.log('controlConditionalMet', controlConditionalMet); //debug
+
+                if (!(controlConditional && controlConditionalMet !== true)) {
+                  _context.next = 19;
+                  break;
+                }
+
+                return _context.abrupt("continue", 40);
+
+              case 19:
                 /**
                  * start the validation process by each rules added for the control
                  */
                 _iterator = _createForOfIteratorHelper(controlRules);
-                _context.prev = 16;
+                _context.prev = 20;
 
                 _iterator.s();
 
-              case 18:
+              case 22:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 26;
+                  _context.next = 32;
                   break;
                 }
 
                 validationRule = _step.value;
-                _context.next = 22;
+                console.log('validationRule', validationRule); //debug
+
+                _context.next = 27;
                 return this._singleRuleRun(validationRule, controlValue);
 
-              case 22:
+              case 27:
                 status = _context.sent;
+                console.log('status', status); //debug
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
-              case 24:
-                _context.next = 18;
+              case 30:
+                _context.next = 22;
                 break;
 
-              case 26:
-                _context.next = 31;
+              case 32:
+                _context.next = 37;
                 break;
 
-              case 28:
-                _context.prev = 28;
-                _context.t0 = _context["catch"](16);
+              case 34:
+                _context.prev = 34;
+                _context.t0 = _context["catch"](20);
 
                 _iterator.e(_context.t0);
 
-              case 31:
-                _context.prev = 31;
+              case 37:
+                _context.prev = 37;
 
                 _iterator.f();
 
-                return _context.finish(31);
+                return _context.finish(37);
 
-              case 34:
+              case 40:
                 _i++;
                 _context.next = 4;
                 break;
 
-              case 37:
+              case 43:
                 // If a section is hidden, then we remove the validation in that section's controllers
                 if (Object.keys(this.validationResult.errorBuckets).length > 0) {
                   for (sectionId in this.sections) {
@@ -51183,12 +51197,12 @@ var validation_Validation = /*#__PURE__*/function () {
 
                 return _context.abrupt("return", this.validationResult);
 
-              case 39:
+              case 45:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[16, 28, 31, 34]]);
+        }, _callee, this, [[20, 34, 37, 40]]);
       }));
 
       function run() {
