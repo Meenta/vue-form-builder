@@ -51006,8 +51006,8 @@ var validation_Validation = /*#__PURE__*/function () {
 
     this.valueContainer = valueContainer;
     this.sections = sections;
-    this.validationClosures = definedClosures; // this.setRules(controls);
-
+    this.validationClosures = definedClosures;
+    this.setRules(controls);
     this.controls = controls;
   }
   /**

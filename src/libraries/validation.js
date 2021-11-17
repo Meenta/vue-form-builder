@@ -31,7 +31,7 @@ export default class Validation {
     this.valueContainer = valueContainer;
     this.sections = sections;
     this.validationClosures = definedClosures;
-    // this.setRules(controls);
+    this.setRules(controls);
 
     this.controls = controls;
   }
