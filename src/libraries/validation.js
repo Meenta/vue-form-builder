@@ -70,7 +70,9 @@ export default class Validation {
   async run () {
     console.log('run validation')//debug
     this.validationResult = new ValidationResult();
+    console.log('validationResult', validationResult)//debug
     const controlKeys = Object.keys(this.rules);
+    console.log('controlKeys', controlKeys)//debug
     for (const key of controlKeys) {
       // pickup basic data
       const controlValue = this.valueContainer[key];
