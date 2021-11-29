@@ -141,6 +141,7 @@ export default class Validation {
    * @private
    */
   async _singleRuleRun(validationRule, fieldValue) {
+    console.log('validationRule', validationRule);
     switch (validationRule.ruleType) {
       case "required":
         return requiredRule(fieldValue);
