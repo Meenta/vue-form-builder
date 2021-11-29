@@ -30346,7 +30346,11 @@ function ValidationRule(ruleType, customErrorMessage) {
 
   Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "additionalValue", "");
 
-  this.ruleType = ruleType;
+  Object(_Users_joserodriguez_meenta_vue_form_builder_node_modules_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, "rule", null);
+
+  this.ruleType = ruleType; //added for custom selectable validations
+
+  this.rule = VALIDATION_RULES[ruleType].rule || null;
 
   if (ruleType) {
     this.errorMessage = customErrorMessage || VALIDATION_RULES[ruleType].errorMessage || "";
@@ -51252,23 +51256,31 @@ var validation_Validation = /*#__PURE__*/function () {
                 console.log('validationRule', validationRule); // Adding flexibility to validations by checking the return type before rejecting the rule
                 // this will allow validations to be added easier at the control registration level in boba
 
-                _context2.next = 14;
+                ruleResult = false; //check if rule is defined
+
+                if (!validationRule.rule) {
+                  _context2.next = 17;
+                  break;
+                }
+
+                _context2.next = 16;
                 return validationRule.rule(fieldValue);
 
-              case 14:
+              case 16:
                 ruleResult = _context2.sent;
 
+              case 17:
                 if (!(typeof ruleResult !== 'boolean')) {
-                  _context2.next = 17;
+                  _context2.next = 19;
                   break;
                 }
 
                 throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
 
-              case 17:
+              case 19:
                 return _context2.abrupt("return", ruleResult);
 
-              case 18:
+              case 20:
               case "end":
                 return _context2.stop();
             }

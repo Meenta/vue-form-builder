@@ -177,7 +177,11 @@ export default class Validation {
         console.log('validationRule', validationRule);
         // Adding flexibility to validations by checking the return type before rejecting the rule
         // this will allow validations to be added easier at the control registration level in boba
-        const ruleResult = await validationRule.rule(fieldValue);
+        let ruleResult = false;
+        //check if rule is defined
+        if (validationRule.rule) {
+          ruleResult = await validationRule.rule(fieldValue);
+        }
         if (typeof ruleResult !== 'boolean') {
           throw new TypeError(
             `This validation type ${validationRule.ruleType} is not supported.`
