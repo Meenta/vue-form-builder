@@ -174,6 +174,7 @@ export default class Validation {
         return isRegexPassed(fieldValue, validationRule.additionalValue);
 
       default:
+        console.log('validationRule', validationRule);
         // Adding flexibility to validations by checking the return type before rejecting the rule
         // this will allow validations to be added easier at the control registration level in boba
         const ruleResult = await validationRule.rule(fieldValue);
