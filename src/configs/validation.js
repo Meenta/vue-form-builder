@@ -81,9 +81,10 @@ class ValidationRule {
 
     constructor(ruleType, customErrorMessage) {
         this.ruleType = ruleType;
-        //added for custom selectable validations
-        this.rule = VALIDATION_RULES[ruleType].rule || null;
         if (ruleType) {
+            //added for custom selectable validations
+            this.rule = VALIDATION_RULES[ruleType].rule || null;
+            //
             this.errorMessage = customErrorMessage || VALIDATION_RULES[ruleType].errorMessage || ""
         }
     }
