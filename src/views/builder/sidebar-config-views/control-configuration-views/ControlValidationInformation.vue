@@ -99,7 +99,10 @@
              * [ON-INPUT] Every-Time the rule-select is selected, we need to update the default error message.
              */
             updateDefaultErrorMessage(addedRule) {
-                addedRule.errorMessage = this.getRuleInfo(addedRule.ruleType, 'errorMessage')
+                addedRule.errorMessage = this.getRuleInfo(addedRule.ruleType, 'errorMessage');
+                //this is called when you select a validation from the dropdown not only on input as it says
+                //so we need to bind this to the actual rule that we want to run, because the validation is hardcoded in orignal repo
+                addedRule.rule = this.getRuleInfo(addedRule.ruleType, 'rule');
             },
 
             /**
@@ -126,7 +129,6 @@
                     .filter(ruleName => ruleName !== currentRule)
                 const allRules = Object.keys(VALIDATION_RULES)
                 return allRules.filter(rule => !allUsedRules.includes(rule));
-                return this.control.validation;
             },
         },
 
