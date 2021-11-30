@@ -51250,6 +51250,8 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 10:
                 console.log('validationRule', validationRule); //debug
+
+                console.log('VALIDATION_RULES', validation["a" /* VALIDATION_RULES */]); //debug
                 // Adding flexibility to validations by checking the return type before rejecting the rule
                 // this will allow validations to be added easier at the control registration level in boba
 
@@ -51258,31 +51260,33 @@ var validation_Validation = /*#__PURE__*/function () {
                 //control itself and not in the list, can't be removed either. Or they can be added using the extend
                 //validation in the form builder instance in boba.
 
-                validationRule.rule = validationRule.rule || validation["a" /* VALIDATION_RULES */][validationRule.ruleType] ? validation["a" /* VALIDATION_RULES */][validationRule.ruleType].rule : false;
+                if (!validationRule.rule && validation["a" /* VALIDATION_RULES */][validationRule.ruleType] && validation["a" /* VALIDATION_RULES */][validationRule.ruleType].rule) {
+                  validationRule.rule = validation["a" /* VALIDATION_RULES */][validationRule.ruleType].rule;
+                }
 
                 if (!validationRule.rule) {
-                  _context2.next = 17;
+                  _context2.next = 18;
                   break;
                 }
 
-                _context2.next = 16;
+                _context2.next = 17;
                 return validationRule.rule(fieldValue);
 
-              case 16:
+              case 17:
                 ruleResult = _context2.sent;
 
-              case 17:
+              case 18:
                 if (!(typeof ruleResult !== 'boolean')) {
-                  _context2.next = 19;
+                  _context2.next = 20;
                   break;
                 }
 
                 throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
 
-              case 19:
+              case 20:
                 return _context2.abrupt("return", ruleResult);
 
-              case 20:
+              case 21:
               case "end":
                 return _context2.stop();
             }

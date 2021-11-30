@@ -175,6 +175,7 @@ export default class Validation {
 
       default:
         console.log('validationRule', validationRule); //debug
+        console.log('VALIDATION_RULES', VALIDATION_RULES); //debug
         // Adding flexibility to validations by checking the return type before rejecting the rule
         // this will allow validations to be added easier at the control registration level in boba
         let ruleResult = false;
@@ -182,9 +183,11 @@ export default class Validation {
         //Validation rules can be added to a control directly in it's config, that way it's embedded in the
         //control itself and not in the list, can't be removed either. Or they can be added using the extend
         //validation in the form builder instance in boba.
-        validationRule.rule = 
-          validationRule.rule || 
-          VALIDATION_RULES[validationRule.ruleType] ? VALIDATION_RULES[validationRule.ruleType].rule : false;
+        if (!validationRule.rule && 
+          VALIDATION_RULES[validationRule.ruleType] && 
+          VALIDATION_RULES[validationRule.ruleType].rule) {
+          validationRule.rule = VALIDATION_RULES[validationRule.ruleType].rule;
+        }
         if (validationRule.rule) {
           ruleResult = await validationRule.rule(fieldValue);
         }
