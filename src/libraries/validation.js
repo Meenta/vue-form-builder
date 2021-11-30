@@ -6,6 +6,7 @@ import isEmailRule from "@/libraries/validations/is-email";
 import sameAsRule from "@/libraries/validations/same-as";
 import customClosureRule from "@/libraries/validations/custom-closure";
 import isRegexPassed from "@/libraries/validations/regex";
+import { VALIDATION_RULES } from "../configs/validation"
 
 export default class Validation {
   rules = null;
@@ -66,11 +67,11 @@ export default class Validation {
    * Start a validation check
    * @return {ValidationResult}
    */
-  async run () {
-    try{
+  async run() {
+    try {
       this.validationResult = new ValidationResult();
       const controlKeys = Object.keys(this.rules);
-      
+
       for (const key of controlKeys) {
         // pickup basic data
         const controlValue = this.valueContainer[key];
@@ -108,30 +109,30 @@ export default class Validation {
             this.sections[sectionId].shouldHide &&
             this.sections[sectionId].shouldHide.hide &&
             this.sections[sectionId].shouldHide.hidden
-            ) {
-              // First check if the controls of this section have unique names, make an array with
-              // unique names or id if there is no unique name
-              const controlsNames = [];
-              for (const sectionControlId of this.sections[sectionId].controls) {
-                if (this.controls[sectionControlId]) {
-                  controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
-                }
+          ) {
+            // First check if the controls of this section have unique names, make an array with
+            // unique names or id if there is no unique name
+            const controlsNames = [];
+            for (const sectionControlId of this.sections[sectionId].controls) {
+              if (this.controls[sectionControlId]) {
+                controlsNames.push(this.controls[sectionControlId].name ? this.controls[sectionControlId].name : sectionControlId);
               }
+            }
 
-              for (const controlId of controlsNames) {
-                if (this.validationResult.errorBuckets[controlId]) {
-                  this.validationResult.removeError(controlId);
-                }
+            for (const controlId of controlsNames) {
+              if (this.validationResult.errorBuckets[controlId]) {
+                this.validationResult.removeError(controlId);
               }
+            }
           }
         }
       }
       return this.validationResult;
     }
-    catch(err) {
+    catch (err) {
       console.error('VUE FORM ERROR: ', err);
     }
-    
+
   }
 
   /**
@@ -178,6 +179,12 @@ export default class Validation {
         // this will allow validations to be added easier at the control registration level in boba
         let ruleResult = false;
         //check if rule is defined
+        //Validation rules can be added to a control directly in it's config, that way it's embedded in the
+        //control itself and not in the list, can't be removed either. Or they can be added using the extend
+        //validation in the form builder instance in boba.
+        validationRule.rule = 
+          validationRule.rule || 
+          VALIDATION_RULES[validationRule.ruleType] ? VALIDATION_RULES[validationRule.ruleType].rule : false;
         if (validationRule.rule) {
           ruleResult = await validationRule.rule(fieldValue);
         }

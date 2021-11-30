@@ -110,7 +110,6 @@
              * [CLICK] Add a new rule into validation array
              */
             addNewRule() {
-                console.log('addNewRule ??');
                 this.control.validations.push(new ValidationRule());
             },
 
@@ -131,7 +130,6 @@
                     .filter(ruleName => ruleName !== currentRule)
                 const allRules = Object.keys(VALIDATION_RULES)
                 return allRules.filter(rule => !allUsedRules.includes(rule));
-                return this.control.validation;
             },
         },
 
