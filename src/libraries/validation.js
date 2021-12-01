@@ -71,10 +71,12 @@ export default class Validation {
     try {
       this.validationResult = new ValidationResult();
       const controlKeys = Object.keys(this.rules);
-
+      console.log('controlKeys', controlKeys);//debug
       for (const key of controlKeys) {
         // pickup basic data
         const controlValue = this.valueContainer[key];
+        console.log('this.valueContainer', this.valueContainer);//debug
+        console.log('controlValue', controlValue);//debug
         const controlRules = this.rules[key] || [];
         const control = this.controls[controlRules.uniqueId];
         const controlConditional = control.isConditional || false;

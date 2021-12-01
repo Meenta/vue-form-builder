@@ -51101,90 +51101,96 @@ var validation_Validation = /*#__PURE__*/function () {
                 _context.prev = 0;
                 this.validationResult = new validation_result_class_ValidationResult();
                 controlKeys = Object.keys(this.rules);
+                console.log('controlKeys', controlKeys); //debug
+
                 _i = 0, _controlKeys = controlKeys;
 
-              case 4:
+              case 5:
                 if (!(_i < _controlKeys.length)) {
-                  _context.next = 37;
+                  _context.next = 40;
                   break;
                 }
 
                 key = _controlKeys[_i];
                 // pickup basic data
                 controlValue = this.valueContainer[key];
+                console.log('this.valueContainer', this.valueContainer); //debug
+
+                console.log('controlValue', controlValue); //debug
+
                 controlRules = this.rules[key] || [];
                 control = this.controls[controlRules.uniqueId];
                 controlConditional = control.isConditional || false;
                 controlConditionalMet = control.conditionMet || false; // no rule no run
 
                 if (controlRules.length) {
-                  _context.next = 13;
+                  _context.next = 16;
                   break;
                 }
 
-                return _context.abrupt("continue", 34);
+                return _context.abrupt("continue", 37);
 
-              case 13:
+              case 16:
                 if (!(controlConditional && controlConditionalMet !== true)) {
-                  _context.next = 15;
+                  _context.next = 18;
                   break;
                 }
 
-                return _context.abrupt("continue", 34);
+                return _context.abrupt("continue", 37);
 
-              case 15:
+              case 18:
                 /**
                  * start the validation process by each rules added for the control
                  */
                 _iterator = _createForOfIteratorHelper(controlRules);
-                _context.prev = 16;
+                _context.prev = 19;
 
                 _iterator.s();
 
-              case 18:
+              case 21:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 26;
+                  _context.next = 29;
                   break;
                 }
 
                 validationRule = _step.value;
-                _context.next = 22;
+                _context.next = 25;
                 return this._singleRuleRun(validationRule, controlValue);
 
-              case 22:
+              case 25:
                 status = _context.sent;
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
-              case 24:
-                _context.next = 18;
+              case 27:
+                _context.next = 21;
                 break;
 
-              case 26:
-                _context.next = 31;
+              case 29:
+                _context.next = 34;
                 break;
-
-              case 28:
-                _context.prev = 28;
-                _context.t0 = _context["catch"](16);
-
-                _iterator.e(_context.t0);
 
               case 31:
                 _context.prev = 31;
+                _context.t0 = _context["catch"](19);
+
+                _iterator.e(_context.t0);
+
+              case 34:
+                _context.prev = 34;
 
                 _iterator.f();
 
-                return _context.finish(31);
-
-              case 34:
-                _i++;
-                _context.next = 4;
-                break;
+                return _context.finish(34);
 
               case 37:
+                _i++;
+                _context.next = 5;
+                break;
+
+              case 40:
                 // If a section is hidden, then we remove the validation in that section's controllers
                 if (Object.keys(this.validationResult.errorBuckets).length > 0) {
                   for (sectionId in this.sections) {
@@ -51221,17 +51227,17 @@ var validation_Validation = /*#__PURE__*/function () {
 
                 return _context.abrupt("return", this.validationResult);
 
-              case 41:
-                _context.prev = 41;
+              case 44:
+                _context.prev = 44;
                 _context.t1 = _context["catch"](0);
                 console.error('VUE FORM ERROR: ', _context.t1);
 
-              case 44:
+              case 47:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 41], [16, 28, 31, 34]]);
+        }, _callee, this, [[0, 44], [19, 31, 34, 37]]);
       }));
 
       function run() {
