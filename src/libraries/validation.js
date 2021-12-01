@@ -71,7 +71,6 @@ export default class Validation {
     try {
       this.validationResult = new ValidationResult();
       const controlKeys = Object.keys(this.rules);
-
       for (const key of controlKeys) {
         // pickup basic data
         const controlValue = this.valueContainer[key];

@@ -1,6 +1,5 @@
 <template>
     <SidebarToggleableContainer headline="Validation">
-
         <label>
             Validation Rules
             <span class="pointer"
@@ -12,8 +11,8 @@
 
         <div class="list-selection"
              v-for="(addedRule, ruleIndex) in control.validations"
+             v-show="isRuleRegistered(addedRule.ruleType)"
              :key="addedRule.ruleType">
-
             <div class="tool-block">
                 <span class="pointer"
                       title="Click this to remove this rule"
@@ -44,26 +43,21 @@
             </div>
 
             <div :class="styles.FORM.FORM_GROUP"
-                 v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
-
+                v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
                 <label>Rule Value</label>
                 <input type="text"
                        :class="styles.FORM.FORM_CONTROL"
                        :placeholder="getRuleInfo(addedRule.ruleType, 'valueInfo')"
                        v-model="addedRule.additionalValue">
-
             </div>
 
             <div :class="styles.FORM.FORM_GROUP">
-
                 <label>Default Error Message</label>
                 <input type="text"
                        :class="styles.FORM.FORM_CONTROL"
                        v-model="addedRule.errorMessage">
-
             </div>
         </div>
-
     </SidebarToggleableContainer>
 </template>
 
@@ -71,7 +65,6 @@
     import SidebarToggleableContainer from "@/views/container-views/SidebarToggleableContainer";
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import {VALIDATION_RULES, ValidationRule} from "@/configs/validation";
-
     export default {
         name: "ControlValidationInformation",
         mixins: [STYLE_INJECTION_MIXIN],
@@ -79,8 +72,19 @@
         props: {
             control: Object
         },
-
         methods: {
+            //checks if the rule is registered in the VALIDATION_RULES config
+            isRuleRegistered(ruleType) {
+              let isRegistered = false;
+              //no rule type, return optimistic result
+              if (!ruleType) {
+                isRegistered = true;
+              }
+              if (VALIDATION_RULES[ruleType]) {
+                isRegistered = true;
+              }
+              return isRegistered;
+            },
             /**
              * Get the rule info based on the validation rule
              * @param ruleName
@@ -88,7 +92,7 @@
              * @returns {boolean}
              */
             getRuleInfo(ruleName, ruleKey) {
-                if (!ruleName) {
+                if (!ruleName || !VALIDATION_RULES[ruleName]) {
                     return false
                 }
 
@@ -137,7 +141,7 @@
              * Get all Rule List
              * @returns {string[]}
              */
-            ruleList: () => Object.keys(VALIDATION_RULES)
+            ruleList: () => Object.keys(VALIDATION_RULES),
         }
     }
 </script>
