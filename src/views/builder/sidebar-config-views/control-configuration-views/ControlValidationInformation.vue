@@ -78,10 +78,6 @@
         props: {
             control: Object
         },
-        mounted(){
-          console.log('ControlValidationInformation mounted', this.control);//debug
-          console.log('ControlValidationInformation ruleList', this.ruleList);//debug
-        },
         methods: {
             /**
              * Get the rule info based on the validation rule
