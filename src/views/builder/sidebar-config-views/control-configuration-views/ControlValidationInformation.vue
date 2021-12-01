@@ -11,7 +11,7 @@
 
         <div class="list-selection"
              v-for="(addedRule, ruleIndex) in control.validations"
-             v-show="getRuleInfo(addedRule.ruleType, 'ruleType')"
+             v-show="isRuleRegistered(addedRule.ruleType)"
              :key="addedRule.ruleType">
             <div class="tool-block">
                 <span class="pointer"
@@ -80,6 +80,14 @@
 
         },
         methods: {
+            //checks if the rule is registered in the VALIDATION_RULES config
+            isRuleRegistered(ruleType) {
+              //no rule type, return optimistic result
+              if (!ruleType) {
+                return true;
+              }
+              return VALIDATION_RULES[ruleType];
+            },
             /**
              * Get the rule info based on the validation rule
              * @param ruleName
