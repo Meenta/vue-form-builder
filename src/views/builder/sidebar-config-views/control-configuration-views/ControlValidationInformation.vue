@@ -1,81 +1,85 @@
 <template>
-    <SidebarToggleableContainer headline="Validation">
+    <Fragment>
+      <h1>TEST VALIDATION<h1>
+      <SidebarToggleableContainer headline="Validation">
 
-        <label>
-            Validation Rules
-            <span class="pointer"
-                  title="Click this to add a new rule"
-                  @click="addNewRule"
-                  v-html="$form.getIcon('addOutline', '16px', '16px', 'green')">
-            </span>
-        </label>
+          <label>
+              Validation Rules
+              <span class="pointer"
+                    title="Click this to add a new rule"
+                    @click="addNewRule"
+                    v-html="$form.getIcon('addOutline', '16px', '16px', 'green')">
+              </span>
+          </label>
 
-        <div class="list-selection"
-             v-for="(addedRule, ruleIndex) in control.validations"
-             :key="addedRule.ruleType">
+          <div class="list-selection"
+               v-for="(addedRule, ruleIndex) in control.validations"
+               :key="addedRule.ruleType">
 
-            <div class="tool-block">
-                <span class="pointer"
-                      title="Click this to remove this rule"
-                      @click="removeRule(ruleIndex)"
-                      v-html="$form.getIcon('close', '16px', '16px', 'red')">
-                </span>
-            </div>
+              <div class="tool-block">
+                  <span class="pointer"
+                        title="Click this to remove this rule"
+                        @click="removeRule(ruleIndex)"
+                        v-html="$form.getIcon('close', '16px', '16px', 'red')">
+                  </span>
+              </div>
 
-            <div :class="[styles.FORM.FORM_GROUP]">
-                <label>Validation Rule</label>
-                <select :class="styles.FORM.FORM_CONTROL"
-                        @change="updateDefaultErrorMessage(addedRule)"
-                        v-model="addedRule.ruleType">
+              <div :class="[styles.FORM.FORM_GROUP]">
+                  <label>Validation Rule</label>
+                  <select :class="styles.FORM.FORM_CONTROL"
+                          @change="updateDefaultErrorMessage(addedRule)"
+                          v-model="addedRule.ruleType">
 
-                    <option selected disabled>Choose a Rule</option>
+                      <option selected disabled>Choose a Rule</option>
 
-                    <option v-for="(ruleName, ruleIndex) in getRuleList(addedRule.ruleType)"
-                            :key="ruleIndex"
-                            :value="ruleName"
-                            v-text="ruleName">
-                    </option>
+                      <option v-for="(ruleName, ruleIndex) in getRuleList(addedRule.ruleType)"
+                              :key="ruleIndex"
+                              :value="ruleName"
+                              v-text="ruleName">
+                      </option>
 
-                </select>
+                  </select>
 
-                <small v-show="getRuleInfo(addedRule.ruleType, 'desc')"
-                       v-text="getRuleInfo(addedRule.ruleType, 'desc')">
-                </small>
-            </div>
+                  <small v-show="getRuleInfo(addedRule.ruleType, 'desc')"
+                         v-text="getRuleInfo(addedRule.ruleType, 'desc')">
+                  </small>
+              </div>
 
-            <div :class="styles.FORM.FORM_GROUP"
-                 v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
+              <div :class="styles.FORM.FORM_GROUP"
+                   v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
 
-                <label>Rule Value</label>
-                <input type="text"
-                       :class="styles.FORM.FORM_CONTROL"
-                       :placeholder="getRuleInfo(addedRule.ruleType, 'valueInfo')"
-                       v-model="addedRule.additionalValue">
+                  <label>Rule Value</label>
+                  <input type="text"
+                         :class="styles.FORM.FORM_CONTROL"
+                         :placeholder="getRuleInfo(addedRule.ruleType, 'valueInfo')"
+                         v-model="addedRule.additionalValue">
 
-            </div>
+              </div>
 
-            <div :class="styles.FORM.FORM_GROUP">
+              <div :class="styles.FORM.FORM_GROUP">
 
-                <label>Default Error Message</label>
-                <input type="text"
-                       :class="styles.FORM.FORM_CONTROL"
-                       v-model="addedRule.errorMessage">
+                  <label>Default Error Message</label>
+                  <input type="text"
+                         :class="styles.FORM.FORM_CONTROL"
+                         v-model="addedRule.errorMessage">
 
-            </div>
-        </div>
+              </div>
+          </div>
 
-    </SidebarToggleableContainer>
+      </SidebarToggleableContainer>
+    </Fragment>
+
 </template>
 
 <script>
     import SidebarToggleableContainer from "@/views/container-views/SidebarToggleableContainer";
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import {VALIDATION_RULES, ValidationRule} from "@/configs/validation";
-
+    import Fragment from 'vue-fragment';
     export default {
         name: "ControlValidationInformation",
         mixins: [STYLE_INJECTION_MIXIN],
-        components: {SidebarToggleableContainer},
+        components: {SidebarToggleableContainer, Fragment},
         props: {
             control: Object
         },
