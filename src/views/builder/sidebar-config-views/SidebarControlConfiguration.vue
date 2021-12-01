@@ -90,8 +90,6 @@
              * CHeck if the control doesn't need validation
              */
             isValidationDisabled() {
-              console.log('this.controlType', this.controlType);
-              console.log('CONTROLS[this.controlType]', CONTROLS[this.controlType]);
                 if (CONTROLS[this.controlType].disableValidation) {
                     return true
                 }
