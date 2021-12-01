@@ -65,11 +65,10 @@
     import SidebarToggleableContainer from "@/views/container-views/SidebarToggleableContainer";
     import {STYLE_INJECTION_MIXIN} from "@/mixins/style-injection-mixin";
     import {VALIDATION_RULES, ValidationRule} from "@/configs/validation";
-    import {Fragment} from 'vue-fragment';
     export default {
         name: "ControlValidationInformation",
         mixins: [STYLE_INJECTION_MIXIN],
-        components: {SidebarToggleableContainer, Fragment},
+        components: {SidebarToggleableContainer},
         props: {
             control: Object
         },
