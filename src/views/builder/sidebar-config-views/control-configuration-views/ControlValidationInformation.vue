@@ -84,7 +84,6 @@
               if (VALIDATION_RULES[ruleType]) {
                 isRegistered = true;
               }
-              console.log('isRuleRegistered', ruleType, isRegistered);
               return isRegistered;
             },
             /**
