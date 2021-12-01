@@ -1,7 +1,6 @@
 <template>
     <Fragment>
-      <h1>TEST VALIDATION<h1>
-
+      <SidebarToggleableContainer headline="Validation">
           <label>
               Validation Rules
               <span class="pointer"
@@ -64,6 +63,8 @@
 
               </div>
           </div>
+
+      </SidebarToggleableContainer>
     </Fragment>
 
 </template>
@@ -80,7 +81,9 @@
         props: {
             control: Object
         },
-
+        mounted(){
+          console.log('ControlValidationInformation mounted', this.control);//debug
+        },
         methods: {
             /**
              * Get the rule info based on the validation rule
