@@ -10,7 +10,8 @@
         </label>
 
         <div class="list-selection"
-             v-for="(addedRule, ruleIndex) in controlValidations"
+             v-for="(addedRule, ruleIndex) in control.validations"
+             v-show="getRuleInfo(addedRule.ruleType, 'ruleType')"
              :key="addedRule.ruleType">
             <div class="tool-block">
                 <span class="pointer"
@@ -75,7 +76,9 @@
         props: {
             control: Object
         },
-        
+        beforeMount(){
+
+        },
         methods: {
             /**
              * Get the rule info based on the validation rule
@@ -134,14 +137,6 @@
              * @returns {string[]}
              */
             ruleList: () => Object.keys(VALIDATION_RULES),
-            controlValidations: ()=> {
-              if (!this.control.validations) {
-                return [];
-              }
-              return this.control.validations.filter((validation)=>{
-                return VALIDATION_RULES[validation.ruleType]
-              });
-            }
         }
     }
 </script>
