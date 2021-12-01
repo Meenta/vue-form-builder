@@ -12851,12 +12851,12 @@ var ControlStylingInformation_component = Object(componentNormalizer["a" /* defa
 // EXTERNAL MODULE: ./src/libraries/helper.js
 var helper = __webpack_require__("43b3");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=4dcd8e93&
-var ControlValidationInformationvue_type_template_id_4dcd8e93_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Validation"}},[_c('label',[_vm._v(" Validation Rules "),_c('span',{staticClass:"pointer",attrs:{"title":"Click this to add a new rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '16px', '16px', 'green'))},on:{"click":_vm.addNewRule}})]),_vm._l((_vm.control.validations),function(addedRule,ruleIndex){return _c('div',{key:addedRule.ruleType,staticClass:"list-selection"},[(_vm.getRuleInfo(addedRule.ruleType, 'ruleType'))?_c('Fragment',[_c('div',{staticClass:"tool-block"},[_c('span',{staticClass:"pointer",attrs:{"title":"Click this to remove this rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '16px', '16px', 'red'))},on:{"click":function($event){return _vm.removeRule(ruleIndex)}}})]),_c('div',{class:[_vm.styles.FORM.FORM_GROUP]},[_c('label',[_vm._v("Validation Rule")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(addedRule.ruleType),expression:"addedRule.ruleType"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(addedRule, "ruleType", $event.target.multiple ? $$selectedVal : $$selectedVal[0])},function($event){return _vm.updateDefaultErrorMessage(addedRule)}]}},[_c('option',{attrs:{"selected":"","disabled":""}},[_vm._v("Choose a Rule")]),_vm._l((_vm.getRuleList(addedRule.ruleType)),function(ruleName,ruleIndex){return _c('option',{key:ruleIndex,domProps:{"value":ruleName,"textContent":_vm._s(ruleName)}})})],2),_c('small',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'desc')),expression:"getRuleInfo(addedRule.ruleType, 'desc')"}],domProps:{"textContent":_vm._s(_vm.getRuleInfo(addedRule.ruleType, 'desc'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'needValue')),expression:"getRuleInfo(addedRule.ruleType, 'needValue')"}],class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Rule Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.additionalValue),expression:"addedRule.additionalValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":_vm.getRuleInfo(addedRule.ruleType, 'valueInfo')},domProps:{"value":(addedRule.additionalValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "additionalValue", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Default Error Message")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.errorMessage),expression:"addedRule.errorMessage"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(addedRule.errorMessage)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "errorMessage", $event.target.value)}}})])]):_vm._e()],1)})],2)}
-var ControlValidationInformationvue_type_template_id_4dcd8e93_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"fb4e216a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=0850fb8c&
+var ControlValidationInformationvue_type_template_id_0850fb8c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('SidebarToggleableContainer',{attrs:{"headline":"Validation"}},[_c('label',[_vm._v(" Validation Rules "),_c('span',{staticClass:"pointer",attrs:{"title":"Click this to add a new rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('addOutline', '16px', '16px', 'green'))},on:{"click":_vm.addNewRule}})]),_vm._l((_vm.controlValidations),function(addedRule,ruleIndex){return _c('div',{key:addedRule.ruleType,staticClass:"list-selection"},[_c('div',{staticClass:"tool-block"},[_c('span',{staticClass:"pointer",attrs:{"title":"Click this to remove this rule"},domProps:{"innerHTML":_vm._s(_vm.$form.getIcon('close', '16px', '16px', 'red'))},on:{"click":function($event){return _vm.removeRule(ruleIndex)}}})]),_c('div',{class:[_vm.styles.FORM.FORM_GROUP]},[_c('label',[_vm._v("Validation Rule")]),_c('select',{directives:[{name:"model",rawName:"v-model",value:(addedRule.ruleType),expression:"addedRule.ruleType"}],class:_vm.styles.FORM.FORM_CONTROL,on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(addedRule, "ruleType", $event.target.multiple ? $$selectedVal : $$selectedVal[0])},function($event){return _vm.updateDefaultErrorMessage(addedRule)}]}},[_c('option',{attrs:{"selected":"","disabled":""}},[_vm._v("Choose a Rule")]),_vm._l((_vm.getRuleList(addedRule.ruleType)),function(ruleName,ruleIndex){return _c('option',{key:ruleIndex,domProps:{"value":ruleName,"textContent":_vm._s(ruleName)}})})],2),_c('small',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'desc')),expression:"getRuleInfo(addedRule.ruleType, 'desc')"}],domProps:{"textContent":_vm._s(_vm.getRuleInfo(addedRule.ruleType, 'desc'))}})]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.getRuleInfo(addedRule.ruleType, 'needValue')),expression:"getRuleInfo(addedRule.ruleType, 'needValue')"}],class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Rule Value")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.additionalValue),expression:"addedRule.additionalValue"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text","placeholder":_vm.getRuleInfo(addedRule.ruleType, 'valueInfo')},domProps:{"value":(addedRule.additionalValue)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "additionalValue", $event.target.value)}}})]),_c('div',{class:_vm.styles.FORM.FORM_GROUP},[_c('label',[_vm._v("Default Error Message")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(addedRule.errorMessage),expression:"addedRule.errorMessage"}],class:_vm.styles.FORM.FORM_CONTROL,attrs:{"type":"text"},domProps:{"value":(addedRule.errorMessage)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(addedRule, "errorMessage", $event.target.value)}}})])])})],2)}
+var ControlValidationInformationvue_type_template_id_0850fb8c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=4dcd8e93&
+// CONCATENATED MODULE: ./src/views/builder/sidebar-config-views/control-configuration-views/ControlValidationInformation.vue?vue&type=template&id=0850fb8c&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
 var es7_array_includes = __webpack_require__("6762");
@@ -12874,7 +12874,7 @@ var es6_array_iterator = __webpack_require__("cadf");
 var es6_object_keys = __webpack_require__("456d");
 
 // EXTERNAL MODULE: ./src/configs/validation.js
-var validation = __webpack_require__("a786");
+var configs_validation = __webpack_require__("a786");
 
 // EXTERNAL MODULE: ./node_modules/vue-fragment/dist/vue-fragment.esm.js
 var vue_fragment_esm = __webpack_require__("3f08");
@@ -12885,9 +12885,9 @@ var vue_fragment_esm = __webpack_require__("3f08");
 
 
 
-//
-//
-//
+
+var ControlValidationInformationvue_type_script_lang_js_this = undefined;
+
 //
 //
 //
@@ -12975,11 +12975,11 @@ var vue_fragment_esm = __webpack_require__("3f08");
      * @returns {boolean}
      */
     getRuleInfo: function getRuleInfo(ruleName, ruleKey) {
-      if (!ruleName || !validation["a" /* VALIDATION_RULES */][ruleName]) {
+      if (!ruleName || !configs_validation["a" /* VALIDATION_RULES */][ruleName]) {
         return false;
       }
 
-      return validation["a" /* VALIDATION_RULES */][ruleName][ruleKey];
+      return configs_validation["a" /* VALIDATION_RULES */][ruleName][ruleKey];
     },
 
     /**
@@ -12996,7 +12996,7 @@ var vue_fragment_esm = __webpack_require__("3f08");
      * [CLICK] Add a new rule into validation array
      */
     addNewRule: function addNewRule() {
-      this.control.validations.push(new validation["b" /* ValidationRule */]());
+      this.control.validations.push(new configs_validation["b" /* ValidationRule */]());
     },
 
     /**
@@ -13016,7 +13016,7 @@ var vue_fragment_esm = __webpack_require__("3f08");
       }).filter(function (ruleName) {
         return ruleName !== currentRule;
       });
-      var allRules = Object.keys(validation["a" /* VALIDATION_RULES */]);
+      var allRules = Object.keys(configs_validation["a" /* VALIDATION_RULES */]);
       return allRules.filter(function (rule) {
         return !allUsedRules.includes(rule);
       });
@@ -13028,7 +13028,16 @@ var vue_fragment_esm = __webpack_require__("3f08");
      * @returns {string[]}
      */
     ruleList: function ruleList() {
-      return Object.keys(validation["a" /* VALIDATION_RULES */]);
+      return Object.keys(configs_validation["a" /* VALIDATION_RULES */]);
+    },
+    controlValidations: function controlValidations() {
+      if (!ControlValidationInformationvue_type_script_lang_js_this.control.validations) {
+        return [];
+      }
+
+      return ControlValidationInformationvue_type_script_lang_js_this.control.validations.filter(function (validation) {
+        return configs_validation["a" /* VALIDATION_RULES */][validation.ruleType];
+      });
     }
   }
 });
@@ -13044,8 +13053,8 @@ var vue_fragment_esm = __webpack_require__("3f08");
 
 var ControlValidationInformation_component = Object(componentNormalizer["a" /* default */])(
   control_configuration_views_ControlValidationInformationvue_type_script_lang_js_,
-  ControlValidationInformationvue_type_template_id_4dcd8e93_render,
-  ControlValidationInformationvue_type_template_id_4dcd8e93_staticRenderFns,
+  ControlValidationInformationvue_type_template_id_0850fb8c_render,
+  ControlValidationInformationvue_type_template_id_0850fb8c_staticRenderFns,
   false,
   null,
   null,

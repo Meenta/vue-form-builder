@@ -10,58 +10,55 @@
         </label>
 
         <div class="list-selection"
-             v-for="(addedRule, ruleIndex) in control.validations"
+             v-for="(addedRule, ruleIndex) in controlValidations"
              :key="addedRule.ruleType">
-            <Fragment v-if="getRuleInfo(addedRule.ruleType, 'ruleType')">
-              <div class="tool-block">
-                  <span class="pointer"
-                        title="Click this to remove this rule"
-                        @click="removeRule(ruleIndex)"
-                        v-html="$form.getIcon('close', '16px', '16px', 'red')">
-                  </span>
-              </div>
+            <div class="tool-block">
+                <span class="pointer"
+                      title="Click this to remove this rule"
+                      @click="removeRule(ruleIndex)"
+                      v-html="$form.getIcon('close', '16px', '16px', 'red')">
+                </span>
+            </div>
 
-              <div :class="[styles.FORM.FORM_GROUP]">
-                  <label>Validation Rule</label>
-                  <select :class="styles.FORM.FORM_CONTROL"
-                          @change="updateDefaultErrorMessage(addedRule)"
-                          v-model="addedRule.ruleType">
+            <div :class="[styles.FORM.FORM_GROUP]">
+                <label>Validation Rule</label>
+                <select :class="styles.FORM.FORM_CONTROL"
+                        @change="updateDefaultErrorMessage(addedRule)"
+                        v-model="addedRule.ruleType">
 
-                      <option selected disabled>Choose a Rule</option>
+                    <option selected disabled>Choose a Rule</option>
 
-                      <option v-for="(ruleName, ruleIndex) in getRuleList(addedRule.ruleType)"
-                              :key="ruleIndex"
-                              :value="ruleName"
-                              v-text="ruleName">
-                      </option>
+                    <option v-for="(ruleName, ruleIndex) in getRuleList(addedRule.ruleType)"
+                            :key="ruleIndex"
+                            :value="ruleName"
+                            v-text="ruleName">
+                    </option>
 
-                  </select>
+                </select>
 
-                  <small v-show="getRuleInfo(addedRule.ruleType, 'desc')"
-                         v-text="getRuleInfo(addedRule.ruleType, 'desc')">
-                  </small>
-              </div>
+                <small v-show="getRuleInfo(addedRule.ruleType, 'desc')"
+                       v-text="getRuleInfo(addedRule.ruleType, 'desc')">
+                </small>
+            </div>
 
-              <div :class="styles.FORM.FORM_GROUP"
-                   v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
+            <div :class="styles.FORM.FORM_GROUP"
+                 v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
 
-                  <label>Rule Value</label>
-                  <input type="text"
-                         :class="styles.FORM.FORM_CONTROL"
-                         :placeholder="getRuleInfo(addedRule.ruleType, 'valueInfo')"
-                         v-model="addedRule.additionalValue">
+                <label>Rule Value</label>
+                <input type="text"
+                       :class="styles.FORM.FORM_CONTROL"
+                       :placeholder="getRuleInfo(addedRule.ruleType, 'valueInfo')"
+                       v-model="addedRule.additionalValue">
 
-              </div>
+            </div>
 
-              <div :class="styles.FORM.FORM_GROUP">
+            <div :class="styles.FORM.FORM_GROUP">
 
-                  <label>Default Error Message</label>
-                  <input type="text"
-                         :class="styles.FORM.FORM_CONTROL"
-                         v-model="addedRule.errorMessage">
-              </div>
-            </Fragment>
-            
+                <label>Default Error Message</label>
+                <input type="text"
+                       :class="styles.FORM.FORM_CONTROL"
+                       v-model="addedRule.errorMessage">
+            </div>
         </div>
     </SidebarToggleableContainer>
 </template>
@@ -78,6 +75,7 @@
         props: {
             control: Object
         },
+        
         methods: {
             /**
              * Get the rule info based on the validation rule
@@ -135,7 +133,15 @@
              * Get all Rule List
              * @returns {string[]}
              */
-            ruleList: () => Object.keys(VALIDATION_RULES)
+            ruleList: () => Object.keys(VALIDATION_RULES),
+            controlValidations: ()=> {
+              if (!this.control.validations) {
+                return [];
+              }
+              return this.control.validations.filter((validation)=>{
+                return VALIDATION_RULES[validation.ruleType]
+              });
+            }
         }
     }
 </script>
