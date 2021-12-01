@@ -13,8 +13,7 @@
           <div class="list-selection"
                v-for="(addedRule, ruleIndex) in control.validations"
                :key="addedRule.ruleType">
-              {{addedRule.ruleType}} {{ruleIndex}}
-              <!-- <div class="tool-block">
+              <div class="tool-block">
                   <span class="pointer"
                         title="Click this to remove this rule"
                         @click="removeRule(ruleIndex)"
@@ -61,7 +60,7 @@
                          :class="styles.FORM.FORM_CONTROL"
                          v-model="addedRule.errorMessage">
 
-              </div> -->
+              </div>
           </div>
 
       </SidebarToggleableContainer>
@@ -93,7 +92,7 @@
              * @returns {boolean}
              */
             getRuleInfo(ruleName, ruleKey) {
-                if (!ruleName) {
+                if (!ruleName || !VALIDATION_RULES[ruleName]) {
                     return false
                 }
 
