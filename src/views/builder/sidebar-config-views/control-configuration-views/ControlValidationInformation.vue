@@ -11,9 +11,8 @@
 
         <div class="list-selection"
              v-for="(addedRule, ruleIndex) in control.validations"
-             v-show="isRuleRegistered(addedRule.ruleType)"
              :key="addedRule.ruleType">
-            <div class="tool-block">
+            <div class="tool-block" v-if="isRuleRegistered(addedRule.ruleType)">
                 <span class="pointer"
                       title="Click this to remove this rule"
                       @click="removeRule(ruleIndex)"
@@ -21,7 +20,7 @@
                 </span>
             </div>
 
-            <div :class="[styles.FORM.FORM_GROUP]">
+            <div :class="[styles.FORM.FORM_GROUP]" v-if="isRuleRegistered(addedRule.ruleType)">
                 <label>Validation Rule</label>
                 <select :class="styles.FORM.FORM_CONTROL"
                         @change="updateDefaultErrorMessage(addedRule)"
@@ -43,7 +42,8 @@
             </div>
 
             <div :class="styles.FORM.FORM_GROUP"
-                 v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
+                v-if="isRuleRegistered(addedRule.ruleType)"
+                v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
 
                 <label>Rule Value</label>
                 <input type="text"
@@ -53,7 +53,7 @@
 
             </div>
 
-            <div :class="styles.FORM.FORM_GROUP">
+            <div :class="styles.FORM.FORM_GROUP" v-if="isRuleRegistered(addedRule.ruleType)">
 
                 <label>Default Error Message</label>
                 <input type="text"
@@ -81,13 +81,18 @@
         },
         methods: {
             //checks if the rule is registered in the VALIDATION_RULES config
+            //will need to use is this multiple times in the v-for because vue is very
+            //opinionated with it's directive usage, and the approach used here to create empty validation objects and have
+            //the validation config inside those empty objects
             isRuleRegistered(ruleType) {
               //no rule type, return optimistic result
               if (!ruleType) {
                 return true;
               }
-              console.log('ruleType', ruleType, VALIDATION_RULES[ruleType]);
-              return VALIDATION_RULES[ruleType] ? true : false;
+              if (VALIDATION_RULES[ruleType]) {
+                return true;
+              }
+              return false;
             },
             /**
              * Get the rule info based on the validation rule
