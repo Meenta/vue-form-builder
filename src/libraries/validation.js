@@ -71,12 +71,9 @@ export default class Validation {
     try {
       this.validationResult = new ValidationResult();
       const controlKeys = Object.keys(this.rules);
-      console.log('controlKeys', controlKeys);//debug
       for (const key of controlKeys) {
         // pickup basic data
         const controlValue = this.valueContainer[key];
-        console.log('this.valueContainer', this.valueContainer);//debug
-        console.log('controlValue', controlValue);//debug
         const controlRules = this.rules[key] || [];
         const control = this.controls[controlRules.uniqueId];
         const controlConditional = control.isConditional || false;
@@ -176,7 +173,6 @@ export default class Validation {
         return isRegexPassed(fieldValue, validationRule.additionalValue);
 
       default:
-        console.log('fieldValue', fieldValue)//debug
         // Adding flexibility to validations by checking the return type before rejecting the rule
         // this will allow validations to be added easier at the control registration level in boba
         let ruleResult = false;

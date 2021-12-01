@@ -51101,96 +51101,90 @@ var validation_Validation = /*#__PURE__*/function () {
                 _context.prev = 0;
                 this.validationResult = new validation_result_class_ValidationResult();
                 controlKeys = Object.keys(this.rules);
-                console.log('controlKeys', controlKeys); //debug
-
                 _i = 0, _controlKeys = controlKeys;
 
-              case 5:
+              case 4:
                 if (!(_i < _controlKeys.length)) {
-                  _context.next = 40;
+                  _context.next = 37;
                   break;
                 }
 
                 key = _controlKeys[_i];
                 // pickup basic data
                 controlValue = this.valueContainer[key];
-                console.log('this.valueContainer', this.valueContainer); //debug
-
-                console.log('controlValue', controlValue); //debug
-
                 controlRules = this.rules[key] || [];
                 control = this.controls[controlRules.uniqueId];
                 controlConditional = control.isConditional || false;
                 controlConditionalMet = control.conditionMet || false; // no rule no run
 
                 if (controlRules.length) {
-                  _context.next = 16;
+                  _context.next = 13;
                   break;
                 }
 
-                return _context.abrupt("continue", 37);
+                return _context.abrupt("continue", 34);
 
-              case 16:
+              case 13:
                 if (!(controlConditional && controlConditionalMet !== true)) {
-                  _context.next = 18;
+                  _context.next = 15;
                   break;
                 }
 
-                return _context.abrupt("continue", 37);
+                return _context.abrupt("continue", 34);
 
-              case 18:
+              case 15:
                 /**
                  * start the validation process by each rules added for the control
                  */
                 _iterator = _createForOfIteratorHelper(controlRules);
-                _context.prev = 19;
+                _context.prev = 16;
 
                 _iterator.s();
 
-              case 21:
+              case 18:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 29;
+                  _context.next = 26;
                   break;
                 }
 
                 validationRule = _step.value;
-                _context.next = 25;
+                _context.next = 22;
                 return this._singleRuleRun(validationRule, controlValue);
 
-              case 25:
+              case 22:
                 status = _context.sent;
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
-              case 27:
-                _context.next = 21;
+              case 24:
+                _context.next = 18;
                 break;
 
-              case 29:
-                _context.next = 34;
+              case 26:
+                _context.next = 31;
                 break;
 
-              case 31:
-                _context.prev = 31;
-                _context.t0 = _context["catch"](19);
+              case 28:
+                _context.prev = 28;
+                _context.t0 = _context["catch"](16);
 
                 _iterator.e(_context.t0);
 
-              case 34:
-                _context.prev = 34;
+              case 31:
+                _context.prev = 31;
 
                 _iterator.f();
 
-                return _context.finish(34);
+                return _context.finish(31);
 
-              case 37:
+              case 34:
                 _i++;
-                _context.next = 5;
+                _context.next = 4;
                 break;
 
-              case 40:
+              case 37:
                 // If a section is hidden, then we remove the validation in that section's controllers
                 if (Object.keys(this.validationResult.errorBuckets).length > 0) {
                   for (sectionId in this.sections) {
@@ -51227,17 +51221,17 @@ var validation_Validation = /*#__PURE__*/function () {
 
                 return _context.abrupt("return", this.validationResult);
 
-              case 44:
-                _context.prev = 44;
+              case 41:
+                _context.prev = 41;
                 _context.t1 = _context["catch"](0);
                 console.error('VUE FORM ERROR: ', _context.t1);
 
-              case 47:
+              case 44:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 44], [19, 31, 34, 37]]);
+        }, _callee, this, [[0, 41], [16, 28, 31, 34]]);
       }));
 
       function run() {
@@ -51288,10 +51282,8 @@ var validation_Validation = /*#__PURE__*/function () {
                 return _context2.abrupt("return", isRegexPassed(fieldValue, validationRule.additionalValue));
 
               case 10:
-                console.log('fieldValue', fieldValue); //debug
                 // Adding flexibility to validations by checking the return type before rejecting the rule
                 // this will allow validations to be added easier at the control registration level in boba
-
                 ruleResult = false; //check if rule is defined
                 //Validation rules can be added to a control directly in it's config, that way it's embedded in the
                 //control itself and not in the list, can't be removed either. Or they can be added using the extend
@@ -51302,28 +51294,28 @@ var validation_Validation = /*#__PURE__*/function () {
                 }
 
                 if (!validationRule.rule) {
-                  _context2.next = 17;
+                  _context2.next = 16;
                   break;
                 }
 
-                _context2.next = 16;
+                _context2.next = 15;
                 return validationRule.rule(fieldValue);
 
-              case 16:
+              case 15:
                 ruleResult = _context2.sent;
 
-              case 17:
+              case 16:
                 if (!(typeof ruleResult !== 'boolean')) {
-                  _context2.next = 19;
+                  _context2.next = 18;
                   break;
                 }
 
                 throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
 
-              case 19:
+              case 18:
                 return _context2.abrupt("return", ruleResult);
 
-              case 20:
+              case 19:
               case "end":
                 return _context2.stop();
             }
