@@ -10,11 +10,11 @@
               </span>
           </label>
 
-          <!-- <div class="list-selection"
+          <div class="list-selection"
                v-for="(addedRule, ruleIndex) in control.validations"
                :key="addedRule.ruleType">
-
-              <div class="tool-block">
+              {{addedRule.ruleType}} {{ruleIndex}}
+              <!-- <div class="tool-block">
                   <span class="pointer"
                         title="Click this to remove this rule"
                         @click="removeRule(ruleIndex)"
@@ -61,8 +61,8 @@
                          :class="styles.FORM.FORM_CONTROL"
                          v-model="addedRule.errorMessage">
 
-              </div>
-          </div> -->
+              </div> -->
+          </div>
 
       </SidebarToggleableContainer>
     </Fragment>
@@ -83,6 +83,7 @@
         },
         mounted(){
           console.log('ControlValidationInformation mounted', this.control);//debug
+          console.log('ControlValidationInformation ruleList', this.ruleList);//debug
         },
         methods: {
             /**
