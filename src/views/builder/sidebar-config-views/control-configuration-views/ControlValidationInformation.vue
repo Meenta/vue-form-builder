@@ -86,7 +86,8 @@
               if (!ruleType) {
                 return true;
               }
-              return VALIDATION_RULES[ruleType];
+              console.log('ruleType', ruleType, VALIDATION_RULES[ruleType]);
+              return VALIDATION_RULES[ruleType] ? true : false;
             },
             /**
              * Get the rule info based on the validation rule
