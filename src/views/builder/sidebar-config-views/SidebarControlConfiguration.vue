@@ -26,6 +26,7 @@
         </SidebarToggleableContainer>
 
         <!-- Validation of the control / same for all -->
+        {{`VALID ${isValidationDisabled} PERMS ${permissions.canUpdateControlValidation}`}}
         <ControlValidationInformation
             v-if="!isValidationDisabled && permissions.canUpdateControlValidation"
             :control="control"
