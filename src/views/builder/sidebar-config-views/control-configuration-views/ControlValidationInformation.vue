@@ -1,18 +1,18 @@
 <template>
-    <Fragment>
-      <SidebarToggleableContainer headline="Validation">
-          <label>
-              Validation Rules
-              <span class="pointer"
-                    title="Click this to add a new rule"
-                    @click="addNewRule"
-                    v-html="$form.getIcon('addOutline', '16px', '16px', 'green')">
-              </span>
-          </label>
+    <SidebarToggleableContainer headline="Validation">
+        <label>
+            Validation Rules
+            <span class="pointer"
+                  title="Click this to add a new rule"
+                  @click="addNewRule"
+                  v-html="$form.getIcon('addOutline', '16px', '16px', 'green')">
+            </span>
+        </label>
 
-          <div class="list-selection"
-               v-for="(addedRule, ruleIndex) in control.validations"
-               :key="addedRule.ruleType">
+        <div class="list-selection"
+             v-for="(addedRule, ruleIndex) in control.validations"
+             :key="addedRule.ruleType">
+            <Fragment v-if="getRuleInfo(addedRule.ruleType, 'ruleType')">
               <div class="tool-block">
                   <span class="pointer"
                         title="Click this to remove this rule"
@@ -59,13 +59,11 @@
                   <input type="text"
                          :class="styles.FORM.FORM_CONTROL"
                          v-model="addedRule.errorMessage">
-
               </div>
-          </div>
-
-      </SidebarToggleableContainer>
-    </Fragment>
-
+            </Fragment>
+            
+        </div>
+    </SidebarToggleableContainer>
 </template>
 
 <script>
