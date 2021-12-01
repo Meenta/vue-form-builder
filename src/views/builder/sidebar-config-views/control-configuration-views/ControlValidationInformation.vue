@@ -85,14 +85,16 @@
             //opinionated with it's directive usage, and the approach used here to create empty validation objects and have
             //the validation config inside those empty objects
             isRuleRegistered(ruleType) {
+              let isRegistered = false;
               //no rule type, return optimistic result
               if (!ruleType) {
-                return true;
+                isRegistered = true;
               }
               if (VALIDATION_RULES[ruleType]) {
-                return true;
+                isRegistered = true;
               }
-              return false;
+              console.log('isRuleRegistered', ruleType, isRegistered);
+              return isRegistered;
             },
             /**
              * Get the rule info based on the validation rule
