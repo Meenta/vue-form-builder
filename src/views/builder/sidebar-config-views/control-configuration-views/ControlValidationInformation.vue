@@ -10,7 +10,7 @@
               </span>
           </label>
 
-          <div class="list-selection"
+          <!-- <div class="list-selection"
                v-for="(addedRule, ruleIndex) in control.validations"
                :key="addedRule.ruleType">
 
@@ -62,7 +62,7 @@
                          v-model="addedRule.errorMessage">
 
               </div>
-          </div>
+          </div> -->
 
       </SidebarToggleableContainer>
     </Fragment>
