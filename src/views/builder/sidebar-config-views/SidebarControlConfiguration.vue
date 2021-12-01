@@ -27,7 +27,7 @@
 
         <!-- Validation of the control / same for all -->
         <ControlValidationInformation
-            v-if="!isValidationDisabled && permissions.canUpdateControlValidation"
+            v-if="!isValidationDisabled"
             :control="control"
         />
 
