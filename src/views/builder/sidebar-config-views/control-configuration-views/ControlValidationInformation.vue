@@ -1,7 +1,6 @@
 <template>
     <Fragment>
       <h1>TEST VALIDATION<h1>
-      <SidebarToggleableContainer headline="Validation">
 
           <label>
               Validation Rules
@@ -65,8 +64,6 @@
 
               </div>
           </div>
-
-      </SidebarToggleableContainer>
     </Fragment>
 
 </template>
