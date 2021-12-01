@@ -11,8 +11,9 @@
 
         <div class="list-selection"
              v-for="(addedRule, ruleIndex) in control.validations"
+             v-show="isRuleRegistered(addedRule.ruleType)"
              :key="addedRule.ruleType">
-            <div class="tool-block" v-if="isRuleRegistered(addedRule.ruleType)">
+            <div class="tool-block">
                 <span class="pointer"
                       title="Click this to remove this rule"
                       @click="removeRule(ruleIndex)"
@@ -20,7 +21,7 @@
                 </span>
             </div>
 
-            <div :class="[styles.FORM.FORM_GROUP]" v-if="isRuleRegistered(addedRule.ruleType)">
+            <div :class="[styles.FORM.FORM_GROUP]">
                 <label>Validation Rule</label>
                 <select :class="styles.FORM.FORM_CONTROL"
                         @change="updateDefaultErrorMessage(addedRule)"
@@ -42,19 +43,15 @@
             </div>
 
             <div :class="styles.FORM.FORM_GROUP"
-                v-if="isRuleRegistered(addedRule.ruleType)"
                 v-show="getRuleInfo(addedRule.ruleType, 'needValue')">
-
                 <label>Rule Value</label>
                 <input type="text"
                        :class="styles.FORM.FORM_CONTROL"
                        :placeholder="getRuleInfo(addedRule.ruleType, 'valueInfo')"
                        v-model="addedRule.additionalValue">
-
             </div>
 
-            <div :class="styles.FORM.FORM_GROUP" v-if="isRuleRegistered(addedRule.ruleType)">
-
+            <div :class="styles.FORM.FORM_GROUP">
                 <label>Default Error Message</label>
                 <input type="text"
                        :class="styles.FORM.FORM_CONTROL"
@@ -76,14 +73,8 @@
         props: {
             control: Object
         },
-        beforeMount(){
-
-        },
         methods: {
             //checks if the rule is registered in the VALIDATION_RULES config
-            //will need to use is this multiple times in the v-for because vue is very
-            //opinionated with it's directive usage, and the approach used here to create empty validation objects and have
-            //the validation config inside those empty objects
             isRuleRegistered(ruleType) {
               let isRegistered = false;
               //no rule type, return optimistic result
