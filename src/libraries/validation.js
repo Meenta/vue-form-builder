@@ -78,7 +78,8 @@ export default class Validation {
         const control = this.controls[controlRules.uniqueId];
         const controlConditional = control.isConditional || false;
         const controlConditionalMet = control.conditionMet || false;
-
+        console.log('control validation', control); //debug
+        console.log('controlRules validation', controlRules); //debug
         // no rule no run
         if (!controlRules.length) {
           continue;
@@ -94,7 +95,7 @@ export default class Validation {
          */
         for (const validationRule of controlRules) {
           const status = await this._singleRuleRun(validationRule, controlValue);
-          console.log('status validation', status);
+          console.log('status validation', status); //debug
           if (!status) {
             this.validationResult.addError(key, validationRule);
           }

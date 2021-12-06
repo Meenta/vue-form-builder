@@ -51088,7 +51088,7 @@ var validation_Validation = /*#__PURE__*/function () {
 
               case 4:
                 if (!(_i < _controlKeys.length)) {
-                  _context.next = 38;
+                  _context.next = 40;
                   break;
                 }
 
@@ -51098,77 +51098,81 @@ var validation_Validation = /*#__PURE__*/function () {
                 controlRules = this.rules[key] || [];
                 control = this.controls[controlRules.uniqueId];
                 controlConditional = control.isConditional || false;
-                controlConditionalMet = control.conditionMet || false; // no rule no run
+                controlConditionalMet = control.conditionMet || false;
+                console.log('control validation', control); //debug
+
+                console.log('controlRules validation', controlRules); //debug
+                // no rule no run
 
                 if (controlRules.length) {
-                  _context.next = 13;
-                  break;
-                }
-
-                return _context.abrupt("continue", 35);
-
-              case 13:
-                if (!(controlConditional && controlConditionalMet !== true)) {
                   _context.next = 15;
                   break;
                 }
 
-                return _context.abrupt("continue", 35);
+                return _context.abrupt("continue", 37);
 
               case 15:
+                if (!(controlConditional && controlConditionalMet !== true)) {
+                  _context.next = 17;
+                  break;
+                }
+
+                return _context.abrupt("continue", 37);
+
+              case 17:
                 /**
                  * start the validation process by each rules added for the control
                  */
                 _iterator = _createForOfIteratorHelper(controlRules);
-                _context.prev = 16;
+                _context.prev = 18;
 
                 _iterator.s();
 
-              case 18:
+              case 20:
                 if ((_step = _iterator.n()).done) {
-                  _context.next = 27;
+                  _context.next = 29;
                   break;
                 }
 
                 validationRule = _step.value;
-                _context.next = 22;
+                _context.next = 24;
                 return this._singleRuleRun(validationRule, controlValue);
 
-              case 22:
+              case 24:
                 status = _context.sent;
-                console.log('status validation', status);
+                console.log('status validation', status); //debug
 
                 if (!status) {
                   this.validationResult.addError(key, validationRule);
                 }
 
-              case 25:
-                _context.next = 18;
-                break;
-
               case 27:
-                _context.next = 32;
+                _context.next = 20;
                 break;
 
               case 29:
-                _context.prev = 29;
-                _context.t0 = _context["catch"](16);
+                _context.next = 34;
+                break;
+
+              case 31:
+                _context.prev = 31;
+                _context.t0 = _context["catch"](18);
 
                 _iterator.e(_context.t0);
 
-              case 32:
-                _context.prev = 32;
+              case 34:
+                _context.prev = 34;
 
                 _iterator.f();
 
-                return _context.finish(32);
+                return _context.finish(34);
 
-              case 35:
+              case 37:
                 _i++;
                 _context.next = 4;
                 break;
 
-              case 38:
+              case 40:
                 // If a section is hidden, then we remove the validation in that section's controllers
                 if (Object.keys(this.validationResult.errorBuckets).length > 0) {
                   for (sectionId in this.sections) {
@@ -51205,17 +51209,17 @@ var validation_Validation = /*#__PURE__*/function () {
 
                 return _context.abrupt("return", this.validationResult);
 
-              case 42:
-                _context.prev = 42;
+              case 44:
+                _context.prev = 44;
                 _context.t1 = _context["catch"](0);
                 console.error('VUE FORM ERROR: ', _context.t1);
 
-              case 45:
+              case 47:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 42], [16, 29, 32, 35]]);
+        }, _callee, this, [[0, 44], [18, 31, 34, 37]]);
       }));
 
       function run() {
