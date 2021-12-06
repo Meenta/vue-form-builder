@@ -51239,32 +51239,34 @@ var validation_Validation = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                console.log('validationRule', validationRule, fieldValue); //debug
+
                 _context2.t0 = validationRule.ruleType;
-                _context2.next = _context2.t0 === "required" ? 3 : _context2.t0 === "min" ? 4 : _context2.t0 === "max" ? 5 : _context2.t0 === "isEmail" ? 6 : _context2.t0 === "sameAs" ? 7 : _context2.t0 === "customClosure" ? 8 : _context2.t0 === "regex" ? 9 : 10;
+                _context2.next = _context2.t0 === "required" ? 4 : _context2.t0 === "min" ? 5 : _context2.t0 === "max" ? 6 : _context2.t0 === "isEmail" ? 7 : _context2.t0 === "sameAs" ? 8 : _context2.t0 === "customClosure" ? 9 : _context2.t0 === "regex" ? 10 : 11;
                 break;
 
-              case 3:
+              case 4:
                 return _context2.abrupt("return", requiredRule(fieldValue));
 
-              case 4:
+              case 5:
                 return _context2.abrupt("return", minRule(fieldValue, validationRule.additionalValue));
 
-              case 5:
+              case 6:
                 return _context2.abrupt("return", maxRule(fieldValue, validationRule.additionalValue));
 
-              case 6:
+              case 7:
                 return _context2.abrupt("return", isEmailRule(fieldValue));
 
-              case 7:
+              case 8:
                 return _context2.abrupt("return", sameAsRule(fieldValue, validationRule.additionalValue, this.valueContainer));
 
-              case 8:
+              case 9:
                 return _context2.abrupt("return", customClosureRule(fieldValue, validationRule.additionalValue, this.valueContainer, this.customClosures));
 
-              case 9:
+              case 10:
                 return _context2.abrupt("return", isRegexPassed(fieldValue, validationRule.additionalValue));
 
-              case 10:
+              case 11:
                 // Adding flexibility to validations by checking the return type before rejecting the rule
                 // this will allow validations to be added easier at the control registration level in boba
                 ruleResult = false; //check if rule is defined
@@ -51277,28 +51279,28 @@ var validation_Validation = /*#__PURE__*/function () {
                 }
 
                 if (!validationRule.rule) {
-                  _context2.next = 16;
+                  _context2.next = 17;
                   break;
                 }
 
-                _context2.next = 15;
+                _context2.next = 16;
                 return validationRule.rule(fieldValue);
 
-              case 15:
+              case 16:
                 ruleResult = _context2.sent;
 
-              case 16:
+              case 17:
                 if (!(typeof ruleResult !== 'boolean')) {
-                  _context2.next = 18;
+                  _context2.next = 19;
                   break;
                 }
 
                 throw new TypeError("This validation type ".concat(validationRule.ruleType, " is not supported."));
 
-              case 18:
+              case 19:
                 return _context2.abrupt("return", ruleResult);
 
-              case 19:
+              case 20:
               case "end":
                 return _context2.stop();
             }
