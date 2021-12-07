@@ -50827,7 +50827,7 @@ function requiredRule(fieldValue) {
   } // for text/number/any...
 
 
-  if (fieldValue === "") {
+  if (fieldValue === "" || !fieldValue) {
     return false;
   }
 
