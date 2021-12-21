@@ -96,6 +96,7 @@ export default class Validation {
         for (const validationRule of controlRules) {
           const status = await this._singleRuleRun(validationRule, controlValue);
           console.log('status validation', status); //debug
+          console.log('validationRule', validationRule); //debug
           if (!status) {
             this.validationResult.addError(key, validationRule);
           }
